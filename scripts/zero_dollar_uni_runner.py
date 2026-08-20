@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v2.2 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v3.0 Production)
 ============================================================================
 1. Direct Company Admin Share URL: https://www.linkedin.com/company/86814703/admin/page-posts/published/?share=true
 2. Direct 0$ University Post Composer (100% Personal Profile Isolation).
-3. Direct set_input_files for authentic PDF Carousel upload from documents/pdf_vault/.
-4. Injects exact standardized Topmate & WhatsApp links block.
-5. Publishes post live to 0$ University.
-6. Resolves live permalink and runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
+3. Reliable File Upload & Document Attachment.
+4. Robust Scoped DOM Evaluator for Post Button (Zero Pointer-Interception Failures).
+5. Resolves live permalink and runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
 """
 
 import os
@@ -215,7 +214,7 @@ def execute_zuni_pipeline(dry_run=False):
             page.goto("https://www.linkedin.com/company/86814703/admin/page-posts/published/?share=true", wait_until="domcontentloaded", timeout=45000)
             time.sleep(5)
 
-            # Strict Safety Assertion: Verify 0$ University author
+            # Safety Assertion: Verify 0$ University author
             author_text = page.evaluate("""() => {
                 const authorEl = document.querySelector('.share-unified-settings-entry-button, .org-post-author, .artdeco-modal');
                 return authorEl ? authorEl.innerText : '';
@@ -240,40 +239,43 @@ def execute_zuni_pipeline(dry_run=False):
             if pdf_path and os.path.exists(pdf_path):
                 print(f"📑 Attaching Document Carousel: {pdf_filename}...")
                 try:
-                    # Click More button to reveal document option
-                    page.evaluate("""() => {
-                        const moreBtn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('More'));
-                        if (moreBtn) moreBtn.click();
-                    }""")
-                    time.sleep(1.5)
+                    # Look for input[type="file"] or trigger document picker
+                    file_input = page.locator("input[type='file']")
+                    if file_input.count() > 0:
+                        file_input.first.set_input_files(pdf_path)
+                        print(f"✅ Set files on input[type='file']")
+                    else:
+                        page.evaluate("""() => {
+                            const moreBtn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('More'));
+                            if (moreBtn) moreBtn.click();
+                        }""")
+                        time.sleep(1.5)
 
-                    # Click Document option to open "Share a document" modal
-                    page.evaluate("""() => {
-                        const btns = Array.from(document.querySelectorAll('button, div[role="button"]'));
-                        const docBtn = btns.find(b => {
-                            const la = (b.getAttribute('aria-label') || '').toLowerCase();
-                            const txt = (b.innerText || '').toLowerCase();
-                            return la.includes('document') || txt.includes('document');
-                        });
-                        if (docBtn) docBtn.click();
-                    }""")
-                    time.sleep(2)
+                        page.evaluate("""() => {
+                            const docBtn = Array.from(document.querySelectorAll('button, div[role="button"]')).find(b => {
+                                const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                                const txt = (b.innerText || '').toLowerCase();
+                                return la.includes('document') || txt.includes('document');
+                            });
+                            if (docBtn) docBtn.click();
+                        }""")
+                        time.sleep(2)
 
-                    # Set files directly on the input[type="file"] in Share a document modal
-                    page.set_input_files("input[type='file']", pdf_path)
-                    print(f"✅ PDF file attached directly via set_input_files: {pdf_filename}")
+                        page.locator("input[type='file']").first.set_input_files(pdf_path)
+                        print(f"✅ Set files after document modal open")
+
                     time.sleep(4)
 
                     # Fill Title
                     try:
                         title_input = page.locator("input[placeholder*='title' i], input[type='text']").first
-                        if title_input.is_visible(timeout=5000):
+                        if title_input.is_visible(timeout=4000):
                             title_input.fill(item["title"])
                     except Exception:
                         pass
                     time.sleep(2)
 
-                    # Click Done on Document preview modal
+                    # Click Done
                     page.evaluate("""() => {
                         const btns = Array.from(document.querySelectorAll('button'));
                         const doneBtn = btns.find(b => ['Done', 'Next'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Done'));
@@ -289,8 +291,8 @@ def execute_zuni_pipeline(dry_run=False):
 
             try:
                 editor = page.locator("div.ql-editor, div.tiptap, div[contenteditable='true']").first
-                editor.wait_for(state="visible", timeout=10000)
-                editor.click()
+                editor.wait_for(state="visible", timeout=8000)
+                editor.click(force=True)
                 time.sleep(1)
                 page.keyboard.insert_text(post_text)
                 print("✅ Injected post text via page.keyboard.insert_text")
@@ -311,28 +313,26 @@ def execute_zuni_pipeline(dry_run=False):
             page.screenshot(path=screenshot_path)
             print(f"📸 Captured composer proof: {screenshot_path}")
 
-            # Publish live
+            # Publish live using direct modal JS click (immune to pointer interception)
             print("🚀 Step 4: Publishing live to 0$ University...")
-            post_btn = page.locator("button.share-actions__primary-action, button:has-text('Post')").last
-            if post_btn.is_visible():
-                post_btn.click()
-                print("✅ Clicked primary Post button!")
-            else:
-                page.evaluate("""() => {
-                    const btns = Array.from(document.querySelectorAll('button')).filter(b => {
-                        const txt = (b.innerText || '').trim();
-                        const cl = b.className || '';
-                        return txt === 'Post' || cl.includes('share-actions__primary-action');
-                    });
-                    if (btns.length > 0) {
-                        const btn = btns[btns.length - 1];
-                        btn.scrollIntoView();
-                        btn.click();
+            clicked = page.evaluate("""() => {
+                const modal = document.querySelector('div[data-test-modal-id="sharebox"], div.artdeco-modal, div.share-box');
+                if (modal) {
+                    const postBtn = modal.querySelector('button.share-actions__primary-action, button.share-box-footer__primary-btn');
+                    if (postBtn) {
+                        postBtn.click();
+                        return 'clicked_modal_btn';
                     }
-                }""")
-                print("✅ Clicked Post button via DOM fallback!")
-
-            print("⏳ Waiting 15 seconds for publication to register...")
+                }
+                const allBtns = Array.from(document.querySelectorAll('button'));
+                const btn = allBtns.find(b => (b.innerText || '').trim() === 'Post' || b.className.includes('share-actions__primary-action'));
+                if (btn) {
+                    btn.click();
+                    return 'clicked_global_btn';
+                }
+                return 'not_found';
+            }""")
+            print(f"✅ Click Post Result: {clicked}! Waiting 15 seconds for network publication...")
             time.sleep(15)
 
             save_zuni_history({
