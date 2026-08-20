@@ -31,16 +31,18 @@ ENV/
 playwright-report/
 test-results/
 
-# Logs & Screenshots & Artifacts
+# Logs & Screenshots & Artifacts (Ignore logs and runtime artifacts, keep tracked images)
 logs/
 artifacts/
 *.log
-*.png
-*.jpg
-*.jpeg
-!config/app_logo.png
 
-# Secrets & Sessions (Keep full_browser_cookies.json out of public repos)
+# Allow images in images/ and config/
+!images/
+!images/**
+!config/*.png
+!config/*.jpg
+
+# Secrets & Sessions
 .env
 .env.local
 
