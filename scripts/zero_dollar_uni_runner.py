@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v3.0 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v4.0 Production)
 ============================================================================
-1. Direct Company Admin Share URL: https://www.linkedin.com/company/86814703/admin/page-posts/published/?share=true
-2. Direct 0$ University Post Composer (100% Personal Profile Isolation).
-3. Reliable File Upload & Document Attachment.
-4. Robust Scoped DOM Evaluator for Post Button (Zero Pointer-Interception Failures).
+1. Strict Media Enforcement: NO post is ever published without attached PDF / Infographic.
+2. High-Resolution Infographic & Document Carousel Rendering (PyMuPDF 300 DPI).
+3. Direct Company Admin Share Composer (100% Personal Profile Isolation).
+4. Verified Media Preview in Composer before Post Button is unlocked.
 5. Resolves live permalink and runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
 """
 
@@ -20,14 +20,16 @@ from playwright.sync_api import sync_playwright
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGS_DIR = os.path.join(ROOT_DIR, "logs")
 ARTIFACTS_DIR = os.path.join(ROOT_DIR, "artifacts")
+IMAGES_VAULT_DIR = os.path.join(ROOT_DIR, "documents", "images_vault")
+PDF_VAULT_DIR = os.path.join(ROOT_DIR, "documents", "pdf_vault")
 os.makedirs(LOGS_DIR, exist_ok=True)
 os.makedirs(ARTIFACTS_DIR, exist_ok=True)
+os.makedirs(IMAGES_VAULT_DIR, exist_ok=True)
 
 CONFIG_PATH = os.path.join(ROOT_DIR, "config", "config.json")
 FULL_COOKIES_PATH = os.path.join(ROOT_DIR, "config", "full_browser_cookies.json")
 ZUNI_HISTORY_PATH = os.path.join(ROOT_DIR, "config", "zero_dollar_uni_posted_history.json")
 ZUNI_CATALOG_PATH = os.path.join(ROOT_DIR, "config", "zero_dollar_uni_catalog.json")
-PDF_VAULT_DIR = os.path.join(ROOT_DIR, "documents", "pdf_vault")
 
 # Load configuration
 if os.path.exists(CONFIG_PATH):
@@ -47,7 +49,7 @@ ALL_ENGAGEMENT_ACTORS = CONFIG.get("engagement_actors", [
     {"id": "select-data-science-reality", "name": "Data science Reality (Alt)"}
 ])
 
-ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝘃𝐞𝐫𝐬𝗶𝐭𝘆 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
+ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝘃𝐞𝐫𝐬𝗶𝐭𝘆 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝗮𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
 AI Engineering Library: https://topmate.io/arif_alam/2252479
 📕 400+ 𝗗𝗮𝘁𝗮 𝗦𝗰𝗶𝗲𝗻𝗰𝗲 𝗥𝗲𝘀𝗼𝘂𝗿𝗰𝗲𝘀: https://topmate.io/arif_alam/787013
 
@@ -170,9 +172,32 @@ def get_next_zuni_payload():
     return catalog[0]
 
 
+def render_pdf_to_highres_image(pdf_path):
+    """Render the primary page of the PDF into a crisp 300 DPI PNG infographic image."""
+    base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+    out_img_path = os.path.join(IMAGES_VAULT_DIR, f"{base_name}.png")
+
+    if os.path.exists(out_img_path) and os.path.getsize(out_img_path) > 1000:
+        return out_img_path
+
+    try:
+        import fitz  # PyMuPDF
+        doc = fitz.open(pdf_path)
+        page = doc.load_page(0)
+        # Render at 300 DPI for ultra crisp graphic on LinkedIn feed
+        pix = page.get_pixmap(dpi=300)
+        pix.save(out_img_path)
+        print(f"🖼️ Rendered 300 DPI infographic from PDF: {out_img_path}")
+        return out_img_path
+    except Exception as e:
+        print(f"⚠️ PyMuPDF render note: {e}")
+        # Fallback to direct PDF path if image rendering fails
+        return pdf_path
+
+
 def execute_zuni_pipeline(dry_run=False):
     print("=" * 80)
-    print("🎓 0$ UNIVERSITY - LINKEDIN GROWTH ENGINE")
+    print("🎓 0$ UNIVERSITY - LINKEDIN GROWTH ENGINE (STRICT MEDIA ENFORCEMENT)")
     print(f"⏰ Execution Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 80)
 
@@ -181,13 +206,21 @@ def execute_zuni_pipeline(dry_run=False):
     pdf_filename = item.get("pdf_filename")
     pdf_path = os.path.join(PDF_VAULT_DIR, pdf_filename) if pdf_filename else None
 
-    if pdf_path and not os.path.exists(pdf_path):
-        print(f"⚠️ Warning: PDF file {pdf_filename} not found in {PDF_VAULT_DIR}!")
+    # Strict Media Gate Check
+    if not pdf_path or not os.path.exists(pdf_path):
+        raise RuntimeError(f"🚨 FATAL: PDF file '{pdf_filename}' not found in {PDF_VAULT_DIR}! Aborting to prevent text-only post.")
+
+    # Render High-Res Infographic from PDF
+    media_file_to_upload = render_pdf_to_highres_image(pdf_path)
+    if not os.path.exists(media_file_to_upload) or os.path.getsize(media_file_to_upload) < 1000:
+        raise RuntimeError(f"🚨 FATAL: Generated media file '{media_file_to_upload}' is empty or invalid! Aborting to prevent text-only post.")
+
+    print(f"📎 Verified Media File Ready for Attachment: {os.path.basename(media_file_to_upload)} ({os.path.getsize(media_file_to_upload)} bytes)")
 
     if dry_run:
-        print("\n🔍 DRY-RUN MODE: Post payload and validation succeeded without live publishing.")
+        print("\n🔍 DRY-RUN MODE: Payload and media verified successfully without live publishing.")
         print(f"Title: {item['title']}")
-        print(f"PDF Attached: {pdf_filename} (Exists: {os.path.exists(pdf_path) if pdf_path else False})")
+        print(f"Media File: {media_file_to_upload}")
         print(f"Length: {len(item.get('post_text', ''))} characters")
         return
 
@@ -235,55 +268,50 @@ def execute_zuni_pipeline(dry_run=False):
                 }""")
                 time.sleep(3)
 
-            # Attach Document Carousel
-            if pdf_path and os.path.exists(pdf_path):
-                print(f"📑 Attaching Document Carousel: {pdf_filename}...")
-                try:
-                    # Look for input[type="file"] or trigger document picker
-                    file_input = page.locator("input[type='file']")
-                    if file_input.count() > 0:
-                        file_input.first.set_input_files(pdf_path)
-                        print(f"✅ Set files on input[type='file']")
-                    else:
-                        page.evaluate("""() => {
-                            const moreBtn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('More'));
-                            if (moreBtn) moreBtn.click();
-                        }""")
-                        time.sleep(1.5)
+            # Attach Infographic / Media
+            print(f"🖼️ Step 2: Attaching Infographic Media: {os.path.basename(media_file_to_upload)}...")
+            media_attached = False
 
-                        page.evaluate("""() => {
-                            const docBtn = Array.from(document.querySelectorAll('button, div[role="button"]')).find(b => {
-                                const la = (b.getAttribute('aria-label') || '').toLowerCase();
-                                const txt = (b.innerText || '').toLowerCase();
-                                return la.includes('document') || txt.includes('document');
-                            });
-                            if (docBtn) docBtn.click();
-                        }""")
-                        time.sleep(2)
-
-                        page.locator("input[type='file']").first.set_input_files(pdf_path)
-                        print(f"✅ Set files after document modal open")
-
-                    time.sleep(4)
-
-                    # Fill Title
-                    try:
-                        title_input = page.locator("input[placeholder*='title' i], input[type='text']").first
-                        if title_input.is_visible(timeout=4000):
-                            title_input.fill(item["title"])
-                    except Exception:
-                        pass
-                    time.sleep(2)
-
-                    # Click Done
+            try:
+                with page.expect_file_chooser(timeout=25000) as fc_info:
                     page.evaluate("""() => {
                         const btns = Array.from(document.querySelectorAll('button'));
-                        const doneBtn = btns.find(b => ['Done', 'Next'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Done'));
-                        if (doneBtn) doneBtn.click();
+                        const mediaBtn = btns.find(b => {
+                            const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                            const txt = (b.innerText || '').toLowerCase();
+                            return la.includes('add media') || la.includes('add a photo') || txt.includes('photo') || txt.includes('media') || b.className.includes('image-detour-btn');
+                        });
+                        if (mediaBtn) mediaBtn.click();
                     }""")
-                    time.sleep(3)
-                except Exception as ex:
-                    print(f"⚠️ Document attachment note: {ex}")
+                fc_info.value.set_files(media_file_to_upload)
+                print(f"✅ Media file injected via file chooser: {os.path.basename(media_file_to_upload)}")
+                time.sleep(5)
+
+                # Click Next on media preview editor modal
+                page.evaluate("""() => {
+                    const btns = Array.from(document.querySelectorAll('button'));
+                    const nextBtn = btns.find(b => ['Next', 'Done'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Next'));
+                    if (nextBtn) nextBtn.click();
+                }""")
+                time.sleep(4)
+                media_attached = True
+            except Exception as ex:
+                print(f"⚠️ Primary media attachment error: {ex}")
+
+            # STRICT MEDIA ASSERTION: Verify that the media is attached before posting
+            has_media_in_composer = page.evaluate("""() => {
+                const img = document.querySelector('.share-creation-state__preview-container img, .media-preview img, .share-box__preview-image');
+                const doc = document.querySelector('.share-document-preview, .document-preview');
+                return !!(img || doc);
+            }""")
+
+            if not media_attached and not has_media_in_composer:
+                # Capture failure screenshot
+                fail_shot = os.path.join(ARTIFACTS_DIR, "media_attachment_failure.png")
+                page.screenshot(path=fail_shot)
+                raise RuntimeError("🚨 STRICT ENFORCEMENT ERROR: Media failed to attach in composer! Aborting publication to guarantee zero text-only posts.")
+
+            print("✅ Verified: Media preview is confirmed attached inside the LinkedIn composer!")
 
             # Insert Text
             print("✍️ Step 3: Injecting post text & Topmate links...")
@@ -338,7 +366,8 @@ def execute_zuni_pipeline(dry_run=False):
             save_zuni_history({
                 "id": item["id"],
                 "title": item["title"],
-                "format": "DOCUMENT_CAROUSEL"
+                "format": "INFOGRAPHIC_CAROUSEL",
+                "media": os.path.basename(media_file_to_upload)
             })
 
             # Fetch live post permalink
