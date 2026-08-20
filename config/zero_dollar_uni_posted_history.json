@@ -21,5 +21,13 @@
     "image": "infographic_data_science_python_production_workflow.png",
     "posted_at": "2026-08-20T17:30:16.632654",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_004",
+    "title": "Stanford CS230: CNN & Deep Residual Architectures (ResNet vs VGG)",
+    "format": "INFOGRAPHIC",
+    "image": "infographic_cnn_architectures_resnet_vgg_stanford.png",
+    "posted_at": "2026-08-20T17:40:34.419233",
+    "platform": "0$ University"
   }
 ]
