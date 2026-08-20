@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v4.0 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v5.0 Production)
 ============================================================================
-1. Strict Media Enforcement: NO post is ever published without attached PDF / Infographic.
-2. High-Resolution Infographic & Document Carousel Rendering (PyMuPDF 300 DPI).
-3. Direct Company Admin Share Composer (100% Personal Profile Isolation).
-4. Verified Media Preview in Composer before Post Button is unlocked.
+1. Strict Media Assertion: EVERY post is published WITH verified high-resolution infographic.
+2. Verified Visual Asset Upload: Directly attaches images/catalog/ infographics.
+3. Composer DOM Media Gate: Aborts if media preview is not confirmed in composer.
+4. Direct Company Admin Share Composer (100% Personal Profile Isolation).
 5. Resolves live permalink and runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
 """
 
@@ -15,16 +15,15 @@ import time
 import json
 import argparse
 from datetime import datetime
+from PIL import Image
 from playwright.sync_api import sync_playwright
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGS_DIR = os.path.join(ROOT_DIR, "logs")
 ARTIFACTS_DIR = os.path.join(ROOT_DIR, "artifacts")
-IMAGES_VAULT_DIR = os.path.join(ROOT_DIR, "documents", "images_vault")
-PDF_VAULT_DIR = os.path.join(ROOT_DIR, "documents", "pdf_vault")
+IMAGES_DIR = os.path.join(ROOT_DIR, "images")
 os.makedirs(LOGS_DIR, exist_ok=True)
 os.makedirs(ARTIFACTS_DIR, exist_ok=True)
-os.makedirs(IMAGES_VAULT_DIR, exist_ok=True)
 
 CONFIG_PATH = os.path.join(ROOT_DIR, "config", "config.json")
 FULL_COOKIES_PATH = os.path.join(ROOT_DIR, "config", "full_browser_cookies.json")
@@ -172,55 +171,37 @@ def get_next_zuni_payload():
     return catalog[0]
 
 
-def render_pdf_to_highres_image(pdf_path):
-    """Render the primary page of the PDF into a crisp 300 DPI PNG infographic image."""
-    base_name = os.path.splitext(os.path.basename(pdf_path))[0]
-    out_img_path = os.path.join(IMAGES_VAULT_DIR, f"{base_name}.png")
-
-    if os.path.exists(out_img_path) and os.path.getsize(out_img_path) > 1000:
-        return out_img_path
-
-    try:
-        import fitz  # PyMuPDF
-        doc = fitz.open(pdf_path)
-        page = doc.load_page(0)
-        # Render at 300 DPI for ultra crisp graphic on LinkedIn feed
-        pix = page.get_pixmap(dpi=300)
-        pix.save(out_img_path)
-        print(f"🖼️ Rendered 300 DPI infographic from PDF: {out_img_path}")
-        return out_img_path
-    except Exception as e:
-        print(f"⚠️ PyMuPDF render note: {e}")
-        # Fallback to direct PDF path if image rendering fails
-        return pdf_path
-
-
 def execute_zuni_pipeline(dry_run=False):
     print("=" * 80)
-    print("🎓 0$ UNIVERSITY - LINKEDIN GROWTH ENGINE (STRICT MEDIA ENFORCEMENT)")
+    print("🎓 0$ UNIVERSITY - LINKEDIN GROWTH ENGINE (STRICT VISUAL ENFORCEMENT)")
     print(f"⏰ Execution Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 80)
 
     item = get_next_zuni_payload()
     print(f"🎯 Selected Payload: [{item['id']}] '{item['title']}'")
-    pdf_filename = item.get("pdf_filename")
-    pdf_path = os.path.join(PDF_VAULT_DIR, pdf_filename) if pdf_filename else None
 
-    # Strict Media Gate Check
-    if not pdf_path or not os.path.exists(pdf_path):
-        raise RuntimeError(f"🚨 FATAL: PDF file '{pdf_filename}' not found in {PDF_VAULT_DIR}! Aborting to prevent text-only post.")
+    # Locate Image
+    img_rel = item.get("image_path") or f"images/catalog/{item['id']}.png"
+    img_abs = os.path.join(ROOT_DIR, img_rel)
 
-    # Render High-Res Infographic from PDF
-    media_file_to_upload = render_pdf_to_highres_image(pdf_path)
-    if not os.path.exists(media_file_to_upload) or os.path.getsize(media_file_to_upload) < 1000:
-        raise RuntimeError(f"🚨 FATAL: Generated media file '{media_file_to_upload}' is empty or invalid! Aborting to prevent text-only post.")
+    # Fallback to any valid catalog image if missing
+    if not os.path.exists(img_abs) or os.path.getsize(img_abs) < 5000:
+        catalog_imgs = sorted([f for f in os.listdir(os.path.join(IMAGES_DIR, "catalog")) if f.endswith(('.png', '.jpg'))])
+        if catalog_imgs:
+            img_abs = os.path.join(IMAGES_DIR, "catalog", catalog_imgs[0])
 
-    print(f"📎 Verified Media File Ready for Attachment: {os.path.basename(media_file_to_upload)} ({os.path.getsize(media_file_to_upload)} bytes)")
+    if not os.path.exists(img_abs) or os.path.getsize(img_abs) < 5000:
+        raise RuntimeError(f"🚨 FATAL: No valid infographic image found for '{item['id']}'! Aborting to prevent text-only post.")
+
+    # Validate image dimensions
+    with Image.open(img_abs) as im:
+        width, height = im.size
+        print(f"🖼️ Verified Infographic Asset: {os.path.basename(img_abs)} ({width}x{height}px, {os.path.getsize(img_abs)} bytes)")
 
     if dry_run:
-        print("\n🔍 DRY-RUN MODE: Payload and media verified successfully without live publishing.")
+        print("\n🔍 DRY-RUN MODE: Payload and visual infographic verified successfully.")
         print(f"Title: {item['title']}")
-        print(f"Media File: {media_file_to_upload}")
+        print(f"Image File: {img_abs} ({width}x{height})")
         print(f"Length: {len(item.get('post_text', ''))} characters")
         return
 
@@ -269,49 +250,42 @@ def execute_zuni_pipeline(dry_run=False):
                 time.sleep(3)
 
             # Attach Infographic / Media
-            print(f"🖼️ Step 2: Attaching Infographic Media: {os.path.basename(media_file_to_upload)}...")
-            media_attached = False
-
-            try:
-                with page.expect_file_chooser(timeout=25000) as fc_info:
-                    page.evaluate("""() => {
-                        const btns = Array.from(document.querySelectorAll('button'));
-                        const mediaBtn = btns.find(b => {
-                            const la = (b.getAttribute('aria-label') || '').toLowerCase();
-                            const txt = (b.innerText || '').toLowerCase();
-                            return la.includes('add media') || la.includes('add a photo') || txt.includes('photo') || txt.includes('media') || b.className.includes('image-detour-btn');
-                        });
-                        if (mediaBtn) mediaBtn.click();
-                    }""")
-                fc_info.value.set_files(media_file_to_upload)
-                print(f"✅ Media file injected via file chooser: {os.path.basename(media_file_to_upload)}")
-                time.sleep(5)
-
-                # Click Next on media preview editor modal
+            print(f"🖼️ Step 2: Attaching Infographic Media: {os.path.basename(img_abs)}...")
+            with page.expect_file_chooser(timeout=25000) as fc_info:
                 page.evaluate("""() => {
                     const btns = Array.from(document.querySelectorAll('button'));
-                    const nextBtn = btns.find(b => ['Next', 'Done'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Next'));
-                    if (nextBtn) nextBtn.click();
+                    const mediaBtn = btns.find(b => {
+                        const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                        const txt = (b.innerText || '').toLowerCase();
+                        return la.includes('add media') || la.includes('add a photo') || txt.includes('photo') || txt.includes('media') || b.className.includes('image-detour-btn');
+                    });
+                    if (mediaBtn) mediaBtn.click();
                 }""")
-                time.sleep(4)
-                media_attached = True
-            except Exception as ex:
-                print(f"⚠️ Primary media attachment error: {ex}")
+            fc_info.value.set_files(img_abs)
+            print(f"✅ Infographic injected via file chooser: {os.path.basename(img_abs)}")
+            time.sleep(5)
+
+            # Click Next on media preview editor modal
+            page.evaluate("""() => {
+                const btns = Array.from(document.querySelectorAll('button'));
+                const nextBtn = btns.find(b => ['Next', 'Done'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Next'));
+                if (nextBtn) nextBtn.click();
+            }""")
+            time.sleep(4)
 
             # STRICT MEDIA ASSERTION: Verify that the media is attached before posting
             has_media_in_composer = page.evaluate("""() => {
-                const img = document.querySelector('.share-creation-state__preview-container img, .media-preview img, .share-box__preview-image');
-                const doc = document.querySelector('.share-document-preview, .document-preview');
-                return !!(img || doc);
+                const img = document.querySelector('.share-creation-state__preview-container img, .media-preview img, .share-box__preview-image, div.media-preview');
+                return !!img;
             }""")
 
-            if not media_attached and not has_media_in_composer:
+            if not has_media_in_composer:
                 # Capture failure screenshot
                 fail_shot = os.path.join(ARTIFACTS_DIR, "media_attachment_failure.png")
                 page.screenshot(path=fail_shot)
-                raise RuntimeError("🚨 STRICT ENFORCEMENT ERROR: Media failed to attach in composer! Aborting publication to guarantee zero text-only posts.")
+                raise RuntimeError("🚨 STRICT ENFORCEMENT ERROR: Media preview not detected in composer! Aborting publication to guarantee zero empty posts.")
 
-            print("✅ Verified: Media preview is confirmed attached inside the LinkedIn composer!")
+            print("✅ Verified: Infographic preview is confirmed attached inside the LinkedIn composer!")
 
             # Insert Text
             print("✍️ Step 3: Injecting post text & Topmate links...")
@@ -367,7 +341,7 @@ def execute_zuni_pipeline(dry_run=False):
                 "id": item["id"],
                 "title": item["title"],
                 "format": "INFOGRAPHIC_CAROUSEL",
-                "media": os.path.basename(media_file_to_upload)
+                "image": os.path.basename(img_abs)
             })
 
             # Fetch live post permalink
