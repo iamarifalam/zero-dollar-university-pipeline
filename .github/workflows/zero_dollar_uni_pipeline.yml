@@ -60,12 +60,12 @@ jobs:
           retry() { for i in 1 2; do "$@" && return 0; echo "Retry $i/2 failed for: $*"; sleep 20; done; return 1; }
           retry bash -c "set -o pipefail; python3 scripts/zero_dollar_uni_runner.py 2>&1 | tee artifacts/zero_dollar_uni_pipeline.log"
 
-      - name: Upload pipeline logs
+      - name: Upload pipeline logs & screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zero-dollar-uni-pipeline-logs-${{ github.run_id }}
-          path: artifacts/zero_dollar_uni_pipeline.log
+          name: zero-dollar-uni-pipeline-artifacts-${{ github.run_id }}
+          path: artifacts/
           if-no-files-found: ignore
 
       - name: State Sync (Push zero_dollar_uni_posted_history.json)
