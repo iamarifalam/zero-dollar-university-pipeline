@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v1.0 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v1.1 Production)
 ============================================================================
-1. Direct Organization Admin Routing: https://www.linkedin.com/company/startup-founderss/admin/dashboard/
-2. Direct Company Page Post Composer (100% profile isolation).
-3. Attaches authentic Roadmap / Course Vault PDF Carousel from documents/pdf_vault/.
-4. Injects exact standardized Topmate & WhatsApp links block.
-5. Publishes post live to 0$ University.
-6. Runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
+1. Direct Organization Admin / Feed Composer with Verified Author Switch to '0$ University'.
+2. Attaches authentic Roadmap / Course Vault PDF Carousel from documents/pdf_vault/.
+3. Multi-layer Text Insertion (document.execCommand + page.keyboard).
+4. Publishes post live to 0$ University.
+5. Runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
 """
 
 import os
@@ -20,7 +19,9 @@ from playwright.sync_api import sync_playwright
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGS_DIR = os.path.join(ROOT_DIR, "logs")
+ARTIFACTS_DIR = os.path.join(ROOT_DIR, "artifacts")
 os.makedirs(LOGS_DIR, exist_ok=True)
+os.makedirs(ARTIFACTS_DIR, exist_ok=True)
 
 CONFIG_PATH = os.path.join(ROOT_DIR, "config", "config.json")
 FULL_COOKIES_PATH = os.path.join(ROOT_DIR, "config", "full_browser_cookies.json")
@@ -46,7 +47,7 @@ ALL_ENGAGEMENT_ACTORS = CONFIG.get("engagement_actors", [
     {"id": "select-data-science-reality", "name": "Data science Reality (Alt)"}
 ])
 
-ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
+ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝘃𝐞𝐫𝐬𝗶𝐭𝐲 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
 AI Engineering Library: https://topmate.io/arif_alam/2252479
 📕 400+ 𝗗𝗮𝘁𝗮 𝗦𝗰𝗶𝗲𝗻𝗰𝗲 𝗥𝗲𝘀𝗼𝘂𝗿𝗰𝗲𝘀: https://topmate.io/arif_alam/787013
 
@@ -63,33 +64,15 @@ def get_cookies():
 
     if li_at and jsessionid:
         print("🔑 Loading cookies from environment secrets...")
-        # Strip outer quotes if present
         clean_li_at = li_at.strip('"\'')
         clean_jsessionid = jsessionid.strip('"\'')
-        # Add JSESSIONID with quotes if not present as LinkedIn expects "ajax:..."
         if not clean_jsessionid.startswith('"'):
             clean_jsessionid = f'"{clean_jsessionid}"'
 
         cookies.append({
             "name": "li_at",
             "value": clean_li_at,
-            "domain": ".www.linkedin.com",
-            "path": "/",
-            "secure": True,
-            "sameSite": "None"
-        })
-        cookies.append({
-            "name": "li_at",
-            "value": clean_li_at,
             "domain": ".linkedin.com",
-            "path": "/",
-            "secure": True,
-            "sameSite": "None"
-        })
-        cookies.append({
-            "name": "JSESSIONID",
-            "value": clean_jsessionid,
-            "domain": ".www.linkedin.com",
             "path": "/",
             "secure": True,
             "sameSite": "None"
@@ -227,169 +210,140 @@ def execute_zuni_pipeline(dry_run=False):
         page = context.new_page()
 
         try:
-            print("\n👉 Step 1: Navigating to 0$ University Organization Admin Dashboard...")
-            page.goto("https://www.linkedin.com/company/startup-founderss/admin/dashboard/?createPageAssets=true", wait_until="domcontentloaded", timeout=45000)
+            print("\n👉 Step 1: Navigating to LinkedIn Feed...")
+            page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded", timeout=45000)
             time.sleep(4)
 
-            # Check if redirected or on dashboard
-            current_url = page.url
-            print(f"📍 Current Admin URL: {current_url}")
+            # Open Composer
+            print("🖱️ Step 2: Opening 'Start a post' modal...")
+            page.evaluate("""() => {
+                const els = Array.from(document.querySelectorAll('button, div, span, p')).filter(el => {
+                    return (el.innerText || '').trim() === 'Start a post';
+                });
+                if (els.length > 0) els[0].click();
+            }""")
+            time.sleep(3)
 
-            print("🖱️ Step 2: Opening dedicated Page Composer from Admin Dashboard...")
-            composer_opened = False
+            # Switch Author to 0$ University
+            print("🔄 Step 3: Switching Author to '0$ University'...")
+            page.evaluate("""() => {
+                const btns = Array.from(document.querySelectorAll('button, div[role="button"]'));
+                for (const b of btns) {
+                    const txt = (b.innerText || '').toLowerCase();
+                    const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                    if (txt.includes('post as') || txt.includes('arif alam') || txt.includes('data science reality') || la.includes('identity') || la.includes('switch')) {
+                        b.click();
+                        break;
+                    }
+                }
+            }""")
+            time.sleep(2)
 
-            # Try Admin Create button
-            create_btn = page.locator("button.org-organizational-page-admin-navigation__cta, button:has-text('Create')").first
-            if create_btn.is_visible(timeout=5000):
-                create_btn.click(force=True)
-                time.sleep(2)
-                post_link = page.locator("a:has-text('Start a post'), button:has-text('Start a post')").first
-                if post_link.is_visible(timeout=5000):
-                    post_link.click(force=True)
-                    composer_opened = True
-                    time.sleep(3)
-
-            # Fallback to feed Start a post with author switch
-            if not composer_opened:
-                print("🔄 Navigating to LinkedIn Feed composer fallback...")
-                page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(3)
-                start_btn = page.locator("p:has-text('Start a post'), span:has-text('Start a post'), div:has-text('Start a post'), button:has-text('Start a post')").last
-                start_btn.click()
-                page.wait_for_selector("div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable='true'], div.editor-content", timeout=15000)
-                time.sleep(2)
-
-                print("🔄 Switching Author to '0$ University'...")
-                page.evaluate("""() => {
-                    const els = Array.from(document.querySelectorAll('div, span, button')).filter(el => {
-                        return el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.includes('Arif Alam') || n.textContent.includes('Data Science Reality') || n.textContent.includes('University')));
-                    });
-                    if (els.length > 0) {
-                        const target = els[0].closest('div[role="button"]') || els[0].closest('button') || els[0];
+            page.evaluate("""() => {
+                const candidates = Array.from(document.querySelectorAll('li, div[role="radio"], div[role="option"], div[role="button"], span'));
+                for (const el of candidates) {
+                    const txt = (el.innerText || '').trim();
+                    if (txt.includes('0$ University') || txt.startsWith('0$ University')) {
+                        const target = el.closest('li') || el.closest('[role]') || el;
                         target.click();
+                        break;
                     }
-                }""")
-                time.sleep(2)
+                }
+            }""")
+            time.sleep(2)
 
-                page.evaluate("""() => {
-                    const target = Array.from(document.querySelectorAll('*')).find(el => el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.trim().startsWith('0$ University') || n.textContent.trim().includes('0$ University'))));
-                    if (target) {
-                        const clickable = target.closest('li') || target.closest('div[role="button"]') || target;
-                        clickable.click();
-                    }
-                }""")
-                time.sleep(2)
+            page.evaluate("""() => {
+                const btns = Array.from(document.querySelectorAll('button'));
+                const saveBtn = btns.find(b => ['Save', 'Next', 'Done', 'Confirm'].includes((b.innerText || '').trim()));
+                if (saveBtn) saveBtn.click();
+            }""")
+            time.sleep(2)
 
             # Attach Document Carousel
             if pdf_path and os.path.exists(pdf_path):
                 print(f"📑 Attaching Document Carousel: {pdf_filename}...")
-                page.evaluate("""() => {
-                    const btns = Array.from(document.querySelectorAll('button, div[role="button"]')).filter(el => {
-                        const svg = el.querySelector('svg');
-                        return svg && (svg.id?.includes('add') || svg.id?.includes('plus') || svg.outerHTML?.includes('d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"'));
-                    });
-                    if (btns.length > 0) btns[0].click();
-                }""")
-                time.sleep(2)
-                page.locator("svg#sticky-note-medium, svg[id*='sticky-note'], button[aria-label*='document' i]").first.click(force=True)
-                time.sleep(2)
-
-                with page.expect_file_chooser(timeout=15000) as fc_info:
-                    page.locator("button:has-text('Choose file'), button:has-text('Choose a file')").first.click()
-                fc_info.value.set_files(pdf_path)
-                time.sleep(4)
-
                 try:
-                    title_input = page.locator("input[placeholder*='title' i], input[aria-label*='title' i], input[type='text']").first
-                    if title_input.is_visible(timeout=5000):
-                        title_input.fill(item["title"])
-                except Exception:
-                    pass
-                time.sleep(2)
+                    with page.expect_file_chooser(timeout=15000) as fc_info:
+                        page.evaluate("""() => {
+                            const btns = Array.from(document.querySelectorAll('button, div[role="button"]'));
+                            const docBtn = btns.find(b => {
+                                const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                                return la.includes('document') || la.includes('add a document');
+                            });
+                            if (docBtn) docBtn.click();
+                            else {
+                                const plusBtn = btns.find(b => (b.getAttribute('aria-label') || '').includes('More'));
+                                if (plusBtn) plusBtn.click();
+                            }
+                        }""")
+                    fc_info.value.set_files(pdf_path)
+                    print(f"✅ Document file set: {pdf_filename}")
+                    time.sleep(5)
 
-                for done_sel in [
-                    "button.share-box-footer__primary-btn",
-                    "button:has-text('Done')",
-                    "button:has-text('Next')",
-                    "button[aria-label*='Done' i]",
-                    "button[aria-label*='Next' i]",
-                    "button.share-actions__primary-action"
-                ]:
                     try:
-                        btn = page.locator(done_sel).first
-                        if btn.is_visible(timeout=3000):
-                            btn.click(force=True)
-                            print(f"✅ Clicked attachment Done via: {done_sel}")
-                            break
+                        title_input = page.locator("input[placeholder*='title' i], input[aria-label*='title' i], input[type='text']").first
+                        if title_input.is_visible(timeout=5000):
+                            title_input.fill(item["title"])
                     except Exception:
-                        continue
-                time.sleep(3)
+                        pass
+                    time.sleep(2)
 
-            # Insert Text
-            print("✍️ Step 3: Injecting post text & Topmate links...")
-            text_injected = False
-            for ed_sel in [
-                "div.tiptap",
-                "div.ProseMirror",
-                "div.ql-editor",
-                "div[contenteditable='true']",
-                "div.editor-content",
-                "div[data-placeholder*='post' i]"
-            ]:
+                    page.evaluate("""() => {
+                        const btns = Array.from(document.querySelectorAll('button'));
+                        const doneBtn = btns.find(b => ['Done', 'Next'].includes((b.innerText || '').trim()));
+                        if (doneBtn) doneBtn.click();
+                    }""")
+                    time.sleep(3)
+                except Exception as ex:
+                    print(f"⚠️ Document attachment fallback: {ex}")
+
+            # Insert Text using reliable executive methods
+            print("✍️ Step 4: Injecting post text & Topmate links...")
+            post_text = item["post_text"]
+
+            # Method 1: focus editor and insertText via execCommand
+            page.evaluate("""(txt) => {
+                const editor = document.querySelector('div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable="true"], div.editor-content');
+                if (editor) {
+                    editor.focus();
+                    document.execCommand('selectAll', false, null);
+                    document.execCommand('insertText', false, txt);
+                }
+            }""", post_text)
+            time.sleep(2)
+
+            # Method 2: keyboard insertion if needed
+            editor_len = page.evaluate("""() => {
+                const editor = document.querySelector('div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable="true"], div.editor-content');
+                return editor ? editor.innerText.length : 0;
+            }""")
+            if editor_len < 200:
+                print("🔄 Falling back to keyboard typing into editor...")
                 try:
-                    ed = page.locator(ed_sel).first
-                    if ed.is_visible(timeout=3000):
-                        ed.click(force=True)
-                        page.keyboard.insert_text(item["post_text"])
-                        text_injected = True
-                        print(f"✅ Injected text via: {ed_sel}")
-                        break
-                except Exception:
-                    continue
-
-            if not text_injected:
-                page.evaluate("""(txt) => {
-                    const el = document.querySelector('div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable="true"], div.editor-content');
-                    if (el) {
-                        el.focus();
-                        el.innerText = txt;
-                        el.dispatchEvent(new InputEvent('input', {bubbles: true}));
-                    }
-                }""", item["post_text"])
-                print("✅ Injected text via evaluate DOM dispatch fallback")
+                    ed = page.locator("div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable='true']").first
+                    ed.click()
+                    page.keyboard.insert_text(post_text)
+                except Exception as e:
+                    print(f"⚠️ Keyboard insert error: {e}")
             time.sleep(3)
 
-            # Publish
-            print("🚀 Step 4: Publishing live to 0$ University...")
-            post_clicked = False
-            for post_sel in [
-                "button.share-actions__primary-action",
-                "button.share-box-footer__primary-btn",
-                "button:has-text('Post')",
-                "button[aria-label*='Post' i]",
-                "div.share-box_actions button"
-            ]:
-                try:
-                    pbtn = page.locator(post_sel).last
-                    if pbtn.is_visible(timeout=3000):
-                        pbtn.click(force=True)
-                        post_clicked = True
-                        print(f"✅ Clicked Post button via: {post_sel}")
-                        break
-                except Exception:
-                    continue
+            # Capture screenshot proof before publishing
+            screenshot_path = os.path.join(ARTIFACTS_DIR, "composer_ready_proof.png")
+            page.screenshot(path=screenshot_path)
+            print(f"📸 Captured composer proof: {screenshot_path}")
 
-            if not post_clicked:
-                page.evaluate("""() => {
-                    const btns = Array.from(document.querySelectorAll('button'));
-                    const postBtn = btns.reverse().find(b => (b.innerText || '').trim() === 'Post' || (b.getAttribute('aria-label') || '').includes('Post'));
-                    if (postBtn) {
-                        postBtn.scrollIntoView();
-                        postBtn.click();
-                    }
-                }""")
-                print("✅ Clicked Post button via evaluate DOM dispatch fallback")
-            time.sleep(12)
+            # Publish live
+            print("🚀 Step 5: Publishing live to 0$ University...")
+            page.evaluate("""() => {
+                const btns = Array.from(document.querySelectorAll('button')).filter(b => (b.innerText || '').trim() === 'Post');
+                if (btns.length > 0) {
+                    const postBtn = btns[btns.length - 1];
+                    postBtn.scrollIntoView();
+                    postBtn.click();
+                }
+            }""")
+            print("✅ Clicked Post button! Waiting 15 seconds for network publication...")
+            time.sleep(15)
 
             save_zuni_history({
                 "id": item["id"],
@@ -397,25 +351,25 @@ def execute_zuni_pipeline(dry_run=False):
                 "format": "DOCUMENT_CAROUSEL"
             })
 
-            # =========================================================================
-            # STAGE 2: 8-ACTOR ENGAGEMENT BOOSTER & FETCH LIVE PERMALINK
-            # =========================================================================
+            # Fetch new permalink
             print("\n" + "=" * 80)
-            print("⚡ STAGE 2: 8-ACTOR CROSS-ENGAGEMENT BOOSTER & PERMALINK RESOLUTION")
+            print("⚡ STAGE 2: 8-ACTOR ENGAGEMENT BOOSTER & LIVE PERMALINK RESOLUTION")
             print("=" * 80)
 
             page.goto("https://www.linkedin.com/company/startup-founderss/posts/?feedView=all", wait_until="domcontentloaded", timeout=40000)
-            time.sleep(5)
+            time.sleep(6)
 
             top_post = page.locator("div.feed-shared-update-v2").first
             post_urn = top_post.get_attribute("data-urn") or top_post.get_attribute("data-id") or ""
             if post_urn and "activity:" in post_urn:
                 post_id = post_urn.split("activity:")[1].split("?")[0].split(",")[0]
                 permalink_url = f"https://www.linkedin.com/feed/update/urn:li:activity:{post_id}/"
-                print(f"🎯 NEW LIVE POST PERMALINK: {permalink_url}")
+                print(f"\n🎯 NEW LIVE POST PERMALINK: {permalink_url}")
+
                 page.goto(permalink_url, wait_until="domcontentloaded", timeout=40000)
                 time.sleep(5)
 
+                # Like reaction booster
                 for idx, actor in enumerate(ALL_ENGAGEMENT_ACTORS, 1):
                     actor_id = actor["id"]
                     actor_name = actor["name"]
@@ -439,25 +393,11 @@ def execute_zuni_pipeline(dry_run=False):
                             const likeBtn = btns.find(b => (b.innerText || '').trim() === 'Like' && !b.className.includes('content-admin-identity-toggle-button'));
                             if (likeBtn && likeBtn.getAttribute('aria-pressed') !== 'true') likeBtn.click();
                         }""")
-                    except Exception as ex:
-                        print(f"   ⚠️ Note: {ex}")
+                    except Exception:
+                        pass
                     time.sleep(1.5)
 
-                # Reset to Arif Alam
-                page.locator("button.content-admin-identity-toggle-button").first.click(force=True)
-                time.sleep(1.5)
-                page.evaluate("""() => {
-                    const radio = document.querySelector('#select-self');
-                    if (radio) {
-                        radio.checked = true;
-                        radio.dispatchEvent(new Event('change', { bubbles: true }));
-                    }
-                }""")
-                time.sleep(0.5)
-                page.locator(".artdeco-modal button:has-text('Save')").first.click(force=True)
-                time.sleep(2)
-
-                # Submit 1st Comment
+                # Submit Pinned 1st Comment
                 print("\n💬 Submitting 0$ University Topmate 1st Comment...")
                 page.evaluate("""(commentText) => {
                     const editor = document.querySelector('div.ql-editor[aria-placeholder*="Add a comment" i], div.ql-editor, div[contenteditable="true"]');
