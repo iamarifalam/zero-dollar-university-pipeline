@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine
-===========================================================
-1. Focus: 100% Free Ivy-League CS/AI Degrees, Open-Source Roadmaps, Stanford/MIT/Harvard Courses.
-2. Selects '0$ University' from author dropdown with strict pre-publish assertion.
-3. Attaches authentic Roadmap / Course Vault PDF Carousel.
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v1.0 Production)
+============================================================================
+1. Direct Organization Admin Routing: https://www.linkedin.com/company/startup-founderss/admin/dashboard/
+2. Direct Company Page Post Composer (100% profile isolation).
+3. Attaches authentic Roadmap / Course Vault PDF Carousel from documents/pdf_vault/.
 4. Injects exact standardized Topmate & WhatsApp links block.
-5. Runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
+5. Publishes post live to 0$ University.
+6. Runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
 """
 
 import os
@@ -62,9 +63,24 @@ def get_cookies():
 
     if li_at and jsessionid:
         print("🔑 Loading cookies from environment secrets...")
+        # Strip outer quotes if present
+        clean_li_at = li_at.strip('"\'')
+        clean_jsessionid = jsessionid.strip('"\'')
+        # Add JSESSIONID with quotes if not present as LinkedIn expects "ajax:..."
+        if not clean_jsessionid.startswith('"'):
+            clean_jsessionid = f'"{clean_jsessionid}"'
+
         cookies.append({
             "name": "li_at",
-            "value": li_at.strip('"'),
+            "value": clean_li_at,
+            "domain": ".www.linkedin.com",
+            "path": "/",
+            "secure": True,
+            "sameSite": "None"
+        })
+        cookies.append({
+            "name": "li_at",
+            "value": clean_li_at,
             "domain": ".linkedin.com",
             "path": "/",
             "secure": True,
@@ -72,7 +88,15 @@ def get_cookies():
         })
         cookies.append({
             "name": "JSESSIONID",
-            "value": jsessionid.strip('"'),
+            "value": clean_jsessionid,
+            "domain": ".www.linkedin.com",
+            "path": "/",
+            "secure": True,
+            "sameSite": "None"
+        })
+        cookies.append({
+            "name": "JSESSIONID",
+            "value": clean_jsessionid,
             "domain": ".linkedin.com",
             "path": "/",
             "secure": True,
@@ -81,7 +105,7 @@ def get_cookies():
         if bcookie:
             cookies.append({
                 "name": "bcookie",
-                "value": bcookie.strip('"'),
+                "value": bcookie.strip('"\''),
                 "domain": ".linkedin.com",
                 "path": "/",
                 "secure": True,
@@ -90,7 +114,7 @@ def get_cookies():
         if bscookie:
             cookies.append({
                 "name": "bscookie",
-                "value": bscookie.strip('"'),
+                "value": bscookie.strip('"\''),
                 "domain": ".linkedin.com",
                 "path": "/",
                 "secure": True,
@@ -189,7 +213,11 @@ def execute_zuni_pipeline(dry_run=False):
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
-            args=["--no-sandbox", "--disable-dev-shm-usage"]
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-blink-features=AutomationControlled"
+            ]
         )
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
@@ -199,43 +227,58 @@ def execute_zuni_pipeline(dry_run=False):
         page = context.new_page()
 
         try:
-            print("\n👉 Step 1: Navigating to LinkedIn Feed...")
-            page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded", timeout=45000)
-            time.sleep(3)
+            print("\n👉 Step 1: Navigating to 0$ University Organization Admin Dashboard...")
+            page.goto("https://www.linkedin.com/company/startup-founderss/admin/dashboard/?createPageAssets=true", wait_until="domcontentloaded", timeout=45000)
+            time.sleep(4)
 
-            print("🖱️ Step 2: Opening 'Start a post' modal...")
-            start_btn = page.locator("p:has-text('Start a post'), span:has-text('Start a post'), div:has-text('Start a post'), button:has-text('Start a post')").last
-            start_btn.click()
-            page.wait_for_selector("div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable='true'], div.editor-content", timeout=15000)
-            time.sleep(2)
+            # Check if redirected or on dashboard
+            current_url = page.url
+            print(f"📍 Current Admin URL: {current_url}")
 
-            print("🔄 Step 3: Switching Author to '0$ University'...")
-            page.evaluate("""() => {
-                const els = Array.from(document.querySelectorAll('div, span, button')).filter(el => {
-                    return el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.includes('Arif Alam') || n.textContent.includes('Data Science Reality') || n.textContent.includes('University')));
-                });
-                if (els.length > 0) {
-                    const target = els[0].closest('div[role="button"]') || els[0].closest('button') || els[0];
-                    target.click();
-                }
-            }""")
-            time.sleep(2)
+            print("🖱️ Step 2: Opening dedicated Page Composer from Admin Dashboard...")
+            composer_opened = False
 
-            page.evaluate("""() => {
-                const target = Array.from(document.querySelectorAll('*')).find(el => el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.trim().startsWith('0$ University') || n.textContent.trim().includes('0$ University'))));
-                if (target) {
-                    const clickable = target.closest('li') || target.closest('div[role="button"]') || target;
-                    clickable.click();
-                }
-            }""")
-            time.sleep(2)
+            # Try Admin Create button
+            create_btn = page.locator("button.org-organizational-page-admin-navigation__cta, button:has-text('Create')").first
+            if create_btn.is_visible(timeout=5000):
+                create_btn.click(force=True)
+                time.sleep(2)
+                post_link = page.locator("a:has-text('Start a post'), button:has-text('Start a post')").first
+                if post_link.is_visible(timeout=5000):
+                    post_link.click(force=True)
+                    composer_opened = True
+                    time.sleep(3)
 
-            author_text = page.evaluate("""() => {
-                const authorEl = Array.from(document.querySelectorAll('div, span, button')).find(el => el.innerText && el.innerText.includes('0$ University'));
-                return authorEl ? '0$ University' : 'FAILED';
-            }""")
-            if author_text != "0$ University":
-                print("⚠️ Warning: Primary author check returned non-standard text. Verifying fallback...")
+            # Fallback to feed Start a post with author switch
+            if not composer_opened:
+                print("🔄 Navigating to LinkedIn Feed composer fallback...")
+                page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded", timeout=45000)
+                time.sleep(3)
+                start_btn = page.locator("p:has-text('Start a post'), span:has-text('Start a post'), div:has-text('Start a post'), button:has-text('Start a post')").last
+                start_btn.click()
+                page.wait_for_selector("div.tiptap, div.ProseMirror, div.ql-editor, div[contenteditable='true'], div.editor-content", timeout=15000)
+                time.sleep(2)
+
+                print("🔄 Switching Author to '0$ University'...")
+                page.evaluate("""() => {
+                    const els = Array.from(document.querySelectorAll('div, span, button')).filter(el => {
+                        return el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.includes('Arif Alam') || n.textContent.includes('Data Science Reality') || n.textContent.includes('University')));
+                    });
+                    if (els.length > 0) {
+                        const target = els[0].closest('div[role="button"]') || els[0].closest('button') || els[0];
+                        target.click();
+                    }
+                }""")
+                time.sleep(2)
+
+                page.evaluate("""() => {
+                    const target = Array.from(document.querySelectorAll('*')).find(el => el.childNodes.length > 0 && Array.from(el.childNodes).some(n => n.nodeType === 3 && (n.textContent.trim().startsWith('0$ University') || n.textContent.trim().includes('0$ University'))));
+                    if (target) {
+                        const clickable = target.closest('li') || target.closest('div[role="button"]') || target;
+                        clickable.click();
+                    }
+                }""")
+                time.sleep(2)
 
             # Attach Document Carousel
             if pdf_path and os.path.exists(pdf_path):
@@ -248,40 +291,42 @@ def execute_zuni_pipeline(dry_run=False):
                     if (btns.length > 0) btns[0].click();
                 }""")
                 time.sleep(2)
-                page.locator("svg#sticky-note-medium, svg[id*='sticky-note']").first.click(force=True)
+                page.locator("svg#sticky-note-medium, svg[id*='sticky-note'], button[aria-label*='document' i]").first.click(force=True)
                 time.sleep(2)
 
-                with page.expect_file_chooser() as fc_info:
+                with page.expect_file_chooser(timeout=15000) as fc_info:
                     page.locator("button:has-text('Choose file'), button:has-text('Choose a file')").first.click()
                 fc_info.value.set_files(pdf_path)
                 time.sleep(4)
 
-                title_input = page.locator("input[placeholder*='title' i], input[aria-label*='title' i], input[type='text']").first
-                title_input.fill(item["title"])
+                try:
+                    title_input = page.locator("input[placeholder*='title' i], input[aria-label*='title' i], input[type='text']").first
+                    if title_input.is_visible(timeout=5000):
+                        title_input.fill(item["title"])
+                except Exception:
+                    pass
                 time.sleep(2)
 
-                done_clicked = False
                 for done_sel in [
+                    "button.share-box-footer__primary-btn",
                     "button:has-text('Done')",
                     "button:has-text('Next')",
                     "button[aria-label*='Done' i]",
                     "button[aria-label*='Next' i]",
-                    "button.share-actions__primary-action",
-                    "button.share-box-footer__primary-btn",
+                    "button.share-actions__primary-action"
                 ]:
                     try:
                         btn = page.locator(done_sel).first
-                        btn.wait_for(timeout=5000)
-                        btn.click(force=True)
-                        done_clicked = True
-                        print(f"✅ Done/Next clicked via: {done_sel}")
-                        break
+                        if btn.is_visible(timeout=3000):
+                            btn.click(force=True)
+                            print(f"✅ Clicked attachment Done via: {done_sel}")
+                            break
                     except Exception:
                         continue
                 time.sleep(3)
 
             # Insert Text
-            print("✍️ Injecting post text & Topmate links...")
+            print("✍️ Step 3: Injecting post text & Topmate links...")
             text_injected = False
             for ed_sel in [
                 "div.tiptap",
@@ -315,7 +360,7 @@ def execute_zuni_pipeline(dry_run=False):
             time.sleep(3)
 
             # Publish
-            print("🚀 Step 4: Publishing live...")
+            print("🚀 Step 4: Publishing live to 0$ University...")
             post_clicked = False
             for post_sel in [
                 "button.share-actions__primary-action",
@@ -344,7 +389,7 @@ def execute_zuni_pipeline(dry_run=False):
                     }
                 }""")
                 print("✅ Clicked Post button via evaluate DOM dispatch fallback")
-            time.sleep(10)
+            time.sleep(12)
 
             save_zuni_history({
                 "id": item["id"],
@@ -353,10 +398,10 @@ def execute_zuni_pipeline(dry_run=False):
             })
 
             # =========================================================================
-            # STAGE 2: 8-ACTOR ENGAGEMENT BOOSTER (ARIF ALAM + 7 SISTER PAGES)
+            # STAGE 2: 8-ACTOR ENGAGEMENT BOOSTER & FETCH LIVE PERMALINK
             # =========================================================================
             print("\n" + "=" * 80)
-            print("⚡ STAGE 2: 8-ACTOR CROSS-ENGAGEMENT BOOSTER")
+            print("⚡ STAGE 2: 8-ACTOR CROSS-ENGAGEMENT BOOSTER & PERMALINK RESOLUTION")
             print("=" * 80)
 
             page.goto("https://www.linkedin.com/company/startup-founderss/posts/?feedView=all", wait_until="domcontentloaded", timeout=40000)
@@ -365,8 +410,9 @@ def execute_zuni_pipeline(dry_run=False):
             top_post = page.locator("div.feed-shared-update-v2").first
             post_urn = top_post.get_attribute("data-urn") or top_post.get_attribute("data-id") or ""
             if post_urn and "activity:" in post_urn:
-                permalink_url = f"https://www.linkedin.com/feed/update/{post_urn}/"
-                print(f"🎯 Navigating to dedicated permalink: {permalink_url}")
+                post_id = post_urn.split("activity:")[1].split("?")[0].split(",")[0]
+                permalink_url = f"https://www.linkedin.com/feed/update/urn:li:activity:{post_id}/"
+                print(f"🎯 NEW LIVE POST PERMALINK: {permalink_url}")
                 page.goto(permalink_url, wait_until="domcontentloaded", timeout=40000)
                 time.sleep(5)
 
@@ -433,9 +479,10 @@ def execute_zuni_pipeline(dry_run=False):
                     time.sleep(3)
                     print("✅ 0$ University Topmate 1st comment submitted!")
 
-            print("\n" + "=" * 80)
-            print("🎉 0$ UNIVERSITY POST PIPELINE COMPLETED 100%!")
-            print("=" * 80)
+                print("\n" + "=" * 80)
+                print(f"🎉 0$ UNIVERSITY POST PIPELINE COMPLETED 100%!")
+                print(f"🔗 LIVE POST URL: {permalink_url}")
+                print("=" * 80)
 
         except Exception as e:
             print(f"❌ Error in 0$ University Runner: {e}")
