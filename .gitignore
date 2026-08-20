@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv
+venv/
+ENV/
+
+# Playwright & Browsers
+.playwright/
+playwright-report/
+test-results/
+
+# Logs & Screenshots & Artifacts
+logs/
+artifacts/
+*.log
+*.png
+*.jpg
+*.jpeg
+!config/app_logo.png
+
+# Secrets & Sessions (Keep full_browser_cookies.json out of public repos)
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db

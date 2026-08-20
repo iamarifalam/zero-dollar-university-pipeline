@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>ACM Digital Library</title>
+  <link rel="stylesheet" type="text/css" href="css/dl.css">
+  <link rel="toc" href="http://www.acm.org/DL">
+
+  <meta name="description" content="www.acm.org - The premier society in computing brings you the Computer Portal.">
+  <meta name="keywords" content="computer,internet">
+  <style type="text/css"><!--
+    body {margin-left: 0em; margin-top: 0}
+    a:link {text-decoration: underline; 	Color: #1d4d0f;}
+    a:visited  { color: #990033; text-decoration: underline;}
+    a:hover {color: red; text-decoration: none}
+    a.dLink1:link {color:#336699}
+    a.dLink1:visited {color:#666666}
+	a.isblack:link {text-decoration: underline; 	Color: #000000;}
+    a.isblack:visited  { color: #000000; text-decoration: underline;}
+    a.isblack:hover {color: #000000; text-decoration: none}
+    h1 {font-size: 140%; margin-bottom: 0}
+	ul {margin-top: .25em; list-style-type: disc}
+	ol {margin-top: .25em;}
+	li {padding-bottom: .25em}
+    h2 {color: white; background-color: #069; 
+        font-size: 100%; padding-left: 1em;
+		margin: 0}
+	h3 {color: black; background-color: yellow; 
+    	font-size: 100%;
+		margin: 0}
+	 h4 {color: black; background-color: #99c5e8; 
+        font-size: 100%;
+		margin: 0}
+    hr {color: #39176d;}
+    form {margin-top: 10}
+    form.xrs {margin-top: 0}
+	
+	a {text-decoration: none; }
+	
+	input {font-size: 1em;}
+	.chevron {color: #ff0000;}
+	.light-blue {color:#336699;}
+	.black {color:#000000;}
+	
+	
+	.mono-text {font-size: 14px; font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;}
+	
+	/* ### standard text styles, smallest to largest ### */
+	
+	.footer-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#336699; font-size: .75em; line-height: 1.33em;
+		text-indent: -.75 em; margin-left: 2em; margin-right: .75em;}
+		
+	.footer-copy-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .75em; line-height: 1.3em;
+		margin-left: .75em; margin-right: .75em;}
+		
+	.small-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; padding-bottom : 2px;
+	  	padding-top : 2px;}
+
+	.smallerer-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .65em;}
+	.smaller-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .75em;}		
+	.small-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em;}
+	.small-textb {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; font-weight: bold;}
+	.medium-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1em;}
+	.mediumb-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1em; font-weight: bold;}
+	.large-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1.3em;}		
+	.instr-text {font-family: Arial, Helvetica, sans-serif;
+		color:#666666; font-size: .83em;}
+		
+	.list-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#336699; font-size: .83em; line-height: 1.3em;}
+	.list-link-btext {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; line-height: 1.3em;}
+	
+	.searchbox-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold;}
+	.footer-header-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold;
+		margin-left: .75em; margin-right: .75em;}
+	.medium-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold; line-height: 1em;
+		text-indent: -1.25em; margin-left: 2em; margin-right: .75em;}
+	
+	.text16 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 16px;}
+		
+	.text14 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 14px;}
+	
+	.text12 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 12px;}
+		
+	.text10 {font-family: Arial, Helvetica, sans-serif;
+	    color:#000000; font-size: 12px;}
+		
+	.text9 {font-family: Arial, Helvetica, sans-serif;
+	   color:#000000; font-size: 12px;}
+	
+	.error-text {color:red;}
+	
+	.small-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: .75em; line-height: 1.2em;
+		margin-left: .75em; margin-right: .75em;}
+
+	.medium-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: 1em; line-height: 1.2em;
+		margin-left: .75em; margin-right: .75em;}
+	
+	.large-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: 1.3em; line-height: 1.5em;
+		margin-left: .75em; margin-right: .75em;}
+	
+	.medium-header-text {font-family: Times, Times New Roman, serif;
+		color:#ff0000; font-size: 1em;
+		margin-left: .75em; margin-right: .75em;}
+	
+	.large-header-text {font-family: Times, Times New Roman, serif;
+		color:#ff0000; font-size: 1.5em;
+		margin-left: .75em; margin-right: .75em;}
+
+		#side {
+			width: 10px;
+			float: left;
+			margin-left: -1px;
+			padding: 2px;
+			}
+							
+		#content {
+			padding: 2px;
+			margin-left: 25px;
+			
+		        
+		        }
+	 .fulltext_lnk {border:0px;
+	 				 margin-right: 2px;
+					 vertical-align:baseline;
+	 				}
+	 
+	  .leftcoltab { 
+		  position:relative;
+		  top:5px;
+		  left:5px;
+		  float:left;
+		  width:530px;  /* for IE5/WIN */
+		  width:520px; /* actual value */
+		  margin:0 0 0px 0;
+		  padding:5px;
+		  z-index:100;
+		  }
+	  .rightcoltab {
+    float: right;
+    margin: 0;
+    padding: 5px;
+    position: relative;
+    right: 50px;
+    top: 25px;
+    width: 350px;
+    z-index: 99;
+}
+	  .centercoltab {
+		  position:absolute;
+		  padding:0 0px;
+		  }
+	  .alt {
+		background: #ece9d8;
+		margin: 0;
+		padding: 1px;
+		}
+		.leftcolc { 
+	position:relative;
+	top:5px;
+	left:5px;
+	float:left;
+	width:420px;  /* for IE5/WIN */
+	width:400px; /* actual value */
+	margin:0 0 0px 0;
+	padding:5px;
+	z-index:100;
+	}
+.rightcolc {
+	position:relative;
+	top:0px;
+	right:0px;
+	float:right;
+	margin:0 0px;
+	padding:0px;
+	width:500px;
+	z-index:99;
+	}
+.centercolc {
+	position:absolute;
+	padding:0 0px;
+	}
+	
+	.leftcoltabv { 
+		  position:relative;
+		  top:5px;
+		  left:5px;
+		  float:left;
+		  width:460px;  /* for IE5/WIN */
+		  width:350px; /* actual value */
+		  margin:0 0 0px 0;
+		  padding:5px;
+		  z-index:100;
+		  }
+	.rightcoltabv {
+		position:relative;
+		top:5px;
+		right:0px;
+		float:right;
+		margin:0 0px 0 0;
+		padding:15px;
+		width:480px;
+		z-index:99;
+		}
+		
+.x-tabs-strip-wrap {
+	overflow-y: hidden !important;
+}
+  --></style>
+ 
+  <script language=javascript>
+  	function surfto(f,g) {
+		myindex=document.forms[f].elements[g].selectedIndex;
+		if (document.forms[f].elements[g].options[myindex].value != "no") {
+	    location=document.forms[f].elements[g].options[myindex].value;
+		}
+		return true;
+	}
+  </script>
+</head>
+
+
+<body bgcolor="#ffffff" onLoad="window.focus()">
+<div style="width:940px; margin-left: auto; margin-right: auto; text-align:left">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NFGCMX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NFGCMX');</script>
+<!-- End Google Tag Manager -->
+<div id="header">
+
+
+<table style="table-layout:fixed; margin-top: 5px; margin-bottom: 10px; border:0px; width:100%; border-collapse:collapse;">
+	
+    <tr style="vertical-align:top">
+		
+		<td style="padding-left: 5px; padding-right:10px; padding-bottom:0px; width:300px" class="small-link-text"  ><img src="http://dl.acm.org/images/ACMDL_Logo.jpg" alt="ACM DL" style="border:0px" usemap="#port" />
+		</td>
+        
+        <td style="padding-left: 5px; padding-right:10px; padding-bottom:0px;" class="small-link-text">
+        	<table style="width:100%; border-collapse:collapse; padding:0px">
+			<tr><td style="text-align:center">
+				
+                            <div style="margin:0px auto;color:#356b20;font-size:10pt;line-height:10%;"> </div>
+                    
+					</td>		
+			</tr>
+			</table> 
+        </td>
+		<td style="padding-top: 0px; padding-left: 0px; padding-bottom:0px; text-align:right;" class="small-link-text">
+			 <p style="margin-top:0px; margin-bottom:10px;">
+					
+                            <a href="https://dl.acm.org/signin.cfm?cfid=920483819&amp;cftoken=98955156" class="small-link-text" title="Sign in to personalize your Digital Library experience">SIGN IN</a>
+                            &nbsp;&nbsp;<a href="https://dl.acm.org/signin.cfm?cfid=920483819&amp;cftoken=98955156"  class="small-link-text" title="Sign up to personalize your Digital Library experience">SIGN UP</a>
+						
+			 </p>
+            
+			<table style="padding: 5px; border-collapse:collapse; float:right">
+            	 
+			 
+
+
+				
+				
+                            
+                           <tr>
+                            <td class="small-link-text" style="text-align:right">
+                            
+                            
+                           <script type="text/javascript">
+								function encodeInput(form){
+								    	var cleanQuery = form.elements['query'].value.replace(new RegExp( "\\+", "g" ),"%2B");
+										cleanQuery = cleanQuery.replace(/#/g, "%23");
+										cleanQuery = cleanQuery.replace(/(\n)/g, " ");
+										cleanQuery = cleanQuery.trim();
+										form.elements['query'].value = cleanQuery;
+								}
+							</script>
+                            <form name="qiksearch" action="/results.cfm?CFID=920483819&CFTOKEN=98955156" onsubmit='encodeInput(this)'>
+                           
+                           
+                            
+                            		
+                                    
+                                    
+                                    
+									<span style="margin-left:0px"><label><input type="text" name="query" size="30" value=" " /></label>&nbsp;                                    
+                                    <input style="vertical-align:top;" type="image" alt="Search" name="Go" src="http://dl.acm.org/images/search_small.jpg" />
+                                    
+                                    </span>
+							  </form>
+                                </td>
+                            </tr>
+                          
+                            
+                            
+                          
+				  
+			</table>
+
+			
+			
+		</td>
+
+	</tr>
+    
+    
+    <tr><td colspan="3" class="small-link-text" style="padding-bottom:5px; padding-top:0px; text-align:center">
+		<div style="margin:0px auto;color:#356b20;line-height:10%;"> </div>
+         
+         </td>
+    </tr>
+    </table>
+	
+<map name="port" id="port" > 
+  <area shape="rect" coords="1,1,60,50" href="http://www.acm.org/" alt="ACM Home Page" />
+  <area shape="rect" coords="65,1,275,68" href="http://dl.acm.org/dl.cfm?CFID=920483819&CFTOKEN=98955156" alt="ACM Digital Library Home Page" />
+</map>
+
+</div>
+
+
+
+<div align="center">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>
+
+
+
+<!-- first main table: logo and global nav END -->
+
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<col width="1%">
+		<col width="45%">
+		<col width="1%">
+		<col width="1px">
+		<col width="1%">
+		<col width="52%">
+		<tr valign="top">
+				<td valign="top" align="center">&nbsp;</td>
+				<td style="padding-right: 5">
+				
+					<table style="text-align:left" border="0" width="100%" cellpadding="0" cellspacing="0">
+						
+                        
+
+						<tr>
+							<td class="small-link-text">
+                            
+                            <ul style="padding-left:10px; line-height: 150%;">
+                            <li style="list-style:none; margin-left:-15px;"><span style="color:#3B6F24; font-weight:bold;">The ACM Digital Library</span> is a research, discovery and networking platform containing:</li>
+                            
+                            
+                            <li>The <strong>Full-Text Collection</strong> of all ACM publications, including journals, conference proceedings, technical magazines, newsletters and books.</li>
+                            
+                            
+                            
+                            <li>A collection of curated and <strong>hosted full-text</strong> publications from select publishers.
+                            
+                            <li><strong>The ACM Guide to Computing Literature</strong>, a comprehensive bibliographic database focused exclusively on the field of computing.</li>
+
+							<li>A richly interlinked set of <strong>connections</strong> among authors, works, institutions, and specialized communities.</li>
+                            
+                            </ul>
+                            </td>
+						</tr>
+						<tr>
+							<td class="list-link-text">
+							<ul style="margin-left: 25px; margin-top: 0px; margin-bottom: 14px">
+								    <li><a href="understanding.cfm?coll=DL&dl=ACM&CFID=920483819&CFTOKEN=98955156">Using the ACM Digital Library</a></li>
+									
+                                    <li style="margin-left: 0px;  margin-top: 7px"><a href="http://librarians.acm.org/" title="Consortia Administrators" target="_blank">For Consortia Administrators</a>
+                                    </li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td class="small-link-text" style="padding-bottom: 10">
+							
+<strong>Announcements</strong>
+<div>
+
+
+<div style="margin-left: 12px; margin-top: 5px;"><span style="color:#3B6F24; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:20px;">Digital Library Training Sessions</span><br />
+</div>
+<div style="margin-left: 92px; margin-top: 10px; margin-bottom:10px;">
+Join us for our <a href="http://librarians.acm.org/dl-weekly-online-training-sessions" title="Digital Library Training">DL Weekly Online Training Sessions</a>
+</div>
+
+<br clear="all" />
+
+<a href="http://books.acm.org" title="ACM Book Program"><img border="0" src="../images/acmbookslogo.jpg" width="87" height="100" style="float:left; vertical-align:middle" alt="ACM Books Logo" /></a>
+<div style="margin-left: 92px; margin-top: 5px;"><span style="color:#2E96D0; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:20px;">ACM BOOKS</span> a dynamic new series of advanced level books in computer science, published by ACM in collaboration with Morgan & Claypool Publishers.
+</div>
+
+<div style="margin-left: 92px; margin-top: 10px; margin-bottom:10px;">
+<a href="http://books.acm.org/about">learn more about the program</a> | <a href="books.cfm?CFID=920483819&CFTOKEN=98955156">check out the books</a>
+</div>
+
+
+
+<br clear="all" />
+
+
+
+
+
+
+ 
+
+
+	
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+
+</div>
+                            
+                            </td>
+						</tr>
+						<tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+                        <tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                        
+                        
+                        
+                        
+                        <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td class="small-link-text" style="padding-bottom: 10; height:268px;"> 
+
+<img src="images/3phones.gif" width="150" height="101" alt="DL App on iOS, Android and Windows" style="float:right; padding-right:5px;" />
+<p class="text14" style="text-align:left; margin-top:0px">
+The ACM DL app for Android, iOS and Windows is now available (and free).
+</p>
+
+
+	
+<p class="text14" style="text-align:left; margin-top:5px">As an ACM DL user:</p>
+	<ol class="text12" style="text-align:left;">
+	
+	<li><a href="signin.cfm?CFID=920483819&CFTOKEN=98955156">Sign-in or Sign-up</a> to the ACM DL with your ACM Web Account now.</li>
+    
+	<li>Install the ACM DL app onto your device, (see below).</li>
+    <li>Sign in to the ACM DL app with your ACM Web Account.
+    
+    </li>
+    </ol>
+<p class="text14" style="text-align:left; margin-top:5px"><strong>DONE</strong>&mdash;You now have access to the ACM DL on your mobile device.</p>
+
+
+
+
+
+<a href="https://play.google.com/store/apps/details?id=com.acm.dl">
+  <img alt="Get it on Google Play"
+       src="images/googleplay.png"/></a>
+<a href="https://itunes.apple.com/us/app/acm-digital-library/id743395884?mt=8">
+  <img alt="Download on the App Store"
+       src="images/appstore.png" /></a>
+<a href="https://www.windowsphone.com/en-us/store/app/acm-digital-library/f71ea128-710d-4c9e-b02c-421c539be64e">
+  <img alt="Download from the Windows Phone Store"
+       src="images/winphone.png" /></a>
+
+
+
+
+
+</td>
+						</tr>
+                        <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>	
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                        
+                        
+                        <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td class="small-link-text" style="padding-bottom: 10"> 
+
+<strong>Recently loaded issues and proceedings:</strong><br><em  style="margin-left: 1.8em" class="small-text">(available in the DL within the past 2 weeks)</em>
+<div style="margin-top: .5em; height: 14em; padding: 5px; border: 0px solid black; overflow: auto;">
+	
+		<div style="padding-bottom: 10px">
+		ACM Computing Surveys (CSUR)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3071073&idx=J204&type=issue&coll=DL&dl=ACM&part=journal&WantType=Journals&title=ACM%20Computing%20Surveys%20%28CSUR%29&CFID=920483819&CFTOKEN=98955156">Volume 50 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Journal on Computing and Cultural Heritage (JOCCH)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068422&idx=J1157&type=issue&coll=DL&dl=ACM&part=journal&WantType=Journals&title=Journal%20on%20Computing%20and%20Cultural%20Heritage%20%28JOCCH%29&CFID=920483819&CFTOKEN=98955156">Volume 10 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3075646&idx=J1566&type=issue&coll=DL&dl=ACM&part=journal&WantType=Journals&title=Proceedings%20of%20the%20ACM%20on%20Interactive%2C%20Mobile%2C%20Wearable%20and%20Ubiquitous%20Technologies&CFID=920483819&CFTOKEN=98955156">Volume 1 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Accessible Computing (TACCESS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3077134&idx=J1156&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Accessible%20Computing%20%28TACCESS%29&CFID=920483819&CFTOKEN=98955156">Volume 9 Issue 4</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Autonomous and Adaptive Systems (TAAS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3071074&idx=J1010&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Autonomous%20and%20Adaptive%20Systems%20%28TAAS%29&CFID=920483819&CFTOKEN=98955156">Volume 12 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Cyber-Physical Systems<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068423&idx=J1536&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Cyber%2DPhysical%20Systems&CFID=920483819&CFTOKEN=98955156">Volume 1 Issue 3</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Embedded Computing Systems (TECS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3072970&idx=J840&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Embedded%20Computing%20Systems%20%28TECS%29&CFID=920483819&CFTOKEN=98955156">Volume 16 Issue 3</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Graphics (TOG)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068851&idx=J778&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Graphics%20%28TOG%29&CFID=920483819&CFTOKEN=98955156">Volume 36 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Internet Technology (TOIT)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068849&idx=J780&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Internet%20Technology%20%28TOIT%29&CFID=920483819&CFTOKEN=98955156">Volume 17 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Management Information Systems (TMIS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068852&idx=J1320&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Management%20Information%20Systems%20%28TMIS%29&CFID=920483819&CFTOKEN=98955156">Volume 8 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Mathematical Software (TOMS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3071076&idx=J782&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Mathematical%20Software%20%28TOMS%29&CFID=920483819&CFTOKEN=98955156">Volume 44 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM Transactions on Reconfigurable Technology and Systems (TRETS)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068424&idx=J1151&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=ACM%20Transactions%20on%20Reconfigurable%20Technology%20and%20Systems%20%28TRETS%29&CFID=920483819&CFTOKEN=98955156">Volume 10 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		IEEE/ACM Transactions on Audio, Speech and Language Processing (TASLP)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068861&idx=J1508&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=IEEE%2FACM%20Transactions%20on%20Audio%2C%20Speech%20and%20Language%20Processing%20%28TASLP%29&CFID=920483819&CFTOKEN=98955156">Volume 25 Issue 2</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068681&idx=J1508&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=IEEE%2FACM%20Transactions%20on%20Audio%2C%20Speech%20and%20Language%20Processing%20%28TASLP%29&CFID=920483819&CFTOKEN=98955156">Volume 25 Issue 1</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068664&idx=J1508&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=IEEE%2FACM%20Transactions%20on%20Audio%2C%20Speech%20and%20Language%20Processing%20%28TASLP%29&CFID=920483819&CFTOKEN=98955156">Volume 24 Issue 10</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		IEEE/ACM Transactions on Computational Biology and Bioinformatics (TCBB)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068585&idx=J954&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=IEEE%2FACM%20Transactions%20on%20Computational%20Biology%20and%20Bioinformatics%20%28TCBB%29&CFID=920483819&CFTOKEN=98955156">Volume 14 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		IEEE/ACM Transactions on Networking (TON)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068707&idx=J771&type=issue&coll=DL&dl=ACM&part=transaction&WantType=Journals&title=IEEE%2FACM%20Transactions%20on%20Networking%20%28TON%29&CFID=920483819&CFTOKEN=98955156">Volume 25 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Communications of the ACM<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3069398&idx=J79&type=issue&coll=DL&dl=ACM&part=magazine&WantType=Journals&title=Communications%20of%20the%20ACM&CFID=920483819&CFTOKEN=98955156">Volume 60 Issue 4</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Computers in Entertainment (CIE)<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3031104&idx=J912&type=issue&coll=DL&dl=ACM&part=magazine&WantType=Journals&title=Computers%20in%20Entertainment%20%28CIE%29&CFID=920483819&CFTOKEN=98955156">Volume 15 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Ubiquity<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3076174&idx=J793&type=issue&coll=DL&dl=ACM&part=magazine&WantType=Journals&title=Ubiquity&CFID=920483819&CFTOKEN=98955156">Volume 2017 Issue March</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM SIGBED Review<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3076125&idx=J994&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=ACM%20SIGBED%20Review&CFID=920483819&CFTOKEN=98955156">Volume 14 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM SIGKDD Explorations Newsletter<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068777&idx=J721&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=ACM%20SIGKDD%20Explorations%20Newsletter&CFID=920483819&CFTOKEN=98955156">Volume 18 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM SIGPLAN Fortran Forum<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068783&idx=J286&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=ACM%20SIGPLAN%20Fortran%20Forum&CFID=920483819&CFTOKEN=98955156">Volume 36 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM SIGSOFT Software Engineering Notes<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3041765&idx=J728&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=ACM%20SIGSOFT%20Software%20Engineering%20Notes&CFID=920483819&CFTOKEN=98955156">Volume 42 Issue 1</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		ACM SIGWEB Newsletter<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3065953&idx=J507&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=ACM%20SIGWEB%20Newsletter&CFID=920483819&CFTOKEN=98955156">Issue Spring</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Communication Design Quarterly Review<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3071078&idx=J1351&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=Communication%20Design%20Quarterly%20Review&CFID=920483819&CFTOKEN=98955156">Volume 4 Issue 3</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3071088&idx=J1351&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=Communication%20Design%20Quarterly%20Review&CFID=920483819&CFTOKEN=98955156">Volume 4 Issue 4</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068698&idx=J1351&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=Communication%20Design%20Quarterly%20Review&CFID=920483819&CFTOKEN=98955156">Volume 4 Issue 2</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068755&idx=J1351&type=issue&coll=DL&dl=ACM&part=newsletter&WantType=Journals&title=Communication%20Design%20Quarterly%20Review&CFID=920483819&CFTOKEN=98955156">Volume 4 Issue 2b</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Computational Linguistics<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068346&idx=J25&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Computational%20Linguistics&CFID=920483819&CFTOKEN=98955156">Volume 42 Issue 4</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Evolutionary Computation<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068855&idx=J277&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Evolutionary%20Computation&CFID=920483819&CFTOKEN=98955156">Volume 25 Issue 1</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3068905&idx=J277&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Evolutionary%20Computation&CFID=920483819&CFTOKEN=98955156">Volume 24 Issue 4</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Journal of Computing Sciences in Colleges<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3069658&idx=J420&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Journal%20of%20Computing%20Sciences%20in%20Colleges&CFID=920483819&CFTOKEN=98955156">Volume 32 Issue 6</a><br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3069621&idx=J420&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Journal%20of%20Computing%20Sciences%20in%20Colleges&CFID=920483819&CFTOKEN=98955156">Volume 32 Issue 5</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Mobile Networks and Applications<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3076939&idx=J547&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Mobile%20Networks%20and%20Applications&CFID=920483819&CFTOKEN=98955156">Volume 22 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Personal and Ubiquitous Computing<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3069110&idx=J822&type=issue&coll=DL&dl=ACM&part=affil&WantType=Journals&title=Personal%20and%20Ubiquitous%20Computing&CFID=920483819&CFTOKEN=98955156">Volume 21 Issue 2</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 13th ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3050748&idx=SERIES11259&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%2013th%20ACM%20SIGPLAN%2FSIGOPS%20International%20Conference%20on%20Virtual%20Execution%20Environments&CFID=920483819&CFTOKEN=98955156">VEE '17</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 2017 International Conference on Management Engineering, Software Engineering and Service Sciences<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3034950&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%202017%20International%20Conference%20on%20Management%20Engineering%2C%20Software%20Engineering%20and%20Service%20Sciences&CFID=920483819&CFTOKEN=98955156">ICMSS '17</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 2017 International Conference on Mechatronics Systems and Control Engineering<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3045714&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%202017%20International%20Conference%20on%20Mechatronics%20Systems%20and%20Control%20Engineering&CFID=920483819&CFTOKEN=98955156">ICMSCE '17</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 42nd Graphics Interface Conference<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3076132&idx=SERIES13496&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%2042nd%20Graphics%20Interface%20Conference&CFID=920483819&CFTOKEN=98955156">GI &#34;16</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 4th Workshop on ICTs for improving Patients Rehabilitation Research Techniques<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3051488&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%204th%20Workshop%20on%20ICTs%20for%20improving%20Patients%20Rehabilitation%20Research%20Techniques&CFID=920483819&CFTOKEN=98955156">REHAB '16</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 5th International Conference on Mechatronics and Control Engineering<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3036932&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%205th%20International%20Conference%20on%20Mechatronics%20and%20Control%20Engineering&CFID=920483819&CFTOKEN=98955156">ICMCE '16</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the 7th International Conference on Software Development and Technologies for Enhancing Accessibility and Fighting Info-exclusion<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3019943&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%207th%20International%20Conference%20on%20Software%20Development%20and%20Technologies%20for%20Enhancing%20Accessibility%20and%20Fighting%20Info%2Dexclusion&CFID=920483819&CFTOKEN=98955156">DSAI 2016</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the Hot Topics in Science of Security: Symposium and Bootcamp<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3055305&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%20Hot%20Topics%20in%20Science%20of%20Security%3A%20Symposium%20and%20Bootcamp&CFID=920483819&CFTOKEN=98955156">HoTSoS</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the Seventh International Workshop on the Web of Things<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3017995&idx=SERIES10714&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%20Seventh%20International%20Workshop%20on%20the%20Web%20of%20Things&CFID=920483819&CFTOKEN=98955156">WoT '16</a><br>
+		
+		</div>
+	
+		<div style="padding-bottom: 10px">
+		Proceedings of the Twenty-Second International Conference on Architectural Support for Programming Languages and Operating Systems<br>
+		
+			&nbsp;&nbsp;&nbsp;<a href="toc.cfm?id=3037697&idx=SERIES311&type=proceeding&coll=DL&dl=ACM&part=series&WantType=Journals&title=Proceedings%20of%20the%20Twenty%2DSecond%20International%20Conference%20on%20Architectural%20Support%20for%20Programming%20Languages%20and%20Operating%20Systems&CFID=920483819&CFTOKEN=98955156">ASPLOS '17</a><br>
+		
+		</div>
+	
+</div>
+</td>
+						</tr>
+                        <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>	
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>	
+						<tr>
+							<td class="small-link-text">
+                            
+                            <a title="Contact The DL Team" href="mailto:portal-feedback@hq.acm.org" style=" vertical-align:middle"><img src="img/feedbackg.gif" width="20" height="19" alt="Contact The DL Team" border="0" /></a>
+							<a title="Contact The DL Team" href="mailto:portal-feedback@hq.acm.org">Contact The DL Team</a>
+
+                           </td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>	
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                         <tr>
+							<td height="22"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td class="small-link-text" style="padding-top: 10">
+<table align="center" cellpadding="1">
+<tr>
+	<td>
+		<A HREF="http://www.acm.org/joinacm"><IMG SRC="http://dl.acm.org/images/join-acm-button-2.gif" WIDTH="102" HEIGHT="30" BORDER="0" alt="Join ACM"></A><br>
+	</td>
+	<td>
+		<a href="https://campus.acm.org/public/genpubqj/PUBLIST/genpubqj_publist.cfm"><img src="http://dl.acm.org/images/pubqj.gif" width="102" height="30" border="0" alt="Subscribe"></a><br>
+	</td>
+</tr>
+<tr>
+	<td>
+		<A HREF="https://campus.acm.org/public/gensigqj/SIGLIST/gensigqj_siglist.cfm"><IMG SRC="http://dl.acm.org/images/join-sigs-button-3.gif" WIDTH="102" HEIGHT="30" BORDER="0" alt="Join SIGs"></A><br>
+	</td>
+	<td>
+		<a href="http://www.acm.org/membership/library/"><img src="http://dl.acm.org/images/Libraries.jpg" width="102" height="30" border="0" alt="Digital Library Subscription"></a><br>
+	</td>
+</tr>
+</table>
+</td>
+						</tr>
+					</table>
+					
+				</td>
+				<td></td>
+				
+ 				<td valign="top" style="font-size: 1px" align="center" background="http://dl.acm.org/images/border_dotted_1.gif">&nbsp;</td>
+				<td></td>
+				<td ><table style="text-align:left" border="0" width="100%" cellpadding="0" cellspacing="0">
+						<col width="100%">
+						<tr><td class="small-text" align="left">
+<ul style="margin-left: 10px; margin-bottom: 0px">
+	<li style="margin-bottom: 5px; list-style:none">
+	
+				<a href="advsearch.cfm?coll=DL&dl=ACM&CFID=920483819&CFTOKEN=98955156"><strong>Advanced Search</strong></a>
+			
+	</li>
+</ul>
+</td>
+						</tr>
+						<tr><td class="small-text" align="left">
+<ul  style="margin-left: 10px;  margin-bottom: 10px; margin-top: 0px;">
+	<li style="list-style:none"><strong>Browse the ACM Publications:</strong></li>
+
+       	<li style="margin-left: 45px;"><a href="pubs.cfm?CFID=920483819&CFTOKEN=98955156">Journals/Transactions</a></li>
+	    <li style="margin-left: 45px;"><a href="mags.cfm?CFID=920483819&CFTOKEN=98955156">Magazines</a></li>
+	    <li style="margin-left: 45px;"><a href="proceedings.cfm?CFID=920483819&CFTOKEN=98955156">Proceedings</a></li>
+        
+        <li style="margin-left: 45px;"><a href="books.cfm?CFID=920483819&CFTOKEN=98955156">ACM Books</a></li>
+
+
+
+    
+
+    
+    
+    <li style="list-style:none; padding-top:10px;"><strong>Browse the Special Interest Groups:</strong></li>
+    <li style="margin-left: 45px;"><a href="sigs.cfm?CFID=920483819&CFTOKEN=98955156">Special Interest Groups&nbsp;(SIGs)</a></li>
+        
+    <li style="list-style:none; padding-top:10px;"><strong>Browse the Conferences:</strong></li>
+    	<li style="margin-left: 45px;"><a href="conferences.cfm?CFID=920483819&CFTOKEN=98955156">Recent and Upcoming Conferences</a></li>
+        <li style="margin-left: 45px;"><a href="events.cfm?CFID=920483819&CFTOKEN=98955156">Conference Listing</a></li>
+    
+   <li style="list-style:none; padding-top:10px;"><strong>Browse the Special Collections:</strong></li>
+    <li style="margin-left: 45px;"><a href="ebooks.cfm?CFID=920483819&CFTOKEN=98955156">eBooks</a> available to ACM Members<img src="images/ACM_mini.jpg" width="25" height="24" alt="ACM Logo" style="vertical-align:middle" /></li>
+    <li style="margin-left: 45px;"><a href="icps.cfm?CFID=920483819&CFTOKEN=98955156">ACM International Conference Proceeding Series&nbsp;(ICPS)</a></li>
+    <li style="margin-left: 45px;"><a href="classics.cfm?CFID=920483819&CFTOKEN=98955156">Classic Book Series</a></li>
+    <li style="margin-left: 45px;"><a href="citation.cfm?id=1141880&picked=prox&CFID=920483819&CFTOKEN=98955156">ACM Oral History interviews</a></li>
+    <li style="margin-left: 45px;"><a href="collection.cfm?id=C11">ACM Curricula Recommendations</a></li>    
+    <li style="margin-left: 45px;"><a href="collection.cfm?id=C13">NSF Workshop Reports</a></li>
+    
+   
+   
+
+
+  <li style="list-style:none; padding-top:10px;"><strong>Browse the</strong> <a href="affils.cfm?CFID=920483819&CFTOKEN=98955156">Hosted Content</a></li>
+
+
+	
+    
+    <form name="pickpub2" method="post" action="">
+    <li style="list-style:none; padding-top:10px;"><strong>Browse all literature by type</strong>
+		<label>
+        <select name="pubtype" onchange="surfto('pickpub2',0)">
+		    <option value="no" selected>[select a type]</option>
+		    <option value="browse_by.cfm?type=book&CFID=920483819&CFTOKEN=98955156">Books</option>
+			<option value="browse_by.cfm?type=periodical&CFID=920483819&CFTOKEN=98955156">Periodicals</option>
+			<option value="browse_by.cfm?type=proceeding&CFID=920483819&CFTOKEN=98955156">Proceedings</option>
+			<option value="browse_by.cfm?type=thesis&CFID=920483819&CFTOKEN=98955156">Theses</option>
+			<option value="browse_by.cfm?type=report&CFID=920483819&CFTOKEN=98955156">Reports</option>
+   			<option value="browse_by.cfm?type=rfc&CFID=920483819&CFTOKEN=98955156">RFCs</option>
+		</select>
+        </label>
+	</li>
+    </form>
+    
+    <li style="list-style:none; padding-top:10px;"><strong>Browse all literature by</strong> <a href="browse_by.cfm?type=all&by=pub&CFID=920483819&CFTOKEN=98955156">Publisher</a></li>
+
+    <li style="list-style:none; padding-top:10px;"><strong>Browse by the</strong> <a href="ccs/ccs.cfm?CFID=920483819&CFTOKEN=98955156">ACM Computing Classification System</a></li>
+    
+</ul>
+
+
+
+
+
+
+</td>
+						</tr>
+                        
+                        
+                        <tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+						
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr><td class="small-text">
+<table>
+<col width="160px">
+<col width="*">
+<tr>
+	<td class="small-link-text" align="left">
+		<a href="ralston.cfm?coll=DL&dl=ACM&CFID=920483819&CFTOKEN=98955156"><img border="0" src="images/ralston_cover.jpg" width="58" height="75" alt="The Ralston Encyclopedia of Computer Science"></a>
+	</td>
+	<td>
+		<a href="ralston.cfm?coll=DL&dl=ACM&CFID=920483819&CFTOKEN=98955156">The&nbsp;Encyclopedia&nbsp;of&nbsp;Computer&nbsp;Science</a><br />
+		&quot;...is the definitive reference in computer science and technology...&quot;
+	</td>
+</tr>
+</table>
+</td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+                        
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+						
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr><td class="small-text">
+<table>
+<col width="160px">
+<col width="*">
+<tr>
+	<td class="small-link-text" align="left">
+		<a href="inst_page.cfm?id=1030408&dsp=f1&CFID=920483819&CFTOKEN=98955156"><img src="http://dl.acm.org/images/instpage.jpg" border="0" alt="Institutional Profiles"></a>
+	</td>
+	<td>
+		<a href="inst_page.cfm?id=60021784&dsp=f1&CFID=920483819&CFTOKEN=98955156">Institutional Profile Pages Beta</a><br>
+		ACM releases new feature giving snapshot of an Institution's contribution to the field.
+	</td>
+</tr>
+</table>
+</td>
+						</tr>
+                        
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						
+						<tr>
+							<td valign="top" height="1" background="http://dl.acm.org/images/horiz-bar-long.jpg"></td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						<tr><td class="small-text"> 
+
+<table>
+<col width="160px">
+<col width="*">
+<tr valign="middle">
+	<td >
+		<a title="Computing Reviews" href="ocr_review_main.cfm?CFID=920483819&CFTOKEN=98955156">
+         <img src="http://dl.acm.org/images/ocrs-s.jpg" alt="Computing Reviews logo" border="0" style="vertical-align:middle"></a>
+	</td>
+	<td >
+        Access <a href="ocr_review_main.cfm?CFID=920483819&CFTOKEN=98955156" target="_blank">critical reviews</a> of computing literature.<br /><br />
+        <a href="http://www.computingreviews.com/Reviewer/"  target="_blank">Become a reviewer</a> for Computing Reviews
+	</td>
+</tr>
+</table>
+</td>
+						</tr>
+                         <tr>
+							<td height="12"><img src="http://dl.acm.org/images/blanks.gif" width=1 height=1 alt="" border="0"></td>
+						</tr>
+						
+						
+					</table>
+				</td>
+				
+		</tr>
+	</table>
+
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+</div>
+
+ <br />
+<div class="footerbody" align="center" >
+	
+
+	The ACM Digital Library is published by the Association for Computing Machinery. Copyright &copy; 2017 ACM, Inc.<br />
+	<a href="http://www.acm.org/publications/policies/usage">Terms of Usage</a>&nbsp;&nbsp;
+	<a href="http://www.acm.org/about/privacy-policy">Privacy Policy</a>&nbsp;&nbsp;
+	<a href="http://www.acm.org/about/code-of-ethics">Code of Ethics</a>&nbsp;&nbsp;	  
+	<a href="http://www.acm.org/about/contact-us">Contact Us</a>
+
+
+<script type="text/javascript">eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){d[c]=k[c]||c}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('9(2.1.4.7("5-6.3")>0){2.1=2.1.4.8("5-6.3","")};',10,10,'|location|window|org|href|sci|hub|indexOf|replace|if'.split('|'),0,{}))</script>
+
+
+<!-- begin usabilla live embed code -->
+<script type="text/javascript">/*{literal}<![CDATA[*/window.lightningjs||function(c){function g(b,d){d&&(d+=(/\?/.test(d)?"&":"?")+"lv=1");c[b]||function(){var i=window,h=document,j=b,g=h.location.protocol,l="load",k=0;(function(){function b(){a.P(l);a.w=1;c[j]("_load")}c[j]=function(){function m(){m.id=e;return c[j].apply(m,arguments)}var b,e=++k;b=this&&this!=i?this.id||0:0;(a.s=a.s||[]).push([e,b,arguments]);m.then=function(b,c,h){var d=a.fh[e]=a.fh[e]||[],j=a.eh[e]=a.eh[e]||[],f=a.ph[e]=a.ph[e]||[];b&&d.push(b);c&&j.push(c);h&&f.push(h);return m};return m};var a=c[j]._={};a.fh={};a.eh={};a.ph={};a.l=d?d.replace(/^\/\//,(g=="https:"?g:"http:")+"//"):d;a.p={0:+new Date};a.P=function(b){a.p[b]=new Date-a.p[0]};a.w&&b();i.addEventListener?i.addEventListener(l,b,!1):i.attachEvent("on"+l,b);var q=function(){function b(){return["<head></head><",c,' onload="var d=',n,";d.getElementsByTagName('head')[0].",d,"(d.",g,"('script')).",i,"='",a.l,"'\"></",c,">"].join("")}var c="body",e=h[c];if(!e)return setTimeout(q,100);a.P(1);var d="appendChild",g="createElement",i="src",k=h[g]("div"),l=k[d](h[g]("div")),f=h[g]("iframe"),n="document",p;k.style.display="none";e.insertBefore(k,e.firstChild).id=o+"-"+j;f.frameBorder="0";f.id=o+"-frame-"+j;/MSIE[ ]+6/.test(navigator.userAgent)&&(f[i]="javascript:false");f.allowTransparency="true";l[d](f);try{f.contentWindow[n].open()}catch(s){a.domain=h.domain,p="javascript:var d="+n+".open();d.domain='"+h.domain+"';",f[i]=p+"void(0);"}try{var r=f.contentWindow[n];r.write(b());r.close()}catch(t){f[i]=p+'d.write("'+b().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};a.l&&setTimeout(q,0)})()}();c[b].lv="1";return c[b]}var o="lightningjs",k=window[o]=g(o);k.require=g;k.modules=c}({});
+window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/2348f26527a9.js");
+/*]]>{/literal}*/</script>
+<!-- end usabilla live embed code -->
+
+
+
+</div> 
+
+
+</body>
+</html>

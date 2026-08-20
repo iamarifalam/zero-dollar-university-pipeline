@@ -1,0 +1,72 @@
+[
+  {
+    "id": "zero_uni_001",
+    "title": "The 0$ MIT & Stanford Open-Source Machine Learning Degree",
+    "pdf_filename": "Stanford_CS229_Super_Cheatsheet_Machine_Learning.pdf",
+    "format": "DOCUMENT",
+    "post_text": "You don't need a ₹15 Lakh degree to break into Data Science and Machine Learning.\n\nThe world's top universities have open-sourced their complete curriculum for free:\n\n1. Mathematics & Foundations:\n- Linear Algebra: MIT 18.06 (Gilbert Strang)\n- Multivariable Calculus: Khan Academy & MIT OCW\n- Probability & Statistics: Stanford CS109 & Harvard Stat 110\n\n2. Core Programming & Computer Science:\n- Python & CS Principles: Harvard CS50x\n- Data Structures & Algorithms: MIT 6.006\n\n3. Machine Learning & Deep Learning:\n- Machine Learning Foundations: Stanford CS229 (Andrew Ng)\n- Deep Learning Architecture: MIT 6.S191\n- Practical Deep Learning for Coders: fast.ai\n\n4. Production AI & MLOps:\n- Full Stack Deep Learning (UC Berkeley)\n- Machine Learning Engineering for Production (DeepLearning.AI)\n\nAttached is the full Stanford CS229 Machine Learning Cheatsheet covering every core algorithm and formula.\n\nSave this post to build your own 0$ degree 📌\n\n📸/ @Stanford\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_002",
+    "title": "Complete 6-Month SQL & Data Engineering Roadmap (100% Free)",
+    "pdf_filename": "Learn_SQL__Manipulation_Cheatsheet___Codecademy.pdf",
+    "format": "DOCUMENT",
+    "post_text": "SQL is tested in 100% of Data Science and Data Engineering interviews.\n\nHere is the exact zero-cost roadmap to master SQL from scratch to advanced window functions:\n\nMonth 1: Fundamentals & Relational Algebra\n- SELECT, WHERE, ORDER BY, GROUP BY, HAVING\n- Aggregate functions (COUNT, SUM, AVG, MIN, MAX)\n- Practice: SQLZoo & Mode Analytics SQL Tutorial\n\nMonth 2: Joins & Set Operations\n- INNER, LEFT, RIGHT, FULL OUTER JOINs\n- UNION, UNION ALL, INTERSECT, EXCEPT\n- Self-joins and Cross-joins in real production queries\n\nMonth 3: Advanced SQL & Analytical Functions\n- Window Functions: ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE()\n- Value Functions: LAG(), LEAD(), FIRST_VALUE(), LAST_VALUE()\n- Common Table Expressions (WITH clauses) & Recursive CTEs\n\nMonth 4: Query Optimization & Indexing\n- B-Tree vs Hash Indexing\n- EXPLAIN ANALYZE execution plan breakdown\n- Eliminating correlated subqueries and table scans\n\nAttached is the complete SQL syntax and manipulation cheatsheet.\n\nSave this for your SQL interview preparation 📌\n\n📸/ @Codecademy\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_003",
+    "title": "Free Deep Learning & Computer Vision Foundations from Stanford",
+    "pdf_filename": "Stanford_CS230_CNN_Convolutional_Neural_Networks.pdf",
+    "format": "DOCUMENT",
+    "post_text": "How Convolutional Neural Networks actually process image tensors:\n\n1. Convolution Layer:\nApplies kernel filters across the spatial input volume to extract local feature maps (edges, textures, shapes).\n\n2. Activation (ReLU / GELU):\nIntroduces non-linearity, allowing the network to compute complex boundary mappings without vanishing gradients.\n\n3. Pooling (Max / Average):\nReduces spatial resolution while preserving dominant feature activations, providing translational invariance.\n\n4. Fully Connected Layers & Softmax:\nFlattens high-dimensional feature activations into class probability distributions.\n\nAttached is the official Stanford CS230 CNN and Deep Learning Architecture cheatsheet.\n\nSave this reference guide for computer vision and deep learning prep 📌\n\n📸/ @Stanford\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_004",
+    "title": "Distributed Data Processing with Dask & Python",
+    "pdf_filename": "FavioVazquez_Dask_Distributed_Cheatsheet.pdf",
+    "format": "DOCUMENT",
+    "post_text": "When your Pandas dataframe exceeds RAM, you don't need to immediately rewrite everything in PySpark.\n\nDask lets you scale native Python code across multiple CPU cores and distributed clusters:\n\n1. Dask DataFrame:\nParallelizes Pandas operations across chunked partitions, executing out-of-core calculations seamlessly.\n\n2. Dask Array:\nExtends NumPy ndarrays across distributed memory blocks for massive matrix algebra.\n\n3. Dynamic Task Graphs:\nDask builds lazy computational DAGs (Directed Acyclic Graphs) and optimizes execution before running tasks.\n\nAttached is the complete Dask Distributed computing cheatsheet by Favio Vázquez.\n\nSave this for data engineering and distributed ML 📌\n\n📸/ @Favio\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_005",
+    "title": "PySpark DataFrame & Big Data Architecture Guide",
+    "pdf_filename": "FavioVazquez_PySpark_DataFrame_Cheatsheet.pdf",
+    "format": "DOCUMENT",
+    "post_text": "PySpark architecture and big data engineering reference:\n\n1. Catalyst Optimizer:\nConverts declarative Spark SQL and DataFrame queries into optimized physical execution plans.\n\n2. Tungsten Execution Engine:\nManages off-heap memory allocation and generates whole-stage code generation for hardware-level CPU cache efficiency.\n\n3. Partitioning & Shuffling:\nAvoid wide dependencies (groupBy, join without broadcast) across worker nodes to eliminate network bottlenecks.\n\nAttached is the complete PySpark DataFrame Cheat Sheet by Favio Vázquez.\n\nSave this reference guide for big data interview prep 📌\n\n📸/ @Favio\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_006",
+    "title": "Transformer Architecture & Self-Attention Mathematical Breakdown",
+    "pdf_filename": "Vaswani_2017_Attention_Is_All_You_Need.pdf",
+    "format": "DOCUMENT",
+    "post_text": "The landmark 2017 paper 'Attention Is All You Need' replaced recurrent networks with pure Multi-Head Attention mechanisms.\n\nCore Building Blocks:\n1. Scaled Dot-Product Attention:\nAttention(Q, K, V) = softmax(Q K^T / sqrt(d_k)) V\n\n2. Multi-Head Projection:\nAllows the model to jointly attend to information from different representation subspaces at different positions.\n\n3. Positional Encodings:\nSince there is no recurrence or convolution, sinusoidal positional encodings inject relative token order.\n\nAttached is the original landmark research paper from Google Brain.\n\nSave this foundational paper for your AI & LLM engineering vault 📌\n\n📸/ @Google\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_007",
+    "title": "MIT 6.S191: Introduction to Deep Learning & Neural Architectures",
+    "pdf_filename": "MIT_6S191_Lecture1_Intro_Deep_Learning.pdf",
+    "format": "DOCUMENT",
+    "post_text": "MIT 6.S191 is MIT's official introductory course on deep learning methods and applications.\n\nKey Concepts Covered:\n1. Perceptrons to Multi-Layer Perceptrons (MLPs)\n2. Loss Landscapes & Gradient Descent Optimization\n3. Backpropagation and Automatic Differentiation in PyTorch / TensorFlow\n4. Regularization: Dropout, Batch Normalization, Weight Decay\n\nAttached are the official MIT 6.S191 Lecture 1 slides and architecture diagrams.\n\nSave this 0$ MIT degree resource 📌\n\n📸/ @MIT\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_008",
+    "title": "Stanford CS229: Mathematics & Linear Algebra for Machine Learning",
+    "pdf_filename": "Stanford_CS229_Linear_Algebra_Calculus_Refresher.pdf",
+    "format": "DOCUMENT",
+    "post_text": "Before you train complex neural networks, mastering fundamental linear algebra and multivariable calculus is essential.\n\nKey Mathematical Pillars:\n1. Matrix Operations: Determinants, Matrix Inverses, Trace, Rank\n2. Eigenvalues & Eigenvectors: Principal Component Analysis (PCA) & Spectral Decomposition\n3. Vector Calculus: Gradients, Jacobians, Hessians, and Taylor Series Expansions\n4. Matrix Derivatives: Deriving loss functions with respect to weight matrices\n\nAttached is the Stanford CS229 Linear Algebra and Calculus Refresher by Afshine Amidi & Shervine Amidi.\n\nSave this math cheatsheet for your ML interviews 📌\n\n📸/ @Stanford\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_009",
+    "title": "Stanford CS229: Probability & Statistics for Data Scientists",
+    "pdf_filename": "Stanford_CS229_Probabilities_Statistics_Refresher.pdf",
+    "format": "DOCUMENT",
+    "post_text": "Probability theory forms the rigorous backbone of statistical learning and generative models.\n\nEssential Concepts:\n1. Probability Distributions: Gaussian, Bernoulli, Poisson, Exponential, Beta, Dirichlet\n2. Conditional Probability & Bayes' Theorem: Maximum Likelihood Estimation (MLE) vs Maximum A Posteriori (MAP)\n3. Expectation, Variance, Covariance & Correlation Matrices\n4. Law of Large Numbers & Central Limit Theorem\n\nAttached is the Stanford CS229 Probability & Statistics Refresher document.\n\nSave this reference guide 📌\n\n📸/ @Stanford\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  },
+  {
+    "id": "zero_uni_010",
+    "title": "Fine-Tuning LLMs with LoRA & Parameter-Efficient Fine-Tuning (PEFT)",
+    "pdf_filename": "Hu_2021_LoRA_Low_Rank_Adaptation.pdf",
+    "format": "DOCUMENT",
+    "post_text": "Full parameter fine-tuning of 70B+ LLMs requires massive GPU clusters. LoRA (Low-Rank Adaptation) freezes pre-trained weights and injects trainable rank decomposition matrices.\n\nWhy LoRA is Revolutionary:\n1. Reduces trainable parameters by 10,000x and GPU memory footprint by 3x.\n2. Injects low-rank decomposition matrices W0 + B*A into Transformer attention layers.\n3. Zero inference latency overhead: trained adapter weights can be merged directly into base weights during deployment.\n\nAttached is the original LoRA research paper by Edward Hu et al. from Microsoft.\n\nSave this for your LLMOps and AI Engineering vault 📌\n\n📸/ @Microsoft\n\nResources to Get Started\n📘 AI Engineering library: https://topmate.io/arif_alam/2252479\n📕 400+ Data Science Resources: https://topmate.io/arif_alam/787013\n📙 Premium Data Science Interview Resources: https://topmate.io/arif_alam/798098\n📗 Python Data Science Library: https://topmate.io/arif_alam/1128875\n📘 45+ Mathematics Books Every Data Scientist Needs: https://topmate.io/arif_alam/952168\n\n---\n\nJoin WhatsApp channel for jobs updates: https://whatsapp.com/channel/0029VaEUftmDTkK2EJUntE29"
+  }
+]

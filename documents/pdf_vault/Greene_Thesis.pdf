@@ -1,0 +1,7153 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsbook
+\begin_preamble
+\setkeys{Gin}{width=\ifdim\Gin@nat@width>\linewidth
+  \linewidth
+\else
+  \Gin@nat@width
+\fi}
+
+\numberwithin{figure}{chapter}
+\end_preamble
+\use_default_options true
+\begin_removed_modules
+figs-within-sections
+\end_removed_modules
+\begin_modules
+theorems-ams
+eqs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Connectomic Analysis of the Directional Selectivity Circuit in the Mouse
+ Retina
+\end_layout
+
+\begin_layout Author
+by 
+\end_layout
+
+\begin_layout Author
+Matthew Greene
+\end_layout
+
+\begin_layout Author
+B.A., Columbia University in the City of New York (2006)
+\end_layout
+
+\begin_layout Date
+January 2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This thesis addresses the question of how direction selectivity (DS) arises
+ in the mouse retina.
+ DS has long been observed in retinal ganglion cells 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "barlow1963selective"
+
+\end_inset
+
+, and more recently confirmed in the starburst amacrine cell 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ Upstream retinal bipolar cells, however, have been shown to lack DS 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yonehara:2013hc"
+
+\end_inset
+
+, indicating that the mechanism that gives rise to DS lies in the inner
+ plexiform layer, where the axons of bipolar cells costratify with amacrine
+ and ganglion cells.
+ We reconstructed a region of the IPL and identified cell types within it.
+ We discovered a novel mechanism which may explain the origin of DS activity
+ in the mammalian retina, which relies on what we call 
+\begin_inset Quotes eld
+\end_inset
+
+space-time wiring specificity.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+It has been suggested that a DS signal can arise from non-DS excitatory
+ inputs if at least one among spatially segregated inputs transmits its
+ signal with some delay 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "reichardt1961autocorrelation"
+
+\end_inset
+
+, which we extend to consider also a difference in the degree to which the
+ signal is sustained.
+ Previously, it has been supposed that this delay occurs within the starburst
+ amacrine cells' dendrites 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hausselt:2007nx"
+
+\end_inset
+
+.
+ We hypothesized an alternative, presynaptic mechanism.
+ We observed that different bipolar cell types, which are believed to express
+ different degrees of sustained activity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq"
+
+\end_inset
+
+, contact different regions of the starburst amacrine cell dendrite, giving
+ rise to a space-time wiring specifity that should produce a DS signal.
+ We additionally provide a model that predicts the strength of DS as a function
+ of the spatial segregation of inputs and the temporal delay.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+Firstly, I thank my adviser Sebastian Seung for giving me the opportunity
+ to work and study at BCS.
+ Sebastian has made everything in the past five years possible.
+ I thank Sebastian also for having indirectly having introduced me to my
+ wonderful wife Maria, whom I met in Sebastian's neural networks class.
+\end_layout
+
+\begin_layout Standard
+The bulk of the work of this thesis is far greater than any one person could
+ achieve, and in that regard, I thank colleague and serial co-author Jinseop
+ Kim.
+ Jinseop worked for many years curating the data and supervising the workers
+ who made the reconstructions featured here possible.
+ I wish Jinseop the best in all his future endeavors.
+\end_layout
+
+\begin_layout Standard
+The reconstructions were created both by the crowdsourcing platform 
+\begin_inset Quotes eld
+\end_inset
+
+EyeWire
+\begin_inset Quotes erd
+\end_inset
+
+ and by professional tracers working alongside other lab members.
+ I acknowledge the continuous effort of both the Eyewirers and all the professio
+nal reconstructors, and especially Rachel Prentki, who demonstrated that
+ no resource is more necessary in the reconstruction of neural data than
+ human intelligence.
+\end_layout
+
+\begin_layout Standard
+I thank all the developers of the software that made the receonstruction
+ effort possible.
+ Foremost among these are Mark Richardson, Michael Purcaro, and Matt Balkamm,
+ who all went far above and beyond the call of your average software engineers,
+ squashing many bugs and ultimately producing a very slick product despite
+ having a very small team
+\end_layout
+
+\begin_layout Standard
+I thank all my other academic colleagues in the Seung lab for all the advice
+ and comeraderie that was provided over the years.
+ Viren Jain and Srinivas Turaga both taught me a great deal about neural
+ networks and about the best pubs in Cambridge.
+ My long-time office-mate Daniel Berger was always a source of interesting
+ conversations and curious observations.
+ Neville Sanjana and Jen Wang likewise were a delight to be around, and
+ always reming me of some of the most fun times in the lab.
+\end_layout
+
+\begin_layout Standard
+I separately thank labmates Aleks Zlateski, who is also my former roommate,
+ Uygar Sumbul, and Ignacio Arganda-Carreras.
+ In the latter couple of years, this trio was the heart of the lab.
+ They were always full of interesting stories of late-night escapades with
+ two of our other great friends, Ranko Sredojovic and Jovana Knezekic.
+\end_layout
+
+\begin_layout Standard
+Lastly, I thank my incredible wife Maria, and our children Gambit and Vivian
+ for their love and support.
+ No academic accomplishment can match the joy my family brings me.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+Compared to cognitive functions such as language, the visual detection of
+ motion may seem trivial, yet the underlying neural mechanisms have remained
+ elusive for half a century 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Borst:2011vn,Vaney:2012cr"
+
+\end_inset
+
+.
+ Some retinal outputs (ganglion cells) respond selectively to visual stimuli
+ moving in particular directions, while retinal inputs (photoreceptors)
+ lack direction selectivity (DS).
+ How does DS emerge from the microcircuitry connecting inputs to outputs?
+\end_layout
+
+\begin_layout Standard
+DS has been observed in the starburst amacrine cell (SAC), and several types
+ of directionally selective ganglion cells (DSGCs).
+ It has been shown that the upstream source of excitation to these cells,
+ which is provided by retinal bipolar cells (BCs) lacks DS 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yonehara:2013hc"
+
+\end_inset
+
+.
+ Thus, the mechanism of DS arises somewhere in the region of the retina
+ where these cells interact, the inner plexiform layer (IPL).
+ 
+\end_layout
+
+\begin_layout Section
+Retinal bipolar cells
+\end_layout
+
+\begin_layout Standard
+Bipolar cells (BCs) provide the sole pathway from the photoreceptors of
+ the retina to the amacrine and ganglion cells of the IPL.
+ Since most amacrine cells (ACs) are inhibitory, and ganglion cells (GCs)
+ do not synapse presynaptically within the IPL, BCs can be considered the
+ primary source of excitatory input to the IPL.
+ 
+\end_layout
+
+\begin_layout Standard
+Retinal bipolar cells were first subdivided into classes by the polarity
+ of their central receptive field response (OFF or ON) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "werblin1969organization,kaneko1970physiological"
+
+\end_inset
+
+ or by whether their synapses with photoreceptors were 
+\begin_inset Quotes eld
+\end_inset
+
+flat
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+invaginating
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "missotten1965synapses,dowling1966organization"
+
+\end_inset
+
+.
+ These classifications were initially thought to be related through observations
+ in the cyprinid fish 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "famiglietti1977neuronal"
+
+\end_inset
+
+, but it was soon discovered in amphibians that the relationship was not
+ universal [Lasansky 1978].
+ Rodent work in the grey squirrel further cast doubt on the validity of
+ the synaptic classification, as a class of BC in the squirrel retina was
+ found to have both flat and invaginating synapses with cone photoreceptors
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "west1978bipolar"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Research in the late 1970s began to focus on classification using the depth
+ of the stratification of the axonal arbor in the IPL 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "famiglietti1976structural"
+
+\end_inset
+
+.
+ It was found that BCs with OFF centers stratify in the outer (proximal
+ to the epithelium) region of the IPL, while BCs with ON centers stratify
+ in the inner region.
+ These outer and inner regions began to be referred to as subliminae a and
+ b, respectively 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "nelson1978intracellular"
+
+\end_inset
+
+.
+ The subdivision of BCs into more refined 
+\begin_inset Quotes eld
+\end_inset
+
+types
+\begin_inset Quotes erd
+\end_inset
+
+ demonstrates significant species difference.
+ In the rabbit, it was observed through the reconstruction of individual
+ neurons in electron micrograph images and through golgi staining that there
+ existed at least nine distinct BC morphologies within the subliminae 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "famiglietti1981functional,mills1992morphology"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ghosh:2004ff"
+
+\end_inset
+
+ extended this work to the mouse retina, wherein they identified nine cone
+ BC types in addition to the rod BC using light microscopy with immunostaining
+ to help distinguish cells with different receptor types.
+ This classification was further refined by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "wassle2009cone"
+
+\end_inset
+
+ using additional immunocytochemical markers, revealing that Type 3 (BC3)
+ as defined by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ghosh:2004ff"
+
+\end_inset
+
+ consisted of two separate types, BC3a and BC3b.
+ They also hypothesized that BC5 was in fact two cell types, which was later
+ confirmed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ through the dense reconstruction of electron micrograph images.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ also identified a BC type that co-stratifies with the other BC5s, but has
+ a wider lateral span and stratifies more narrowly in IPL depth, and they
+ further speculated that there may exist a third BC5 type.
+\end_layout
+
+\begin_layout Standard
+The different types have been observed to have differing time lags in visual
+ response.
+ This is mostly characterized by a sustained verses transient response,
+ rather than a latency difference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+.
+ While existing work has not yet conclusively determined which BC types
+ show more sustained activity, evidence suggests that the IPL is subdivided
+ not just into on and off regions, but that these sublamina are further
+ subdivided into sustained and transient regions at the depths stratified
+ by SACs.
+\end_layout
+
+\begin_layout Section
+Direction selectivity in retinal ganglion cells
+\end_layout
+
+\begin_layout Standard
+Among the earliest work in the study of the behavior of cells in the vertibrate
+ retina was that of Hartline in his 1938 account.
+ There it was discovered that there exists at least three types of retinal
+ ganglion cells (GCs) that respond to different stimulus features.
+ He identified ON cells that would respond to the onset of a light stimulus,
+ OFF cells that would respond to the termination of light stimulation, and
+ ON-OFF cells that respond to both the onset and termination of light.
+ These observations were followed in the 1950s and early 1960s by several
+ researchers, who demonstrated that there were units responding to more
+ complicated features, such as convexity, dimming, and color specificity
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lettvin1959frog,wiesel1960receptive,wolbarsht1961receptive"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BARLOW:1964bh"
+
+\end_inset
+
+ were the first to discover directionally selective (DS) GCs.
+ They observed a class of GC that responds to both ON and OFF stimuli that
+ moves in a specific direction.
+ While On-Off DSGCs come in four subtypes, one for a preference in each
+ of the four cardinal directions, other DSGCs in the mouse have been identified
+ that don't have such diversity.
+ The On DSGC can have one of three preferred directions, while Off DSGCs,
+ such as the ventral-preferring JAMB-cell, have been found that only ever
+ prefer a single direction 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kim:2008kl"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The starburst amacrine cell
+\end_layout
+
+\begin_layout Standard
+In the 1980s, the starburst amacrine cell (SAC), a neuronal cell type in
+ the mammalian retina, was discovered and characterized 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Famiglietti:1983kx"
+
+\end_inset
+
+.
+ SAC dendrites receive excitatory input synapses from bipolar cells (BCs),
+ which in turn receive input from photoreceptors.
+ SAC dendrites also make synapses onto ganglion cells 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Famiglietti:1991fk"
+
+\end_inset
+
+, which send signals from the retina to the brain through the optic nerve.
+ Like most other amacrine cells, SACs lack an axon; their output synapses
+ are found in the distal zones of their dendrites.
+\end_layout
+
+\begin_layout Standard
+There are two subtypes of SACs, one stratifying in the OFF sublayer of the
+ IPL and one in the ON sublayer.
+ The latter are sometimes called 
+\begin_inset Quotes eld
+\end_inset
+
+displaced
+\begin_inset Quotes erd
+\end_inset
+
+ SACs due to their somata appearing in the ganglion cell layer rather than
+ the inner nuclear layer.
+ The two types are morphologically very similar, although OFF SACs tend
+ to be about 
+\begin_inset Formula $15\%$
+\end_inset
+
+ larger than their ON counterparts.
+\end_layout
+
+\begin_layout Standard
+Research on the question of directional selectivity has converged upon SAC.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "borg1992model"
+
+\end_inset
+
+ observed that SAC dendrites could function as temporal delay lines, as
+ time is required for current from input synapses to propagate to output
+ synapses (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c).
+ They modeled SAC dendrites as passive electrical cables, and showed that
+ temporal delays could lead to direction selectivity, as had been observed
+ more generally by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "rall1964theoretical"
+
+\end_inset
+
+.
+ Their passive cable model can be approximated by a Reichardt detector,
+ if BC input synapses onto an SAC dendrite are lumped into two groups: (1)
+ proximal synapses near the soma, and (2) distal synapses near the dendritic
+ tips and the output synapses (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c).
+ Since proximal synapses are the delayed input and distal synapses the nondelaye
+d input, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "borg1992model"
+
+\end_inset
+
+ predicted that outward motion should activate SAC dendrites more than inward
+ motion.
+\end_layout
+
+\begin_layout Standard
+Remarkably, their prediction of SAC direction selectivity was confirmed
+ ten years later 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+, as well as their prediction of an outward 
+\begin_inset Quotes eld
+\end_inset
+
+preferred direction
+\begin_inset Quotes erd
+\end_inset
+
+ (PD).
+ A SAC dendrite is more activated by motion outward from the cell body to
+ the tip of the dendrite, than by motion in the opposite direction 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ Therefore a SAC dendrite exhibits DS, and outward motion is said to be
+ its 
+\begin_inset Quotes eld
+\end_inset
+
+preferred direction.
+\begin_inset Quotes erd
+\end_inset
+
+ Note that it is incorrect to assign a single such direction to a SAC, because
+ each of the cell's dendrites has its own preferred direction (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SACimg"
+
+\end_inset
+
+a).
+ DS persists after blocking inhibitory synaptic transmission 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hausselt:2007nx"
+
+\end_inset
+
+, when the only remaining inputs to SACs are bipolar cells (BCs), which
+ are excitatory.
+ Since the SAC exhibits DS, while its BC inputs do not 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yonehara:2013hc"
+
+\end_inset
+
+, we say that DS 
+\emph on
+emerges
+\emph default
+ from the BC-SAC circuit.
+ More recently, it was shown that BC inputs do not exhibit direction selectivity
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yonehara:2013hc"
+
+\end_inset
+
+, confirming their assumption that motion detection occurs somewhere between
+ BCs and SACs.
+\end_layout
+
+\begin_layout Standard
+However, an inconsistency with empirical data also emerged.
+ According to the model, the soma should depolarize more for inward motion
+ than for outward motion, i.e., have a PD opposite that of the distal dendrites
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+e).
+ In fact, the PDs of the soma and distal zone turn out to be the same 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ To resolve this inconsistency, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Hausselt:2007nx"
+
+\end_inset
+
+ argued that active conductances must be added to the passive cable model
+ of the SAC dendrite.
+ 
+\end_layout
+
+\begin_layout Standard
+Inhibitory connections between SACs are also known to exist 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lee:2006qa"
+
+\end_inset
+
+, and can contribute to SAC direction selectivity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhou:2008kx"
+
+\end_inset
+
+.
+ However, SAC-SAC inhibition does not appear necessary for direction selectivity
+, which persists even during pharmacological blockade of inhibitory synaptic
+ transmission 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hausselt:2007nx"
+
+\end_inset
+
+.
+ Therefore the present work focuses on BC-SAC circuitry.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/SACpic.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Starburst Amacrine Cell.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SACimg"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+An Off SAC.
+ 
+\series bold
+a
+\series default
+, View of an SAC on the plane perpindicular to the light axis.
+ Each dendrite of the SAC has a separate preferred direction oriented outward
+ from the soma.
+ The inset shows vericosities in the distal regions of the dendrite, indicating
+ likely presynaptic sites.
+ 
+\series bold
+b
+\series default
+, A view of the same SAC from a plane parallel to the light axis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Existing Models of direction selectivity
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "barlow1963selective"
+
+\end_inset
+
+ first direction selective ganglion cells, they believed that DS arose in
+ these cells through lateral inhibition displaced toward the preferred direction.
+ If inhibition passes through a temporal delay line, or the inhibitory signal
+ is sustained for a longer duration than the excitatory signal, this displacemen
+t could yield DS responses (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+b).
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wyatt1975directionally"
+
+\end_inset
+
+ further investigated this theory and confirmed the hypothesis.
+ They identified a cardioid-shaped inhibitory receptive field around each
+ point of excitation on the DSGC, biased in the preferred direction.
+ 
+\end_layout
+
+\begin_layout Standard
+Another model exists that has appeared in models of biological motion detection
+ since the 1950s, but has not previously been ascribed to a specific neural
+ circuit in the mammalian visual system.
+ Motion can be detected by correlating excitatory input signals from two
+ locations, if one signal passes through a temporal delay line.
+ Stimulation of the delayed input followed by the nondelayed input causes
+ signals to arrive synchronously at the output element, and to activate
+ it.
+ Stimulation in the opposite order gives rise to asynchronous signals at
+ the output element, and no activation.
+ In honor of the pioneering researcher Werner Reichardt, we will refer to
+ the computational motif of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+a as a 
+\begin_inset Quotes eld
+\end_inset
+
+Reichardt detector,
+\begin_inset Quotes erd
+\end_inset
+
+ although it is actually a subunit of his model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "reichardt1961autocorrelation"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The passive cable model of SAC direction selectivity is based on the assumption
+ that the temporal delay in the Reichardt detector is due to propagation
+ of signals within the SAC dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+d).
+ This thesis explores another possibility: perhaps temporal delay could
+ arise from mechanisms 
+\emph on
+presynaptic
+\emph default
+ to SAC dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c), since mouse BCs have been classified into multiple types 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+, which are known to have distinct temporal behaviors 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+.
+ If the connectivity of BC types with SACs varied with distance from the
+ SAC soma, the BC-SAC circuit could end up resembling 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c.
+ We tested this hypothesis by reconstructing BC-SAC circuitry using e2198,
+ a dataset of mouse retinal images from serial block-face scanning electron
+ microscopy (SBEM) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Briggman:2011zr"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Motion is a spatiotemporal phenomenon: an object at one location appears
+ somewhere else after a time delay.
+ Therefore we wondered whether DS might arise because different locations
+ on the SAC dendrite are wired to BC types with different time lags.
+ More specifically, we hypothesized that the proximal BCs (wired near the
+ SAC soma) lag the distal BCs (wired far from the soma).
+ 
+\end_layout
+
+\begin_layout Standard
+Such 
+\begin_inset Quotes eld
+\end_inset
+
+space-time wiring specificity
+\begin_inset Quotes erd
+\end_inset
+
+ could lead to DS as follows (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c).
+ Motion outward from the soma will activate the proximal BCs followed by
+ the distal BCs.
+ If the stimulus speed is appropriate for the time lag, signals from both
+ BC groups will reach the SAC dendrite simultaneously, summing to produce
+ a large depolarization.
+ For motion inward towards the soma, BC signals will reach the SAC dendrite
+ asynchronously, causing only small depolarizations.
+ Therefore the dendrite will 
+\begin_inset Quotes eld
+\end_inset
+
+prefer
+\begin_inset Quotes erd
+\end_inset
+
+ outward motion, as observed experimentally 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename DSmech.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hypothesized Models of Direction Selectivity
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Hypothesized-Models-of"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+General and SAC-specific models of DS.
+ 
+\series bold
+a
+\series default
+, A schematic representation of the Reichardt model.
+ The two arms represent two spatially distinct excitatory inputs, with the
+ input of the left arm being delayed relative to the right arm.
+ If the detector is active only when it receives two simultaneous inputs,
+ a stimulus moving from left to right in time 
+\begin_inset Formula $\tau$
+\end_inset
+
+ will activate the detector, while a stimulus moving in the opposite direction
+ will not.
+ 
+\series bold
+b
+\series default
+, Similarly, the Barlow-Levick model has two arms with a delay line, but
+ in this model, the delay is on the right arm, which provides inhibitory
+ input rather than excitatory.
+ If the detector is active only when it receives excitation without simultaneous
+ly receiving inhibition, once again only the rightward traveling stimulus
+ will active the detector.
+ 
+\series bold
+c
+\series default
+, A Reichardt-like mechanism for DS in the SAC, with the delay line occuring
+ presynaptically 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "tukker2004direction"
+
+\end_inset
+
+.
+ 
+\series bold
+d
+\series default
+, The same model, but with a postsynaptic delay line via intracellular signal
+ propagation.
+ 
+\series bold
+e
+\series default
+, An illustration of the observation that if there is a delay occuring through
+ signal propagation, a stimulus traveling in the null direction should cause
+ substantial depolarization in the soma, contrary to empirical observations
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Reconstruction of the Retina by Man and Machine
+\end_layout
+
+\begin_layout Standard
+30 years ago, John Graham White, under the supervision of Sydney Brenner,
+ undertook the heroic task of reconstructing the connectome of a tiny worm
+ known as caenorhabditis elegans
+\begin_inset CommandInset citation
+LatexCommand citep
+key "White:1986uq"
+
+\end_inset
+
+.
+ He recognized that only electron micrography offered the resolution necessary
+ to positively identify synaptic contacts, as demonstrated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resolutionImportant"
+
+\end_inset
+
+.
+ After a decade of labor, White produced the first connectome through almost
+ entirely manual reconstruction.
+ In some case, neural processes were even printed, and physical reconstructions
+ were created as a means of visualization.
+\end_layout
+
+\begin_layout Standard
+Happily, the development of modern computers allows us to substantially
+ improve upon the reconstruction rate of White et al.
+ We reconstructed e2198, an existing dataset of mouse retinal images from
+ serial block-face scanning electron microscopy (SBEM) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Briggman:2011zr"
+
+\end_inset
+
+.
+ The size of the data is approximately 350 
+\begin_inset Formula $\mu m$
+\end_inset
+
+ x 350 
+\begin_inset Formula $\mu m$
+\end_inset
+
+ x 50 
+\begin_inset Formula $\mu m$
+\end_inset
+
+, with the final dimension being parallel to the light axis.
+ e2198 is located in the ventral portion of the retinal at a depth such
+ that it spans the IPL and includes a portion of the INL and GCL.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/Seung_EDfig8.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The value of resolution.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resolutionImportant"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Each panel shows a bipolar cell and a starburst amacrine cell.
+ The cells in 
+\series bold
+a
+\series default
+ and 
+\series bold
+b
+\series default
+ have significant contact, while those in 
+\series bold
+c
+\series default
+ and 
+\series bold
+d
+\series default
+ have no contact at all.
+ It would be impossible to distinguish the two cases with the resolution
+ offered by light microscopy.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Machine learning
+\end_layout
+
+\begin_layout Standard
+The boundaries between neurons in subvolumes of the e2198 and e2006 datasets
+ were manually traced by an expert.
+ Using this as ground truth, a convolutional network (CN) was trained to
+ detect boundaries between neurons using the MALIS method 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "TuragaMALIS09"
+
+\end_inset
+
+.
+ The CN had the same architecture as one used previously 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+, and produced as output an affinity graph connecting nearest neighbor voxels
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Turaga:2010ij"
+
+\end_inset
+
+.
+ Any subvolume of e2198 could be oversegmented by applying a modified watershed
+ algorithm to the appropriate subgraph.
+ The regions of the oversegmentation will be called supervoxels.
+\end_layout
+
+\begin_layout Standard
+The e2198 dataset was oversegmented by an artificial intelligence (AI) into
+ groups of neighboring voxels that were subsets of individual neurons.
+ These 
+\begin_inset Quotes eld
+\end_inset
+
+supervoxels
+\begin_inset Quotes erd
+\end_inset
+
+ were assembled by humans into accurate 3D reconstructions of neurons.
+ 
+\end_layout
+
+\begin_layout Section
+Reconstruction by EyeWirers
+\end_layout
+
+\begin_layout Standard
+In order to assemble the supervoxels produced by automatic segmentation,
+ we primarily mobilized volunteers through EyeWire, a web site that turns
+ 3D reconstruction of neurons into a game of coloring serial EM images.
+ 
+\end_layout
+
+\begin_layout Standard
+Even before the learning in normal gameplay illustrated by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+a, all EyeWirers are required to go through a training session immediately
+ after registering for the site.
+ This consists of a sequence of tutorial cubes, each of which was previously
+ colored by an expert .
+ Each cube teaches through instructions and per-click feedback about accuracy
+ based on comparing the EyeWirer's selections with those of the expert.
+ After submitting a tutorial cube, the EyeWirer is given a chance to view
+ mistakes.
+\end_layout
+
+\begin_layout Standard
+Accuracy is monitored on a weekly basis by computing the precision and recall
+ of each EyeWirer with respect to the truth, defined as neuron reconstructions
+ based on EyeWire consensus followed by GrimReaper corrections (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+c).
+ Less accurate EyeWirers are given less weight in the vote, which appears
+ to improve the overall accuracy of the system.
+\end_layout
+
+\begin_layout Standard
+Players' daily, weekly, and monthly scores are publicly displayed on a leaderboa
+rd, motivating players to excel through competition.
+ Players communicate with each other through online 
+\begin_inset Quotes eld
+\end_inset
+
+chat
+\begin_inset Quotes erd
+\end_inset
+
+ and discussion forums.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Quotes eld
+\end_inset
+
+beta test
+\begin_inset Quotes erd
+\end_inset
+
+ version of EyeWire was deployed in February 2012, and attracted a small
+ group of users, who helped guide software development.
+ After the official launch in December 2012, EyeWire was successful at reconstru
+cting ganglion cells, but did not work well for reconstructing the more
+ difficult SACs.
+ In March 2013, EyeWirers were invited to the 
+\begin_inset Quotes eld
+\end_inset
+
+Starburst Challenge,
+\begin_inset Quotes erd
+\end_inset
+
+ a sequence of tutorial cubes drawn from SACs.
+ Those who passed with sufficient accuracy were an elite group allowed to
+ reconstruct SACs (Supplementary Information).
+\end_layout
+
+\begin_layout Standard
+Through EyeWire, we wanted to enable anyone, anywhere, to participate in
+ our research.
+ The approach is potentially scalable to extremely large numbers of 
+\begin_inset Quotes eld
+\end_inset
+
+citizen scientists
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lintott2008galaxy"
+
+\end_inset
+
+.
+ More importantly, the 3D reconstruction of neurons requires highly developed
+ visuospatial abilities, and we wondered whether a game could be more effective
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cooper:2010hc"
+
+\end_inset
+
+ than traditional methods of recruiting and creating experts.
+\end_layout
+
+\begin_layout Standard
+In gameplay mode, EyeWire shows a 2D slice through a 
+\begin_inset Quotes eld
+\end_inset
+
+cube,
+\begin_inset Quotes erd
+\end_inset
+
+ an e2198 subvolume of 
+\begin_inset Formula $256^{3}$
+\end_inset
+
+ grayscale voxels (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+a).
+ Gameplay consists of two activities: coloring the image near some location,
+ or searching for a new location to color.
+ Coloring is done by clicking at any location in the 2D slice, which causes
+ the supervoxel containing that location to turn blue.
+ Searching is done by translating and orienting the slice within the cube,
+ and interacting with a 3D rendering of the colored supervoxels.
+\end_layout
+
+\begin_layout Standard
+When the player first receives a cube, it already comes with a 
+\begin_inset Quotes eld
+\end_inset
+
+seed,
+\begin_inset Quotes erd
+\end_inset
+
+ a contiguous set of colored supervoxels.
+ The challenge is to color all the rest of the supervoxels that belong to
+ the same neuron, and avoid coloring other neurons.
+ Gameplay for a cube terminates when the player clicks 
+\begin_inset Quotes eld
+\end_inset
+
+Submit,
+\begin_inset Quotes erd
+\end_inset
+
+ receives a numerical score, and proceeds to the next cube.
+ Because our AI is sufficiently accurate, coloring supervoxels is faster
+ than manually coloring voxels, an older approach to 3D reconstruction 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fiala:2005fk"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The scoring system is designed to reward accurate coloring.
+ This is nontrivial because EyeWire does not know the correct coloring.
+ Each cube is assigned to multiple players (typically 5 to 10), and high
+ scores are earned by players who color supervoxels that other players also
+ color.
+ In other words, the scoring system rewards agreement between players, which
+ tends to be the same as rewarding accuracy.
+ 
+\end_layout
+
+\begin_layout Standard
+Consensus is used not only to incentivize individual players, but also to
+ enhance the accuracy of the entire system.
+ Any player's coloring is equivalent to a set of supervoxels.
+ Given the colorings of multiple players starting from the same seed in
+ the same cube, a consensus can be computed by voting on each supervoxel.
+ EyeWirer consensus was much more accurate than any individual EyeWirer
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+b,c).
+\end_layout
+
+\begin_layout Standard
+Coloring a neuron is more challenging than it sounds.
+ Images are corrupted by noise and other artifacts.
+ Neurites take paths that are difficult to predict, and can branch without
+ warning.
+ Careless errors result from lapses in attention.
+ Extensive practice is required to achieve accuracy.
+ The most accurate EyeWirers (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+c, upper right corner) often had experience with thousands of cubes.
+ Improvements in accuracy were observed over the course of hundreds of cubes,
+ corresponding to tens of hours of practice (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+d).
+ According to subjective reports of EyeWirers, learning continues for much
+ longer than that.
+ In contrast, previous successes at 
+\begin_inset Quotes eld
+\end_inset
+
+crowdsourcing
+\begin_inset Quotes erd
+\end_inset
+
+ image analysis involved tasks that did not require such extensive training
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "von2004labeling,lintott2008galaxy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Reconstructing an entire neuron requires tracing its branches through thousands
+ of cubes.
+ This process is coordinated by an automatic spawner, which inspects each
+ consensus cube for branches that exit the cube.
+ Each exit generates a new cube and seed, which are added to a queue.
+ EyeWirers are automatically assigned to cubes by an algorithm that attempts
+ to balance the number of plays for each cube.
+ 
+\end_layout
+
+\begin_layout Standard
+Over 100,000 registered EyeWirers have been recruited by news reports, social
+ media, and the EyeWire blog.
+ Players span a broad range of ages and educational levels, come from over
+ 130 countries, and the great majority have no formal training in neuroscience
+ .
+ These statistics show that EyeWire indeed widens participation in neuroscience
+ research.
+ At the same time, the most avid players constitute an elite group with
+ disproportionate achievements.
+ For example, the top 100 players have contributed about half of all cubes
+ completed in EyeWire.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/figure2.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EyeWire combines crowd and artificial intelligence.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EyeWireCombine"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, 3D and 2D views in the neuron reconstruction game.
+ 
+\series bold
+b
+\series default
+, Precision and recall are two measures of accuracy.
+ 
+\series bold
+c
+\series default
+, Accuracy of artificial intelligence (AI), 5881 EyeWirers, and EyeWirer
+ consensus on reconstruction of a ganglion cell.
+ 
+\series bold
+d
+\series default
+, EyeWirer precision and recall increase with number of cubes submitted.
+ Solid lines are median values across 208 EyeWirers who submitted at least
+ 500 cubes, and shaded regions indicate 25th to 75th percentile.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Reconstruction by workers
+\end_layout
+
+\begin_layout Standard
+Lab workers also reconstructed neurons independently of EyeWire, with a
+ more sophisticated version of the user interface developed in the lab called
+ OMNI.
+ Their reconstructions were pooled with those of EyeWirers for the analyses
+ reported below.
+ Reconstruction error was quantified, and was treated like other kinds of
+ experimental error when calculating confidence intervals from our data.
+\end_layout
+
+\begin_layout Standard
+Workers were hired based on an interview and a short test of software use
+ passed by 3/4 of the applicants.
+ They were trained for 40 to 50 hours before generating reconstructions
+ used for research.
+ Their skills typically improved for months or even years after the initial
+ training period, and were superior to those of professional neuroscientists
+ without reconstruction experience.
+  
+\end_layout
+
+\begin_layout Standard
+As with EyeWire, the task of reconstructing an entire neuron was divided
+ into subtasks, each of which involved reconstructing the neuron within
+ a subvolume starting from a supervoxel 
+\begin_inset Quotes eld
+\end_inset
+
+seed.
+\begin_inset Quotes erd
+\end_inset
+
+ However, the subvolumes were roughly 100 times larger than EyeWire cubes,
+ and only two workers were assigned to each subvolume.
+ In the first stage of error correction, disagreements were detected by
+ computer, and resolved by one of the two workers, or a third worker.
+ The third occasionally detected and corrected errors that were not disagreement
+s between the first two.
+ Most disagreements were the result of careless errors, and were easily
+ resolved.
+ More rarely, there were disagreements caused by fundamental ambiguities
+ in the image.
+ These locations were noted for later examination with more contextual informati
+on, as described below.
+\end_layout
+
+\begin_layout Standard
+In the second stage of error correction, 3D reconstructions of entire neurons
+ were assembled from multiple subvolumes and inspected by an expert.
+ Suspicious branches or terminations, as well as overlaps between reconstruction
+s of different neurons were detected.
+ The original image was reexamined at these locations to check for errors.
+ The process was repeated until no further errors could be detected.
+ The F-score (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EyeWireCombine"
+
+\end_inset
+
+b) between the reconstructions before and after the second stage was 0.99
+ for SACs and 0.98 for BCs.
+ Some errors may still remain, but it is likely that correcting them would
+ have similarly little effect.
+ 
+\end_layout
+
+\begin_layout Section
+BC Reconstruction
+\end_layout
+
+\begin_layout Subsection*
+Off BCs
+\end_layout
+
+\begin_layout Standard
+Because only part of the inner nuclear layer (INL) was encompassed in e2198,
+ the somata of Off bipolar cells (BCs) were generally outside the dataset.
+ Therefore we searched the INL for candidate BC axons traveling between
+ the somata, and traced them into the INL.
+ Those that arborized in the Off region of the INL were further reconstructed.
+ Cells that violated known BC structures were identified as amacrine cells
+ and discarded 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+BC axons were difficult to reconstruct due to poor staining, and their highly
+ irregular shapes.
+ They could not be accurately reconstructed (either by online volunteers
+ or lab experts) within the 
+\begin_inset Formula $256^{3}$
+\end_inset
+
+ cubes of EyeWire, which were too small to provide sufficient spatial context.
+ Therefore BCs were reconstructed only by lab workers using the large subvolumes
+ mentioned above.
+ 
+\end_layout
+
+\begin_layout Subsection*
+On BCs
+\end_layout
+
+\begin_layout Standard
+On BCs were reconstructed mostly during February to December 2014.
+ Because e2198 extends only partially into the INL, it was not possible
+ to identify BCs based on the existence of a dendritic arbor in the OPL.
+ Instead, we identified BC axonal arbors by comparison with 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+, who reconstructed all BCs in a patch of retina that included both IPL
+ and OPL.
+ BC axon candidates were neurites that pass through the interstices of the
+ INL and emerge in the IPL.
+ Many candidates could be immediately rejected as amacrine or ganglion cells
+ because their arbors were too large, or rejected as glial cells based on
+ surface concavity and roughness.
+ Little human effort was necessary for these cases, because large parts
+ of these cells were automatically reconstructed.
+ The remaining candidates were put into the reconstruction pipeline, and
+ were rejected as narrow field amacrine cells if their stratification profiles
+ deviated markedly from those previously reported by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ for BCs.
+ Eight were rejected in the middle of reconstruction, and three were rejected
+ after full reconstruction.
+ 
+\end_layout
+
+\begin_layout Section
+SAC reconstruction
+\end_layout
+
+\begin_layout Subsection
+Off SACs
+\end_layout
+
+\begin_layout Standard
+Off SACs were reconstructed by (1) forward tracing from the soma to dendritic
+ tips and (2) backward tracing from varicosities on candidate SAC dendrites
+ to the soma.
+ In the forward method, a candidate SAC soma was identified as a supervoxel
+ with a characteristic pattern of dendritic stubs bearing spiny protrusions.
+ By the time reconstruction progressed to approximately half of the average
+ SAC radius, an Off SAC could be conclusively recognized by its starburst
+ shape and narrow stratification at the appropriate IPL depth.
+ More than 90% of candidates turned out to be SACs.
+ 
+\end_layout
+
+\begin_layout Standard
+In the backward method, we located a thin dendrite with varicosities at
+ the appropriate IPL depth.
+ This was reconstructed back to the soma, and then the rest of the dendrites
+ were reconstructed from the soma to the tips.
+ The cell could be discarded at any point during this process, if its dendrites
+ escaped from the appropriate IPL depth or failed to exhibit the proper
+ morphological characteristics.
+ Less than 25% of initial candidates ended up confirmed as SACs.
+ 
+\end_layout
+
+\begin_layout Standard
+In total, 79 Off SACs were reconstructed, 39 by forward tracing and 52 by
+ backward tracing.
+ After candidates were identified by one of the authors (J.S.K.), reconstructions
+ were performed by lab workers (59 cells) or by EyeWirers (29 cells).
+ Overlapping numbers (12 for forward/backward, 9 for workers/EyeWirers)
+ mean the combination of the two.
+\end_layout
+
+\begin_layout Subsection*
+On SACs
+\end_layout
+
+\begin_layout Standard
+On SACs were reconstructed mostly during July 2013 to September 2014.
+ EyeWirers who helped reconstruct On SACs are listed in the Supplemental
+ Information.
+ 
+\end_layout
+
+\begin_layout Standard
+The forward-tracing method of identification turned out to be less useful
+ for On SACs because their dendrites can take rather circuitous paths before
+ reaching their final IPL depth and making the distinctive starburst shape.
+ Therefore it takes a great deal of reconstruction effort before a candidate
+ cell can be accepted or rejected as a SAC.
+ It saves human effort if this decision can be made earlier in the reconstructio
+n process.
+ Two On SACs were reconstructed by lab workers using the forward method.
+ The remaining 75 were reconstructed by EyeWirers using the backward method.
+\end_layout
+
+\begin_layout Standard
+In a parallel study to be reported elsewhere, we exhaustively reconstructed
+ all neurons with somata in a (
+\begin_inset Formula $200~\mu$
+\end_inset
+
+m)
+\begin_inset Formula $^{2}$
+\end_inset
+
+ GCL patch of e2198.
+ This revealed 6 extra On SACs beyond the 35 in the patch that had already
+ been reconstructed for the present study.
+ In other words, the reconstructions of the present study had achieved 85%
+ coverage of all On SACs in this (
+\begin_inset Formula $200~\mu$
+\end_inset
+
+m)
+\begin_inset Formula $^{2}$
+\end_inset
+
+ patch.
+ Assuming that the density of On SACs is the same for all of e2198 as it
+ is in the (
+\begin_inset Formula $200~\mu$
+\end_inset
+
+m)
+\begin_inset Formula $^{2}$
+\end_inset
+
+ patch, the estimated number of On SACs in e2198 is roughly 110, and our
+ overall coverage is roughly 70%.
+ Our estimated coverage of Off SACs is slightly lower, as the Off SAC density
+ is known to be slightly (less than 10%) larger than the On SAC density
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jeon1998"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Reconstruction Results
+\end_layout
+
+\begin_layout Standard
+The cell bodies of On and Off SACs are in the GCL and INL respectively,
+ on opposite sides of the IPL (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+b, d).
+ The reconstructions include 156 SACs (77 On and 79 Off, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+e), which we estimate is more than half of the SACs in e2198 (Experimental
+ Procedures).
+ The diameter of the SAC arbor is much larger than the spacing between cell
+ bodies (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+e), so the arbors of adjacent SACs are highly overlapping.
+ The reconstructions also include 271 On BC axons, coming close to complete
+ coverage of all BCs in a subregion of e2198 roughly (0.1 mm)
+\begin_inset Formula $^{2}$
+\end_inset
+
+ in area (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+e).
+ BC axons are much smaller than SAC arbors (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+e).
+ The reconstructions of On SACs and BCs are new, while the Off SACs were
+ reconstructed for a previous publication 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kim:2014sf"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Length of SAC dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-SAC-(red)"
+
+\end_inset
+
+ inset) was calculated as the mean distance from the soma on the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane of the eight most distant points that are not within 
+\begin_inset Formula $30\thinspace\mu$
+\end_inset
+
+m of each other.
+ These parameters were chosen because the points generated appeared to give
+ an accurate representation of the dendritic length, while avoiding inaccuracy
+ that arises from outliers and from dendrites that extend beyond the bounds
+ of the volume.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sac_props.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Overview of Off and On SAC.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Off-SAC-(red)"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Overview of properties of reconstructed On (blue) and Off (red) SACs.
+ Plotted is the mean estimated coverage of the SAC by BCs as a function
+ of distance from the SAC soma.
+ Inset is mean radius of reconstructed SAC, with error bars indicating standard
+ error.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/figure3.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Reconstructed volume.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Reconstructed-off"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, Rendering of reconstructed off BCs.
+ 
+\series bold
+b
+\series default
+, Rendering of reconstructed off starburst amacrine cells and off BCs.
+ Scale bar is 
+\begin_inset Formula $50\mu m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Aligning cells to a common coordinate system
+\end_layout
+
+\begin_layout Standard
+For more precise quantification of structural properties, a new coordinate
+ system was defined by applying a nonlinear transformation to reconstructed
+ neurons so as to flatten the IPL and make it perpendicular to one of the
+ coordinate axes.
+ The nonlinear transformation was found by the following steps.
+ First a global planar approximation to the Off SAC surface was computed.
+ Then the centroid of all the SACs was projected onto this global plane
+ to define the origin of the coordinate system.
+ The projection was along the coordinate axis of the e2198 volume closest
+ in direction to the light axis.
+ 
+\end_layout
+
+\begin_layout Standard
+For analyses of the Off SAC, in order to correct for curvature, an azimuthal
+ equidistant projection of the Off SAC surface onto the global plane was
+ made about the origin .
+ Then local planar approximations to the SAC surface were computed in the
+ neighborhoods of every node in a triangular lattice.
+ At each point in a triangle, the SAC surface was approximated by computing
+ the mean of the planar approximations (as quaternions with yaw constrained
+ to be zero) for the triangle's vertices, weighted by distance of the point
+ from the vertices.
+\end_layout
+
+\begin_layout Standard
+The Off SACs were defined as 32% IPL depth.
+ We also reconstructed a few On SACs, and defined them as 62%.
+ These choices placed the edge of the INL at 0%.
+ Structural properties of all cells were computed based on the locations
+ of their surface voxels after transformation into the new coordinates.
+ All dimensions are uncorrected for tissue shrinkage, which was previously
+ estimated at 14% by comparison of two-photon and serial EM images 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In analyses of On SACs, we improved the coordinate system by additionally
+ utilizing On SACs as landmarks.
+\end_layout
+
+\begin_layout Standard
+The volume was first rigidly transformed to minimize the averaged squared
+ distance of Off SACs to the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane.
+ A rectangular 
+\begin_inset Formula $32\times36$
+\end_inset
+
+ lattice was defined on the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane, with nodes spaced at approximately 10 
+\begin_inset Formula $\mu$
+\end_inset
+
+m intervals.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+what is the lattice spacing? 9.537um x 9.739um
+\end_layout
+
+\end_inset
+
+ For each lattice node, we computed the mean depth of all Off SAC surface
+ voxels and the mean depth of all On SAC surface voxels within a cylindrical
+ neighborhood.
+ Bilinear interpolation of these depths yielded values 
+\begin_inset Formula $\mu_{x,y}^{OFF}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{x,y}^{ON}$
+\end_inset
+
+ for every point in the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane.
+ Then the depth 
+\begin_inset Formula $z$
+\end_inset
+
+ of every point 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ was transformed according to 
+\begin_inset Formula $z'=\left(z-\mu_{x,y}^{OFF}\right)/\left(\mu_{x,y}^{ON}-\mu_{x,y}^{OFF}\right)$
+\end_inset
+
+, yielding a coordinate system in which Off and On SACs are at depths 0
+ and 1, respectively.
+ Finally we linearly transformed to coordinates in which Off and On SACs
+ are at 0.28 and 0.62 IPL depth, respectively, for consistency with the definition
+s of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\backslash
+It is standard to use On and Off SACs as landmarks to define IPL depth.
+ Since the IPL has curvature and variations in thickness (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alignment"
+
+\end_inset
+
+a), we computationally flattened the retina by transforming the On and Off
+ SACs into parallel planes (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alignment"
+
+\end_inset
+
+b).
+ This type of coordinate transformation improves the accuracy of stratification
+ profiles, and has previously been applied in light microscopic anatomy
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Manookin:2008rr,Siegert:2009dn,Sumbul:2014hl"
+
+\end_inset
+
+.
+ Average On and Off SAC stratification profiles became narrower after the
+ transformation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alignment"
+
+\end_inset
+
+c).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Famiglietti:1983kx"
+
+\end_inset
+
+ divided SAC dendrites into proximal, intermediate, and distal zones.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The transition from proximal to intermediate zone was defined by thinning
+ of the dendrite, and the distal zone by the existence of synaptic boutons.
+\end_layout
+
+\end_inset
+
+The median stratification depth of SAC dendrites varies strongly in the
+ proximal zone, weakly in the intermediate zone, and is roughly constant
+ in the distal zone (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alignment"
+
+\end_inset
+
+d).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename alignment.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Using SACs for volume alignment.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:alignment"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+On (blue) and Off (red) SACs and their usage as landmarks for quantifying
+ IPL depth.
+ 
+\series bold
+a,
+\series default
+ SACs projected along a tangential axis, after rigid alignment to the tangential
+ plane.
+ Curvature and thickness variations of the IPL are evident.
+ 
+\series bold
+b
+\series default
+, SACs projected along a tangential axis, after piecewise bilinear alignment
+ to the tangential plane.
+ 
+\series bold
+c
+\series default
+, SAC stratification profiles before (dashed) and after (solid) piecewise
+ bilinear alignment.
+ 
+\series bold
+d,
+\series default
+ SAC stratification depth versus distance from the soma.
+ Lines indicate median, and shading the 25th and 75th percentiles.
+ Distance bins are 
+\begin_inset Formula $20\thinspace\mu$
+\end_inset
+
+m wide, beginning with 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $20\thinspace\mu$
+\end_inset
+
+m.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Classification of Bipolar Cells
+\end_layout
+
+\begin_layout Standard
+Since 
+\end_layout
+
+\begin_layout Section
+Morphological classification of Bipolar Cells
+\end_layout
+
+\begin_layout Standard
+Only if the stratification profiles of two cells overlap is there potential
+ for contact between the cells, and hence potential for synaptic connections.
+ In other words, stratification constrains retinal connectivity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "masland2004neuronal"
+
+\end_inset
+
+.
+ It follows that cell types defined using stratification are likely to end
+ up having functional significance, assuming that the connectivity of a
+ cell is closely related to its function 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Seung:2014xy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Off Bipolar Cells
+\end_layout
+
+\begin_layout Standard
+BC stratification profiles were computed by dividing surface voxels into
+ 100 bins spanning 0 to 100% IPL depth.
+ Classification into cell types was done by using methods similar to those
+ described previously 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ The BCs were split into shallow (BC1/2) and deep (BC1/2) clusters using
+ the 75th percentile depth of the stratification profile.
+ The BC1/2 cluster was further subdivided by stratification width, defined
+ as the difference between 75th and 25th percentile depths.
+ The wider cluster was identified as BC2 and the narrower cluster as BC1,
+ based on a molecular classification showing that BC2 has more cells per
+ square millimeter than BC1 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+.
+ This correspondence between structural and molecular classifications is
+ the opposite of a previous report 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ The discrepancy may be due to methodological differences, such as computing
+ stratification profiles based on surface voxels versus skeletons.
+ The BC3/4 cluster was subdivided into BC4 and BC3 by the 10th percentile
+ depth, because the molecularly defined BC4 stratifies closer to the INL
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+.
+ Finally, BC3 was subdivided into BC3a and BC3b based on axonal arbor volume,
+ with BC3a having the larger axonal volume.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-bc-splitting"
+
+\end_inset
+
+ shows that each of the above subdivision steps was based on a feature with
+ a roughly bimodal histogram.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/Seung_EDfig6.eps
+	width 80text%
+	height 80theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Off BC types
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Off-BC-renderings"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Off BC types 1, 2, 3a, 3b, and 4 (
+\series bold
+a
+\series default
+ through 
+\series bold
+e
+\series default
+, respectively).
+ BC1/2 mosaics appear complete.
+ BC3/4 mosaics show some gaps, probably because some of the thin axons of
+ BC3/4 were missed in the INL.
+ 
+\series bold
+f
+\series default
+, Statistics of off BC types in this volume.
+ Means and standard deviation of the hull area (area of the convex hull
+ around the cell) are measured in 
+\begin_inset Formula $\mu$
+\end_inset
+
+m
+\begin_inset Formula $^{2}$
+\end_inset
+
+.
+ Type densities are estimated by dividing the number of cells (
+\begin_inset Formula $n$
+\end_inset
+
+) by the total area covered by the union of the hulls of that cell type,
+ and are measured in cells/mm
+\begin_inset Formula $^{2}$
+\end_inset
+
+ without compensation for tissue shrinkage (Methods).
+ Up to an overall scale factor, our densities are similar to those of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "wassle2009cone"
+
+\end_inset
+
+, who found 2233, 3212, 1866, 3254, and 3005 cells/mm
+\begin_inset Formula $^{2}$
+\end_inset
+
+ for molecularly identified BC types, ordered as in the table.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The result still contained a small number of classification errors, as adjacent
+ BCs of the same type overlapped enough to violate the mosaic property.
+ Corrections were made by an automatic algorithm that greedily swapped cells
+ from one cluster to another such that the total overlap between convex
+ hulls of cells of a given type was minimized.
+ Two swaps were vetoed by an expert (J.S.K) on the basis of morphological
+ features.
+ In all, six cells were swapped within BC1/2 and 13 within BC3/4.
+ In the final classification, 41, 56, 29, 35, and 34 BCs were identified
+ as types 1, 2, 3a, 3b, and 4, respectively.
+ A few cells that violated the mosaic of all types and had irregular stratificat
+ion profiles were discarded as possible reconstruction errors or amacrine
+ cells.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/Seung_EDfig5.eps
+	width 80text%
+	height 80theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Off BC classification.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:off-bc-splitting"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+BCs were clustered based on their stratification profiles and axonal volumes.
+ 
+\series bold
+a
+\series default
+, Cells were split into two clusters by the IPL depth of the 75th percentile
+ of their stratification profiles.
+ 
+\series bold
+b
+\series default
+, The shallow cluster BC1/2 was separated into BC1 and BC2 using stratification
+ width, defined as the difference between 75th and 25th percentiles.
+ 
+\series bold
+c
+\series default
+, The deep cluster BC3/4 was divided by 10th percentile into BC4 and BC3.
+ 
+\series bold
+d
+\series default
+, BC3 was divided by axonal volume to yield BC3a and BC3b.
+ Scatter plots of the (
+\series bold
+e
+\series default
+) BC 1/2 and (
+\series bold
+f
+\series default
+) BC 3/4 divisions show swaps that were made to eliminate mosaic violations.
+ No swaps between BC 1/2 and BC 3/4 were needed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+On Bipolar Cells
+\end_layout
+
+\begin_layout Standard
+We define the stratification profile as the density of surface area versus
+ depth in the IPL.
+ For the purpose of BC classification, we restricted the domain of the stratific
+ation profile to the interval between IPL depth 0.4 and 1.
+ The domain omitted depths between 0 and 0.4 to exclude the trunks of the
+ axonal arbors, which increase variability of the stratification profiles.
+ Each stratification profile is normalized like a probability density, so
+ that profile area between IPL depths 0.4 and 1 integrates to unity.
+ Since IPL depth is dimensionless, the stratification profile is also dimensionl
+ess.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ defined stratification profile as the density of reconstructed skeleton.
+ This definition is slightly different from ours, but yields similar results
+ (data not shown).
+ Percentiles are defined for a stratification profile, in the same way as
+ for a probability density.
+ Namely, the interval from the 
+\begin_inset Formula $n$
+\end_inset
+
+th percentile depth to 0th percentile depth contains 
+\begin_inset Formula $n$
+\end_inset
+
+ percent of the area of the stratification profile.
+ As mentioned earlier, 0th percentile depth is defined as IPL depth 0.4.
+ The thickness of the stratification profile is defined as the difference
+ between 85th and 25th percentile depths.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ defined thickness as the difference between 75th and 25th percentile depths,
+ which yields similar classifications.
+ In addition to stratification, we characterized single cell anatomy by
+ a further property, the area of the cell's projection onto the tangential
+ (
+\begin_inset Formula $xy$
+\end_inset
+
+) plane.
+ 
+\end_layout
+
+\begin_layout Standard
+We hierarchically clustered our On BCs as follows.
+ The axonal arbors of BC5 and XBC lie between the Off and On SACs.
+ Accordingly, a BC5/XBC cluster separates from other types based on 85th
+ percentile depth (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+a).
+ This cluster in turn subdivides by 25th percentile depth into outer (closer
+ to the INL) and inner (closer to the GCL) clusters (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+b).
+ The outer cluster can be divided into BC5t and BC5o; the former is more
+ thickly stratified than the latter (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+d).
+ The inner cluster divides into XBC and BC5i based on projection area (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+e).
+ 
+\end_layout
+
+\begin_layout Standard
+Types outside the BC5/XBC cluster lie between the On SACs and GCL.
+ BC7 separates from the others by 85th percentile depth (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+a).
+ Then BC6, BC8/9, and RBC separate from each other based on projection area
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+c).
+ We chose not to separate BC8 and BC9, as the reconstructed cells were too
+ few to yield two complete tilings.
+ 
+\end_layout
+
+\begin_layout Standard
+BC8, BC9, and RBC all appear underrepresented relative to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ This discrepancy could be artifactual, caused by failures to identify the
+ relatively thin axons of these three types in the interstices of the INL.
+ Alternatively, these cell types might be truly underrepresented in our
+ volume.
+\end_layout
+
+\begin_layout Standard
+Histograms showing the various splits in the hierarchical clustering are
+ shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+.
+ The splits are highly convincing near the top of the hierarchy, but less
+ convincing near the bottom.
+ Therefore we sought further validation from the principle that the arbors
+ of a bipolar cell type should 
+\begin_inset Quotes eld
+\end_inset
+
+tile
+\begin_inset Quotes erd
+\end_inset
+
+ the retina with little overlap.
+ If the hierarchical clustering yields cell types that tile the retina,
+ that would be independent validation of the clustering, which relied only
+ on anatomical properties of single cells.
+ For all types, few violations of the tiling principle were observed (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+e, f, g).
+ There are some holes in the tilings, but they are likely the result of
+ omissions in cell reconstruction rather than classification errors.
+ Violations of tiling can be rectified by swapping cells between types,
+ to yield improved classifications.
+ The fraction of swapped cells is small.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename supp_figure1.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+On BC classification.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:on-bc-class"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Hierarchical clustering procedure for On BCs based primarily on percentiles
+ of the stratification profile.
+ Dashed lines show locations of dividing points.
+ 
+\series bold
+a
+\series default
+, BCs are initially subdivided into three groups by 85th percentile IPL
+ depth.
+ 
+\series bold
+b
+\series default
+, BC5 types and XBC are further divided by 25th percentile IPL depth.
+ 
+\series bold
+c,
+\series default
+ RBC, BC6 and BC8/9 are distinguished by the total area of their projection
+ onto the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane.
+ Due to the sparse representation of BC8/9 in our set of reconstructed cells,
+ we were unable to subdivide it.
+ 
+\series bold
+d
+\series default
+, BC5t and BC5o are differentiated by stratification thickness, as defined
+ by the difference between a cell's 85th and 25th percentile IPL depths.
+ 
+\series bold
+e
+\series default
+, BC5i and XBC differ in the total area of their projection onto the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+mouse BCs were originally classified into nine cone types (BC1 through BC9)
+ and one rod type based on light microscopic anatomy 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ghosh:2004ff"
+
+\end_inset
+
+.
+ Later on, BC3 was subdivided into BC3a and BC3b based on molecular differences
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+.
+ Then electron microscopic anatomy was used to distinguish BC3a and BC3b,
+ divide BC5 into two types, and discover a new XBC type 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We revisited the classification of On BCs using the e2198 reconstructions
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+).
+ As shown in the gallery of example cells (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+a, b), On BC axons are found in half the depth of the IPL, closer to the
+ GCL than the INL.
+ Our On BC types correspond to those defined previously, with good agreement
+ regarding densities (compare Fig.
+ 3D with Fig.
+ 1E inset of 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+).
+ The novelty is the subdivision of BC5 into three types called BC5t, BC5i,
+ and BC5o.
+ The three types stratify at similar depths (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+a, c), which is why they were originally grouped into a single Type 5 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ghosh:2004ff"
+
+\end_inset
+
+.
+ Nevertheless, it is possible to differentiate between the types based on
+ subtle differences between their stratification profiles.
+ BC5-inner (
+\begin_inset Quotes eld
+\end_inset
+
+BC5i
+\begin_inset Quotes erd
+\end_inset
+
+) stratifies slightly more towards the inner retina than the other types
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+a, b and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+b).
+ BC5-thick (
+\begin_inset Quotes eld
+\end_inset
+
+BC5t
+\begin_inset Quotes erd
+\end_inset
+
+) is more thickly stratified than BC5-outer (
+\begin_inset Quotes eld
+\end_inset
+
+BC5o
+\begin_inset Quotes erd
+\end_inset
+
+), as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+a, c and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+d.
+ The stratification profile of BC5t is weakly bimodal (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+c), but this property was not used for the classification.
+ 
+\end_layout
+
+\begin_layout Standard
+We are confident of our three-way division of BC5 based on stratification
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+1), because the axonal arbors of each cluster end up roughly tiling the
+ retina with little overlap (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+e, f, g).
+ This 
+\begin_inset Quotes eld
+\end_inset
+
+tiling principle
+\begin_inset Quotes erd
+\end_inset
+
+ is thought to be a defining characteristic of a true bipolar cell type
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+.
+ On the other hand, when BC5 cells are divided into just two clusters, it
+ is impossible to avoid many collisions between highly overlapping axonal
+ arbors (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+e).
+ 
+\end_layout
+
+\begin_layout Standard
+Only a few violations of the tiling principle are evident in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+e, f, and g.
+ One possibility is that the tiling principle holds only approximately,
+ and that the violations are a form of biological 
+\begin_inset Quotes eld
+\end_inset
+
+noise.
+\begin_inset Quotes erd
+\end_inset
+
+ Another possibility is that the violations result from errors in our classifica
+tion procedure.
+ Therefore, we generated a 
+\begin_inset Quotes eld
+\end_inset
+
+corrected
+\begin_inset Quotes erd
+\end_inset
+
+ classification by swapping a few cells between types.
+ The number of swaps is relatively small.
+ The corrected classification was the basis of subsequent analysis of BC-SAC
+ wiring, but our results are qualitatively unchanged even if the uncorrected
+ classification is used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure3.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Classification of On BC types.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Classification-of-On"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Examples of each type, perpendicular (
+\series bold
+a
+\series default
+) and parallel (
+\series bold
+b
+\series default
+) to light axis.
+ (
+\series bold
+c
+\series default
+) Average stratification profiles of types, along with median (dashed line)
+ and quartiles (shaded) of stratification depth of On SAC dendrites versus
+ distance from SAC cell body.
+ (
+\series bold
+d
+\series default
+) Table of statistics: number 
+\begin_inset Formula $n$
+\end_inset
+
+ of reconstructed cells; average convex hull area of the projection onto
+ the plane perpendicular to the light axis; estimate of number of cells
+ per 
+\begin_inset Formula $\textrm{mm}^{2}$
+\end_inset
+
+; coverage factor, sum of convex hull areas divided by area of hull union.
+ BC5t (
+\series bold
+e
+\series default
+), BC5o (
+\series bold
+f
+\series default
+), and BC5i (
+\series bold
+g
+\series default
+) axonal arbors show few violations of the tiling principle, suggesting
+ that the classification is fairly accurate.
+ Scale bars, 
+\begin_inset Formula $10~\mu$
+\end_inset
+
+m for 
+\series bold
+a
+\series default
+, 
+\series bold
+b
+\series default
+ and 
+\begin_inset Formula $30~\mu$
+\end_inset
+
+m for 
+\series bold
+e
+\series default
+, 
+\series bold
+f
+\series default
+, 
+\series bold
+g
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Classification by Connectivity
+\end_layout
+
+\begin_layout Standard
+Only if the stratification profiles of two cells overlap is there potential
+ for contact between the cells, and hence potential for synaptic connections.
+ In other words, stratification constrains retinal connectivity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "masland2004neuronal"
+
+\end_inset
+
+.
+ It follows that cell types defined using stratification are likely to end
+ up having functional significance, assuming that the connectivity of a
+ cell is closely related to its function 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Seung:2014xy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It would be more direct to define a cell type as a set of cells with similar
+ contact or connectivity patterns 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "seung2009reading,seung2012connectome"
+
+\end_inset
+
+, rather than use stratification as a proxy for these properties.
+ For example, the 302 neurons of 
+\emph on
+C.
+ elegans
+\emph default
+ were divided into 118 classes, each containing neurons with similar connectivit
+y patterns 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "White:1986uq"
+
+\end_inset
+
+.
+ Likewise 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ divided BC5 into classes based on patterns of contact with two ganglion
+ cell types named 
+\begin_inset Quotes eld
+\end_inset
+
+gc31-56
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+gc36-51.
+\begin_inset Quotes erd
+\end_inset
+
+ We decided to replicate their analysis, mainly in order to determine the
+ correspondence between contact-based and stratification-based classifications.
+ A secondary motivation was to examine how contact-based classification
+ depends on the completeness of reconstruction.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ reconstructed all neurons with cell bodies contained in a (0.1 mm)
+\begin_inset Formula $^{2}$
+\end_inset
+
+ patch.
+ This method missed ganglion cells with arbors inside the patch but cell
+ bodies outside the patch, which is why gaps in coverage are visible in
+ the gallery of cell types provided in the Supplementary Data of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ Contact with missing arbors obviously cannot be quantified, hampering contact-b
+ased classification.
+ 
+\end_layout
+
+\begin_layout Standard
+We were able to replicate and improve the contact-based classification by
+ making use of a large set of ganglion cells that were reconstructed from
+ the e2198 dataset in a parallel study to be reported elsewhere.
+ From this set of ganglion cells, we identified 16 examples of gc31-56 and
+ 19 examples of gc36-51 based on their distinctive stratification profiles
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+a, b).
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Each ganglion cell type is named based on the first and third quartiles
+ of its average stratification profile, i.e., gc31-56 refers to a stratification
+ profile with first and third quartiles at 0.31 and 0.56 IPL depth, respectively.
+ 
+\end_layout
+
+\end_inset
+
+The arbors of each ganglion cell type completely cover the central region
+ of e2198 where the bipolar cells are located, because the reconstructed
+ ganglion cells include those with cell bodies outside the central region.
+ For each BC5 cell, we quantified the fraction of its axonal surface area
+ in contact with gc31-56 cells, and the fraction of its axonal area in contact
+ with gc36-51 cells.
+ Then BC5 indeed splits nicely into two clusters based on the two contact
+ fractions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+c).
+ One cluster, named 
+\begin_inset Quotes eld
+\end_inset
+
+BC5A
+\begin_inset Quotes erd
+\end_inset
+
+ by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+, has more contact with gc31-56.
+ BC5A tiles with few violations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+e) and therefore appears to be a pure cell type.
+ BC5A corresponds almost exactly with BC5i (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+c).
+ 
+\end_layout
+
+\begin_layout Standard
+The other cluster, named 
+\begin_inset Quotes eld
+\end_inset
+
+BC5R
+\begin_inset Quotes erd
+\end_inset
+
+ by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+, has more contact with gc36-51.
+ Because BC5R contains many tiling violations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+e), 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ speculated that BC5R was a mixture of more than one type.
+ Our stratification-based classification confirms their speculation by effective
+ly dividing BC5R into BC5o and BC5t, both of which tile the retina separately.
+\end_layout
+
+\begin_layout Standard
+The cleanness of the division between BC5A and BC5R is evident in a histogram
+ of the difference between the gc31-56 and gc36-51 contact fractions, in
+ which two well-separated clusters are evident (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:connectivity-bc5"
+
+\end_inset
+
+d).
+ Note that 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ labeled some of their reconstructed cells as BC5X.
+ This name was not intended to be a type but rather indicated cells that
+ were unclassifiable because they lacked contact with gc31-56 and gc36-51.
+ We do not have this problem because our coverage of the ganglion cell types
+ is more complete.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure4.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Contact-based division of BC5.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:connectivity-bc5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Two-way division of BC5 into BC5A and BC5R, defined by contact with ganglion
+ cell types using the method of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ 
+\series bold
+a,
+\series default
+ 
+\series bold
+b
+\series default
+, Representative examples of gc31-56 (blue) and gc36-51 (green), shown perpendic
+ular and parallel to light axis.
+ 
+\series bold
+c
+\series default
+, Each data point represents one BC5 cell, and the coordinates for each
+ cell are the fraction of the BC5 axon in contact with gc36-51 and gc31-56.
+ The dashed diagonal line separates the points into two clusters, named
+ BC5A and BC5R.
+ The color/shape of each symbol indicates whether the cell was classified
+ as BC5i versus BC5t or BC5o based on single cell anatomy and the procedure
+ of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:on-bc-class"
+
+\end_inset
+
+.
+ BC5A corresponds almost perfectly with BC5i, and BC5R with BC5t/o.
+ 
+\series bold
+d
+\series default
+, Histogram of the same data points as in the previous 
+\emph on
+xy
+\emph default
+ plot, but binned by the difference between the 
+\emph on
+x
+\emph default
+ and 
+\emph on
+y
+\emph default
+ coordinates, i.e., coverage by gc31-56 minus coverage by gc36-51.
+ The histogram separates nicely into BC5R and BC5A clusters.
+ 
+\series bold
+e
+\series default
+, Convex hulls of BC5 cells with two-cell overlap in yellow and three or
+ greater cell overlap in red.
+ BC5A tiles well, while BC5R contains many tiling violations.
+ Scale bar, 100 
+\begin_inset Formula $\mu$
+\end_inset
+
+m.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Direction Selectivity in the Off SAC
+\end_layout
+
+\begin_layout Standard
+The starburst amacrine cell is a critical player in the direction selectivity
+ circuit.
+ A SAC dendrite is more activated by motion outward from the cell body to
+ the tip of the dendrite, than by motion in the opposite direction 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ Therefore a SAC dendrite exhibits DS, and outward motion is said to be
+ its 
+\begin_inset Quotes eld
+\end_inset
+
+preferred direction.
+\begin_inset Quotes erd
+\end_inset
+
+ Note that it is incorrect to assign a single such direction to a SAC, because
+ each of the cell's dendrites has its own preferred direction (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-BC-renderings"
+
+\end_inset
+
+a).
+ DS persists after blocking inhibitory synaptic transmission 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hausselt:2007nx"
+
+\end_inset
+
+, when the only remaining inputs to SACs are bipolar cells (BCs), which
+ are excitatory.
+ Since the SAC exhibits DS, while its BC inputs do not 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yonehara:2013hc"
+
+\end_inset
+
+, we say that DS 
+\emph on
+emerges
+\emph default
+ from the BC-SAC circuit.
+ 
+\end_layout
+
+\begin_layout Standard
+Mouse BCs have been classified into multiple types 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+, with different time lags in visual response 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+.
+ Motion is a spatiotemporal phenomenon: an object at one location appears
+ somewhere else after a time delay.
+ Therefore we wondered whether DS might arise because different locations
+ on the SAC dendrite are wired to BC types with different time lags.
+ More specifically, we hypothesized that the proximal BCs (wired near the
+ SAC soma) lag the distal BCs (wired far from the soma).
+ 
+\end_layout
+
+\begin_layout Standard
+Such 
+\begin_inset Quotes eld
+\end_inset
+
+space-time wiring specificity
+\begin_inset Quotes erd
+\end_inset
+
+ could lead to DS as follows (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c).
+ Motion outward from the soma will activate the proximal BCs followed by
+ the distal BCs.
+ If the stimulus speed is appropriate for the time lag, signals from both
+ BC groups will reach the SAC dendrite simultaneously, summing to produce
+ a large depolarization.
+ For motion inward towards the soma, BC signals will reach the SAC dendrite
+ asynchronously, causing only small depolarizations.
+ Therefore the dendrite will 
+\begin_inset Quotes eld
+\end_inset
+
+prefer
+\begin_inset Quotes erd
+\end_inset
+
+ outward motion, as observed experimentally 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Contact analysis
+\end_layout
+
+\begin_layout Standard
+We reconstructed 195 Off BC axons and 79 Off SACs from e2198 (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reconstructed-off"
+
+\end_inset
+
+b).
+ The e2198 retina was stained in an unconventional way that did not mark
+ intracellular structures such as neurotransmitter vesicles 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Briggman:2011zr"
+
+\end_inset
+
+, and reliable morphological criteria for identification of BC presynaptic
+ terminals are unknown.
+ As an indirect measure of connectivity, contact areas were computed for
+ all BC-SAC pairs.
+ The resulting 
+\begin_inset Quotes eld
+\end_inset
+
+contact matrix
+\begin_inset Quotes erd
+\end_inset
+
+ was analyzed through two subsequent steps.
+\end_layout
+
+\begin_layout Standard
+In the first step, Off BC axons were classified into five cell types, following
+ structural criteria 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ established to correspond with previous molecular definitions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-bc-splitting"
+
+\end_inset
+
+).
+ BC types stratify at characteristic depths in the inner plexiform layer
+ (IPL), and vary in size (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+a).
+ The BCs of each type formed a 
+\begin_inset Quotes eld
+\end_inset
+
+mosaic,
+\begin_inset Quotes erd
+\end_inset
+
+ meaning that cells were spaced roughly periodically (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-BC-renderings"
+
+\end_inset
+
+a-e).
+ This is generally accepted as an important defining property of a retinal
+ cell type.
+ Type densities (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-BC-renderings"
+
+\end_inset
+
+f) were roughly consistent with previous reports 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wassle2009cone"
+
+\end_inset
+
+.
+ When the columns of the contact matrix were sorted by BC type (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+b), it became evident that BC2 and BC3a contact SACs more than other BC
+ types.
+ 
+\end_layout
+
+\begin_layout Standard
+In the second step, we averaged contact area over BC-SAC pairs of the same
+ BC type and similar distance between the BC axon and the SAC soma in the
+ plane tangential to the retina (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+c).
+ These absolute areas were normalized to convert them into the percentage
+ of SAC surface area covered by BCs of a given type (Methods).
+ The resulting graphs show that BC2 prefers to contact SAC dendrites close
+ to the SAC soma, whereas BC3a prefers to contact far from the soma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Alternative-contact-OFF"
+
+\end_inset
+
+c).
+ 
+\end_layout
+
+\begin_layout Standard
+Edges of the affinity graph connecting BC with SAC voxels were defined as
+ BC-SAC contact edges.
+ For each pair, the sum of the edges yielded an estimate of contact area.
+ The Euclidean distance separating each BC-SAC pair was computed after projectin
+g their centers onto the SAC plane.
+ Centers of SAC somata were manually annotated, and centers of BC arbors
+ were computed as the centroids of their surface voxels.
+ The pairs were binned by distance of the BC from the SAC soma.
+ For every pair in a bin, the fraction of SAC surface area devoted to BC-SAC
+ contact within the convex hull of the BC was computed as the ratio of BC-SAC
+ contact edges to SAC surface edges within the convex hull.
+ The latter was estimated by the number of SAC surface voxels multiplied
+ by a geometric conversion factor of 1.4 SAC surface edges per surface voxel.
+ (This factor was estimated by dividing the total number of SAC surface
+ edges by the total number of SAC surface voxels in the volume.) BC-SAC pairs
+ with fewer than 10,000 SAC surface voxels inside the hull were excluded
+ from the computation to reduce the effect of fluctuations.
+ The ratios for BCs of the same type were averaged for each distance bin
+ and multiplied by a mosaic overlap factor to yield the values in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d.
+ The mosaic overlap factor represents the extent to which neighboring convex
+ hulls overlap one another, which varies by cell type.
+ This factor was computed by dividing the sum of the hull areas for each
+ cell by the area of the union of hulls for each cell type.
+\end_layout
+
+\begin_layout Standard
+In instances where edges in the affinity graph are converted to area in
+ 
+\begin_inset Formula $\text{μ}m^{2}$
+\end_inset
+
+, the conversion factor of 291.5
+\begin_inset Formula $\text{μ}m^{2}$
+\end_inset
+
+ per edge is used.
+ This factor estimates the real surface area of the cell given the different
+ possible orientations of edges and effects from pixelization.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/figure4.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+BC-Off SAC contact.
+
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:off-SAC-contact"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, Off BCs were divided into five types 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wassle2009cone,Helmstaedter:2013zr"
+
+\end_inset
+
+, based on IPL depth and size.
+ Scale bar is 10 
+\begin_inset Formula $\mu$
+\end_inset
+
+m.
+ 
+\series bold
+b
+\series default
+, Contact areas of BC-SAC pairs, sorted by BC types.
+ 
+\series bold
+c
+\series default
+, Pairs were further sorted by the distance of the BC axon from the SAC
+ soma, as measured in the tangential plane.
+ Scale bar is 50 
+\begin_inset Formula $\mu$
+\end_inset
+
+m.
+ 
+\series bold
+d
+\series default
+, Average BC-SAC contact vs.
+ distance, normalized to percentage of SAC surface area at that distance.
+ Standard error is based on the number of pairs for each BC type and distance.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/Seung_EDfig7.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alternative contact analysis.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Alternative-contact-OFF"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Alternative contact analysis based on total areas rather than averages over
+ individual pairs.
+ 
+\series bold
+a,
+\series default
+ Total contact observed between all reconstructed BCs and SACs as a function
+ of distance from the SAC soma.
+ 
+\series bold
+b, 
+\series default
+Total SAC surface area within the union of convex hulls of each BC type
+ as a function of distance from the SAC soma.
+ All graphs are peaked around 80 
+\begin_inset Formula $\mu$
+\end_inset
+
+m, which is the region of maximum SAC dendritic branching.
+ The sharp decrease at larger distances is due to thinning and termination
+ of SAC branches.
+ The graphs differ across BC types, because the types do not cover exactly
+ the same retinal areas.
+ 
+\series bold
+c, 
+\series default
+Fraction of SAC surface area in contact with BC types, estimated by dividing
+ contact area (
+\series bold
+a
+\series default
+) by SAC surface area (
+\series bold
+b
+\series default
+).
+ This estimate is similar to that of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d, but lacks error bars.
+ 
+\series bold
+d,
+\series default
+ Fraction of SAC surface area contacted by all BC types, obtained as the
+ sum of the contact fractions in (
+\series bold
+c
+\series default
+).
+ Also plotted for comparison is the contact predicted by co-stratification,
+ the sum of the curves from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+b.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Co-stratification analysis
+\end_layout
+
+\begin_layout Standard
+Off SACs stratify at a particular depth in the IPL (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a).
+ Why this depth and not some other? From 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+a, it is obvious that this depth is appropriate for wiring with BC2 and
+ BC3a, as required by our model of DS emergence.
+ Following this logic one step further, we wondered whether the observed
+ dependence of contact on distance from the SAC soma might be reflected
+ in fine aspects of SAC morphology.
+ We hypothesized that SAC dendrites are 
+\begin_inset Quotes eld
+\end_inset
+
+tilted,
+\begin_inset Quotes erd
+\end_inset
+
+ moving deeper into the IPL with distance from the SAC soma.
+ Such a change in depth would be compatible with more overlap with BC2 near
+ the soma, and more overlap with BC3a far from the soma, since BC3a is deeper
+ in the IPL than BC2 (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+a).
+\end_layout
+
+\begin_layout Standard
+The hypothesized tilt turns out to exist (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a).
+ Very close to the SAC soma, the dendrites dive sharply into the IPL from
+ the INL.
+ Surprisingly, IPL depth continues to increase as distance from the SAC
+ soma in the tangential plane ranges from 20 to 80 
+\begin_inset Formula $\mu$
+\end_inset
+
+m.
+ The slight increase is not evident in a single dendrite, but emerges from
+ statistical averaging.
+\end_layout
+
+\begin_layout Standard
+Could dendritic tilt be the cause of the observed variation in BC-SAC contact
+ with distance (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d)? We cannot address causality based on our data, but we can test how well
+ the tilt predicts contact variation.
+ We computed the stratification profiles of BC types (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a), defined as the one-dimensional density of BC surface area along the
+ depth of the IPL.
+ We also computed the stratification profile of SAC dendrites at various
+ distances from the SAC soma (quartiles, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a).
+ Assuming that BC and SAC arbors are statistically independent of each other,
+ we estimated contact from 
+\begin_inset Quotes eld
+\end_inset
+
+co-stratification,
+\begin_inset Quotes erd
+\end_inset
+
+ defined as the integral over IPL depth of the product of BC and SAC stratificat
+ion profiles (Methods).
+\end_layout
+
+\begin_layout Standard
+We found that actual BC2 contact depends more strongly on distance than
+ predicted; the slight change in IPL depth after the initial plunge appears
+ too small to account for the large change in actual BC2 contact.
+ In other failures of contact prediction, BC3a, BC3b, and BC4 stratify at
+ the same IPL depths (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a), yet BC3a makes much more contact than BC3b or BC4.
+ Also, actual BC3a contact plummets near the tips of SAC dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d), while predicted contact does not change at all because the IPL depth
+ of SAC dendrites is constant in this region (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+b).
+ Overall, the total contact from all BC types seems low in this region (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Alternative-contact-OFF"
+
+\end_inset
+
+d), suggesting that BCs avoid making synaptic inputs to the most distal
+ SAC dendrites.
+ This runs counter to the conventional belief that input synapses are uniformly
+ distributed over the entire length of SAC dendrites 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Famiglietti:1991fk"
+
+\end_inset
+
+.
+ The unreliability of inferring contact from co-stratification is illustrated
+ by numerous examples of SAC dendrites that pass through BC axonal arbors
+ without making any contact at all (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resolutionImportant"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/figure5.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+BC-SAC co-stratification.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:off-costrat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, SAC dendrites move deeper into the IPL (median depth, red line) with increasin
+g distance from the SAC soma in the tangential plane.
+ Stratification profiles of BC types, defined as density of surface area
+ over the depth of the IPL.
+ 
+\series bold
+b
+\series default
+, Co-stratification predictions of BC-SAC contact area vs.
+ distance from the SAC soma.
+ The curves are normalized by SAC area at each distance, and are therefore
+ directly comparable with those of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To perform these analyses, all SAC surface voxels were binned by distance
+ from the soma center in the SAC plane.
+ Within each bin, the stratification profile was computed as for the BCs.
+ The quartiles (median and 
+\begin_inset Formula $25$
+\end_inset
+
+th and 
+\begin_inset Formula $75$
+\end_inset
+
+th percentiles) are graphed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a.
+ The prediction of contact from co-stratification is based on the following
+ formalism.
+ 
+\end_layout
+
+\begin_layout Standard
+We define the arbor density 
+\begin_inset Formula $\rho_{a}(\vec{r})$
+\end_inset
+
+ as the surface area per unit volume at location 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ of a type 
+\begin_inset Formula $a$
+\end_inset
+
+ cell with soma centered at the origin.
+ Its integral 
+\begin_inset Formula $\int d^{3}r\,\rho_{a}(\vec{r})$
+\end_inset
+
+ is the total surface area of the arbor.
+ We assume that the contact density received by one cell of type 
+\begin_inset Formula $a$
+\end_inset
+
+ from all cells of type 
+\begin_inset Formula $b$
+\end_inset
+
+ is equal to 
+\begin_inset Formula 
+\begin{equation}
+c_{ab}(\vec{r})=\rho_{a}(\vec{r})\sum_{i}\rho_{b}(\vec{r}-\vec{r}_{bi})\label{eq:ContactDensity}
+\end{equation}
+
+\end_inset
+
+The sum over the 
+\begin_inset Formula $b$
+\end_inset
+
+ mosaic can be approximated by a function that is independent of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}\rho_{b}(\vec{r}-\vec{r}_{bi})\approx\sigma_{b}s_{b}(z)\label{eq:MosaicSum}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{b}$
+\end_inset
+
+ is the number of type 
+\begin_inset Formula $b$
+\end_inset
+
+ neurons per retinal area and
+\begin_inset Formula 
+\begin{equation}
+s_{b}(z)=\int dxdy\,\rho_{b}(x,y,z)\label{eq:StratificationArborDensity}
+\end{equation}
+
+\end_inset
+
+is the stratification profile of a cell of type 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ The SAC arbor density is assumed radially symmetric, 
+\begin_inset Formula $\rho_{SAC}(\vec{r})=\rho_{SAC}\left(\sqrt{x^{2}+y^{2}},z\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ can be regarded (up to normalization) as the SAC stratification profile
+ as a function of distance 
+\begin_inset Formula $r=\sqrt{x^{2}+y^{2}}$
+\end_inset
+
+ from the SAC soma.
+ Integrating the contact density (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ContactDensity"
+
+\end_inset
+
+) and normalizing yields the fraction 
+\begin_inset Formula $\phi_{b}(r)$
+\end_inset
+
+ of SAC area contacted by cell type 
+\begin_inset Formula $b$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\phi_{b}(r)=\sigma_{b}\frac{\int dz\:\rho_{SAC}(r,z)s_{b}(z)}{\int dz\:\rho_{SAC}(r,z)}\label{eq:FractionalContactArea}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Model of direction selectivity
+\end_layout
+
+\begin_layout Standard
+Imaging of intracellular calcium in BC axons 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq"
+
+\end_inset
+
+ and extracellular glutamate around BC axons 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Borghuis:2013uq"
+
+\end_inset
+
+ indicate that BC2 lags BC3a in visual responses by 50 to 100 ms.
+ Therefore BC-SAC wiring appears to possess the space-time specificity appropria
+te for an outward preferred direction, as we hypothesize (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+c).
+\end_layout
+
+\begin_layout Standard
+There is another important difference between BC2 and BC3a: BC3a responds
+ more transiently to step changes in illumination, while BC2 exhibits more
+ sustained responses.
+ The implications of the sustained-transient distinction for DS can be understoo
+d using a mathematical model.
+ The activity of a retinal neuron is often approximated as a linear spatiotempor
+al filtering of the visual stimulus followed by a nonlinearity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Berry:1998kx,Baccus:2002vn"
+
+\end_inset
+
+.
+ Such a 
+\begin_inset Quotes eld
+\end_inset
+
+linear-nonlinear
+\begin_inset Quotes erd
+\end_inset
+
+ model for the output 
+\begin_inset Formula $O(t)$
+\end_inset
+
+ of the SAC dendrite can be written as 
+\begin_inset Formula 
+\begin{equation}
+O(t)=\left[\int dxdt'\:W(x,t-t')I(x,t')\right]^{+}\label{eq:LinearNonlinear}
+\end{equation}
+
+\end_inset
+
+For simplicity, the dendrite and visual stimulus 
+\begin_inset Formula $I(x,t)$
+\end_inset
+
+ are restricted to a single spatial dimension 
+\begin_inset Formula $x$
+\end_inset
+
+, and the nonlinearity is a half-wave rectification, 
+\begin_inset Formula $\left[z\right]^{+}=\max\left\{ z,0\right\} $
+\end_inset
+
+.
+ We interpret the integral in Eq.
+\begin_inset space \space{}
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearNonlinear"
+
+\end_inset
+
+) as the summed input from the BCs presynaptic to the SAC.
+ The nonlinearity could arise from various biophysical mechanisms, such
+ as synaptic transmission from SACs to other neurons.
+ The spatiotemporal filter 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ is a sum of two functions, 
+\begin_inset Formula 
+\begin{equation}
+W(x,t)=U_{s}(x)v_{s}(t)+U_{t}(x)v_{t}(t)\label{eq:SumTwoSeparableFilters}
+\end{equation}
+
+\end_inset
+
+corresponding to contributions from BC2 and BC3a.
+ The sustained temporal filter 
+\begin_inset Formula $v_{s}(t)$
+\end_inset
+
+ is monophasic, while the transient filter 
+\begin_inset Formula $v_{t}(t)$
+\end_inset
+
+ is biphasic (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+a).
+ The spatial filter 
+\begin_inset Formula $U_{s}(x)$
+\end_inset
+
+ represents the entire set of all BC2 inputs to the dendrite, and can be
+ estimated from the BC2 contact area graph in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d.
+ Similarly, 
+\begin_inset Formula $U_{t}(x)$
+\end_inset
+
+ can be estimated from the BC3a contact area graph.
+ The two spatial filters are displaced relative to each other (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+a), because BC3a tends to contact SAC dendrites at more distal locations
+ than BC2.
+\end_layout
+
+\begin_layout Standard
+It is well known that direction selectivity (DS) can be generated by a model
+ like Eqs.
+\begin_inset space \space{}
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearNonlinear"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SumTwoSeparableFilters"
+
+\end_inset
+
+), which is based on the sum of two space-time separable filters 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Watson:1985fk,Adelson:1985bh"
+
+\end_inset
+
+.
+ This is illustrated by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Model-direction-selectivity"
+
+\end_inset
+
+ 6 using the fact that the convolution in Eq.
+\begin_inset space \space{}
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearNonlinear"
+
+\end_inset
+
+) is equivalent to 
+\begin_inset Quotes eld
+\end_inset
+
+sliding
+\begin_inset Quotes erd
+\end_inset
+
+ the spatiotemporal filter 
+\begin_inset Formula $W$
+\end_inset
+
+ in time over the stimulus 
+\begin_inset Formula $I$
+\end_inset
+
+, and computing the overlap at each time.
+ The filter 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ is oriented in space-time (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+a), and so also is a moving stimulus 
+\begin_inset Formula $I(x,t)$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+g,h).
+ The overlap with a rightward-moving stimulus (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+h) is greater than for a leftward one (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+g), so the model is DS, and rightward is the preferred direction.
+ 
+\end_layout
+
+\begin_layout Standard
+How is DS affected by the biphasic shape of the transient temporal filter,
+ 
+\begin_inset Formula $v_{t}(t)$
+\end_inset
+
+? If we remove the negative lobe (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+c), then 
+\begin_inset Formula $v_{t}(t)$
+\end_inset
+
+ will become monophasic like 
+\begin_inset Formula $v_{s}(t)$
+\end_inset
+
+ and their relation closer to a simple time lag (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+d).
+ We will refer to this model as a 
+\begin_inset Quotes eld
+\end_inset
+
+Reichardt detector,
+\begin_inset Quotes erd
+\end_inset
+
+ in honor of the pioneering researcher Werner Reichardt, although it more
+ closely resembles a subunit of his model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "reichardt1961autocorrelation"
+
+\end_inset
+
+.
+ On the other hand, removing the positive lobe of 
+\begin_inset Formula $v_{t}(t)$
+\end_inset
+
+ makes it monophasic but with inverted sign relative to the sustained filter
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+e).
+ The result (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+f) resembles a DS model originally proposed by Barlow and Levick 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Barlow:1965dq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Both modified models (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+d,f) exhibit DS.
+ In the Reichardt detector, the inputs from the two arms enhance each other
+ for motion in the preferred direction.
+ In the Barlow-Levick detector, the two inputs cancel each other for motion
+ in the null direction.
+ Since our sustained-transient model (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+b) employs both mechanisms, it should exhibit more DS than either detector.
+ Our model is related to versions of the Reichardt detector with low-pass
+ and high-pass filters on the two arms 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Borst:2003fk"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the original Barlow-Levick model, the negative filter corresponded to
+ synaptic inhibition.
+ Since BCs are believed to be excitatory, negative BC input in our model
+ represents a reduction of excitation relative to the resting level, rather
+ than true inhibition.
+ Signaling by reduced excitation may be possible, at least for low contrast
+ stimuli, as BC ribbon synapses may have a significant resting rate of transmitt
+er release 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lagnado:1996fk"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The model of Eqs.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearNonlinear"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SumTwoSeparableFilters"
+
+\end_inset
+
+) is a useful starting point for many theoretical investigations that are
+ outside the scope of this article.
+ For example, DS dependences on the spatial and temporal frequency of a
+ sinusoidal traveling wave stimulus are calculated in the Supplementary
+ Equations, and DS dependence on stimulus speed is graphed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Model-direction-selectivity"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/figure6.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mathematical model of the BC-SAC circuit.
+
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sac-model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, Spatiotemporal filter of Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SumTwoSeparableFilters"
+
+\end_inset
+
+).
+ Green is positive, red is negative, and gray is zero.
+ 
+\series bold
+b
+\series default
+, The transient pathway effectively combines a positive channel that leads
+ the sustained pathway by 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and a negative channel that lags by 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ 
+\series bold
+c
+\series default
+, Removing the negative channel yields a Reichardt detector (
+\series bold
+d
+\series default
+).
+ 
+\series bold
+e
+\series default
+, Removing the positive channel yields a Barlow-Levick detector (
+\series bold
+f
+\series default
+).
+ A moving visual stimulus 
+\begin_inset Formula $I(x,t)$
+\end_inset
+
+ is oriented in space-time (
+\series bold
+g
+\series default
+, 
+\series bold
+h
+\series default
+), and so are the spatiotemporal filters (
+\series bold
+a
+\series default
+, 
+\series bold
+c
+\series default
+, 
+\series bold
+e
+\series default
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Mathematical model of the BC-SAC circuit
+\end_layout
+
+\begin_layout Standard
+The output 
+\begin_inset Formula $O(t)$
+\end_inset
+
+ of a SAC dendrite is modeled as 
+\begin_inset Formula 
+\begin{equation}
+O(t)=g\left(\sum_{i=1}^{n}c_{i}f_{i}\left(\int dxdt'w_{i}(x,t-t')I(x,t')\right)\right)\label{eq:Cascade}
+\end{equation}
+
+\end_inset
+
+The dendrite and the visual stimulus 
+\begin_inset Formula $I(x,t)$
+\end_inset
+
+ are restricted for simplicity to a single spatial dimension 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $i$
+\end_inset
+
+th BC filters the visual stimulus with 
+\begin_inset Formula $w_{i}(x,t)$
+\end_inset
+
+, and the result is passed through the nonlinear function 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+.
+ The contributions from the BCs are weighted by the 
+\begin_inset Formula $c_{i}<0$
+\end_inset
+
+, summed, and passed through a nonlinear function 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose that 
+\begin_inset Formula $f_{i}(z)=\left[z+b_{i}\right]^{+}$
+\end_inset
+
+ with 
+\begin_inset Formula $b_{i}>0$
+\end_inset
+
+ corresponding to spontaneous output in the absence of visual stimulation.
+ Then the BC output nonlinearity can be neglected for visual stimuli with
+ sufficiently small amplitude.
+ Also suppose that 
+\begin_inset Formula $g(z)=\left[z-a\right]^{+}$
+\end_inset
+
+, where 
+\begin_inset Formula $a>0$
+\end_inset
+
+ corresponds to a threshold for SAC response, or some source of spontaneous
+ inhibitory input.
+ Then Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Cascade"
+
+\end_inset
+
+) simplifies to 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+O(t)=\left[\int dxdt'\sum_{i=1}^{n}c_{i}w_{i}(x,t-t')I(x,t')+\sum_{i}b_{i}c_{i}-a\right]^{+}\label{eq:LN-model-with-offset}
+\end{equation}
+
+\end_inset
+
+Now assume that each spatiotemporal filter is separable, 
+\begin_inset Formula $w_{i}(x,t)\approx u_{i}(x)v_{i}(t)$
+\end_inset
+
+, and that each temporal filter is either sustained or transient, 
+\begin_inset Formula $v_{s}(t)$
+\end_inset
+
+ or 
+\begin_inset Formula $v_{t}(t)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}c_{i}w_{i}(x,t)\approx U_{s}(x)v_{s}(t)+U_{t}(x)v_{t}(t)\label{eq:LN-model}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $U_{s}(x)=\sum_{i\in S}c_{i}u_{i}(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{t}(x)=\sum_{i\in T}c_{i}u_{i}(x)$
+\end_inset
+
+ are the weighted sums of spatial filters over the sustained and transient
+ sets of BCs.
+ Finally, Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LN-model-with-offset"
+
+\end_inset
+
+) reduces to Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LN-model"
+
+\end_inset
+
+) if 
+\begin_inset Formula $a=\sum_{i}b_{i}c_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If the visual stimulus is a sinusoidal traveling wave, 
+\begin_inset Formula $I(x,t)=\cos(kx-\omega t)$
+\end_inset
+
+, then the integral in Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LN-model"
+
+\end_inset
+
+) yields a sine wave given by the real part of 
+\begin_inset Formula 
+\begin{eqnarray*}
+\left[\tilde{u}_{s}(k)\tilde{v}_{s}(\omega)+\tilde{u}_{t}(k)\tilde{v}_{t}(\omega)\right]e^{-i\omega t} & = & \tilde{u}_{s}(k)\tilde{v}_{s}(\omega)\left[1-i\omega\tau e^{ik\Delta x}\right]e^{-i\omega t}
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{u}_{s}(k)=\int dx\,e^{ikx}u_{s}(x)$
+\end_inset
+
+ and other Fourier transforms are defined similarly.
+ The amplitude of the sine wave defines the peak and time-averaged response
+ of Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LN-model"
+
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{eqnarray*}
+A(k,\omega) & = & \left|\tilde{u}_{s}(k)\right|\left|\tilde{v}_{s}(\omega)\right|\left|1-i\omega\tau e^{ik\Delta x}\right|\\
+ & = & \left|\tilde{u}_{s}(k)\right|\left|\tilde{v}_{s}(\omega)\right|\sqrt{1+2\omega\tau\sin k\Delta x+\left(\omega\tau\right)^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+The term linear in 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is the DS component of the response.
+ Assuming 
+\begin_inset Formula $\omega>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta x>0$
+\end_inset
+
+ without loss of generality, the preferred direction (PD) is rightward for
+ spatial frequencies satisfying 
+\begin_inset Formula $\left|k\Delta x\right|<\pi$
+\end_inset
+
+.
+ Outside this range, spatial aliasing can cause the PD to reverse.
+ The direction selectivity index (DSI) is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+DSI & = & \frac{PD-ND}{PD}=1-\sqrt{\frac{1-2\omega\tau\left|\sin k\Delta x\right|+\left(\omega\tau\right)^{2}}{1+2\omega\tau\left|\sin k\Delta x\right|+\left(\omega\tau\right)^{2}}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+DSI=\frac{PD-ND}{PD}=1-\sqrt{\frac{1-2\omega\tau\left|\sin k\Delta x\right|+\left(\omega\tau\right)^{2}}{1+2\omega\tau\left|\sin k\Delta x\right|+\left(\omega\tau\right)^{2}}}\label{eq:DSI}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which can be rewritten as Eq.
+\begin_inset space \space{}
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DSI"
+
+\end_inset
+
+) in the main text.
+ This is a periodic function of 
+\begin_inset Formula $k$
+\end_inset
+
+, because the DSI is a ratio of responses.
+ The responses themselves will typically vanish for large 
+\begin_inset Formula $k$
+\end_inset
+
+, due to the spatial filtering, but the DSI is independent of the filter
+ functions.
+ According to the second line, 
+\begin_inset Formula $0\leq DSI\leq1$
+\end_inset
+
+.
+ The third line is maximized for any fixed 
+\begin_inset Formula $\omega$
+\end_inset
+
+ when 
+\begin_inset Formula $k\Delta x=\pi/2$
+\end_inset
+
+.
+ This means that an optimal wavelength for the stimulus is 
+\begin_inset Formula $\lambda=4\Delta x$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+DSI=1-\frac{1-\omega\tau}{1+\omega\tau}
+\]
+
+\end_inset
+
+which in turn is maximized when 
+\begin_inset Formula $\omega\tau=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename off_sac papers/Seung_EDfig9.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model direction selectivity index (DSI) versus stimulus speed.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Model-direction-selectivity"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+DSI versus stimulus speed (units of 
+\begin_inset Formula $\Delta x/\tau$
+\end_inset
+
+) for traveling sine waves of various wavelengths 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ (units of 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+).
+ The preferred speed (horizontal location of each peak) is 
+\begin_inset Formula $\lambda/(2\pi)$
+\end_inset
+
+.
+ Note that responses are cut off at high speeds by the temporal filters
+ of the model, but the DSI can decay more slowly.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+In our DS model, SAC dendrites are wired to BC types with different time
+ lags.
+ A previous model did not distinguish between BC types, and instead relied
+ on the time lag of signal conduction within the SAC dendrite itself 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tukker2004direction"
+
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+d).
+ Like most other amacrine cells, SACs lack an axon; their output synapses
+ are found in the distal zones of their dendrites 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Famiglietti:1991fk"
+
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-SAC-(red)"
+
+\end_inset
+
+a, inset).
+ Due to dendritic conduction delay, proximal BC inputs should take longer
+ to reach the output synapses than distal BC inputs (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+d).
+ Therefore this time lag is also consistent with the empirical finding of
+ an outward preferred direction.
+ To summarize the novelty of our hypothesis, we place the time lag before
+ BC-SAC synapses, whereas the previous model places it after BC-SAC synapses.
+\end_layout
+
+\begin_layout Standard
+The postsynaptic delay model has a major weakness.
+ If dendritic conduction were the only source of time lag, the somatic voltage
+ would exhibit DS with an inward preferred direction, but this is inconsistent
+ with intracellular recordings 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Euler:2002oq"
+
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+e).
+ In contrast, the presynaptic delay model is compatible with approximating
+ an SAC dendrite as isopotential (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hypothesized-Models-of"
+
+\end_inset
+
+c), so preferred direction is predicted to be independent of the location
+ of the voltage measurement, consistent with empirical data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ It may also be possible to make the postsynaptic delay model consistent
+ with experiments by adding active dendritic conductances 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hausselt:2007nx"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The presynaptic and postsynaptic delay models are not mutually exclusive.
+ If they work together, passive cable theory suggests that presynaptic delay
+ dominates, because estimated postsynaptic delay is much shorter than the
+ time lag between BC2 and BC3a (Supplementary Equations).
+ Can we gauge the relative importance of the delays empirically rather than
+ theoretically? One way would be intracellular recording at the SAC soma
+ of responses to visual stimulation at various dendritic locations.
+ If postsynaptic delay dominates, then response latency will grow with distance
+ of the visual stimulus from the soma.
+ If presynaptic delay dominates, then distal stimulation will evoke somatic
+ responses with shorter latency than proximal stimulation.
+ This prediction may seem counterintuitive, but is an obvious outcome of
+ our model.
+\end_layout
+
+\begin_layout Standard
+Many other models of DS emergence in SACs invoke inhibition as well as excitatio
+n 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "borg1992model,Gavrikov:2003om,Munch:2006qy,Lee:2006qa"
+
+\end_inset
+
+.
+ We have focused on excitatory mechanisms, as blocking inhibition does not
+ abolish DS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Euler:2002oq"
+
+\end_inset
+
+.
+ However, inhibition may have the effect of enhancing DS, and its role should
+ be investigated further.
+\end_layout
+
+\begin_layout Standard
+This work focused on Off BC-SAC circuitry.
+ An analogous sustained-transient distinction can also be made for On BC
+ types 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+.
+ It remains to be seen whether their connectivity with On SACs depends on
+ distance from the soma.
+ If this turns out to be the case, then the model of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+ could serve as a general theory of motion detection by both On and Off
+ SACs.
+ The model filter of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sac-model"
+
+\end_inset
+
+a also resembles the spatiotemporal receptive field of the J type of ganglion
+ cell (Fig.
+ 3b of Ref.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim:2008kl"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Neural activity imaging 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Maisak:2013ly"
+
+\end_inset
+
+ and connectomic analysis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Takemura:2013zr"
+
+\end_inset
+
+ have recently identified a plausible candidate for the site of DS emergence
+ in the fly visual system.
+ If our theory is correct, then the analogies between insect and mammalian
+ motion detection 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Borst:2011vn"
+
+\end_inset
+
+ are more far-reaching than previously suspected, with fly T4 and T5 cells
+ corresponding to On and Off SAC dendrites in both connectivity and function.
+ 
+\end_layout
+
+\begin_layout Standard
+A glimmer of space-time wiring specificity can even be seen in the structure
+ of the SAC itself.
+ Since BC types with different time lags arborize at different IPL depths,
+ IPL depth can be regarded as a time axis.
+ Therefore, the slight tilt of the SAC dendrites in the IPL (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-costrat"
+
+\end_inset
+
+a) could be related to the orientation of the SAC receptive field in space-time
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Model-direction-selectivity"
+
+\end_inset
+
+a).
+ However, dendritic tilt alone is not sufficient to predict our model, as
+ co-stratification sometimes fails to predict contact (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+b).
+ For example, co-stratification predicts strong BC4 connectivity to distal
+ SAC dendrites.
+ This would favor an inward preferred direction, contrary to what is observed,
+ because BC2 leads (not lags) BC4 in visual responses 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The idea that contact (or connectivity) can be inferred from co-stratification
+ is sometimes known as Peters' Rule 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "braitenberg1998cortex"
+
+\end_inset
+
+, and has also been applied to estimate neocortical connectivity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kalisman:2003vn,Binzegger:2004kl,Stepanyants:2005kx"
+
+\end_inset
+
+.
+ The present work shows that fairly subtle violations of Peters' Rule may
+ be important for visual function.
+ Previous research suggests that On-Off direction selective ganglion cells
+ (DSGCs) inherit their DS from SAC inputs due to a strong violation of Peters'
+ Rule 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fried:2002mi,yonehara2010spatially,wei2010development,Briggman:2011zr"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Our findings were made possible by using AI to reduce the amount of human
+ effort required for 3D reconstruction of neurons.
+ Even after the labor savings, our research required great human effort
+ from a handful of paid workers in the lab and a large number of volunteers
+ through EyeWire.
+ Our experiences do not support claims that the 
+\begin_inset Quotes eld
+\end_inset
+
+wisdom of the crowd
+\begin_inset Quotes erd
+\end_inset
+
+ should replace experts 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "surowiecki2005wisdom"
+
+\end_inset
+
+.
+ Instead, EyeWire depends on cooperation between lab experts and online
+ amateurs (Methods).
+ Furthermore, some amateurs developed remarkable expertise and were promoted
+ to increasingly sophisticated roles within the EyeWire community (Supplementary
+ Notes).
+ We believe that crowd wisdom requires amplifying the expert voices within
+ the crowd, and also empowering individuals to become experts.
+ Fortunately, such goals are well-matched to the game format.
+\end_layout
+
+\begin_layout Standard
+The EyeWire AI was based on a deep convolutional network 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "TuragaMALIS09,Turaga:2010ij"
+
+\end_inset
+
+.
+ Similar networks have been successfully applied to serial EM images obtained
+ using conventional staining techniques that mark intracellular organelles
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ciresan2012deep"
+
+\end_inset
+
+.
+ Extending EyeWire to such images, in which synapses are clearly visible,
+ would enable a true connection analysis that goes beyond the contact and
+ co-stratification analyses employed here.
+\end_layout
+
+\begin_layout Standard
+Our work demonstrates that reconstructing a neural circuit can provide surprisin
+g insights into its function.
+ Much more will be learned as reconstruction speed grows.
+ The combination of crowd and artificial intelligence promises a continuous
+ upward path of improvement, as human input from the crowd is not only useful
+ for generating neuroscience discoveries, but also for making the AI more
+ capable through machine learning.
+\end_layout
+
+\begin_layout Chapter
+Analagous Connectivity in the On SAC
+\end_layout
+
+\begin_layout Standard
+The starburst amacrine cell (SAC) is a key player in retinal computation
+ of the direction of a moving stimulus.
+ Ablation of SACs impairs the optokinetic reflex, a behavior that depends
+ on computation of visual motion 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yoshida:2001rz,amthor2002effects"
+
+\end_inset
+
+.
+ Both ablation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Yoshida:2001rz,amthor2002effects"
+
+\end_inset
+
+ and reversible inactivation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Vlasits:2014aa"
+
+\end_inset
+
+ of SACs reduce direction selective (DS) responses in ganglion cells, which
+ receive synaptic input from SACs.
+ SAC dendrites are preferentially activated by visual stimuli that move
+ outward from the soma to the dendritic tips 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq,Lee:2006qa,Hausselt:2007nx"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The proposed mechanisms for DS of SAC dendrites fall into several categories.
+ According to inhibitory cellular hypotheses, dendritic biophysics causes
+ inhibitory input to SACs to have effects that depend on dendritic location
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "borg1992model,Gavrikov:2003om"
+
+\end_inset
+
+.
+ In inhibitory circuit hypotheses, GABAergic synaptic connectivity between
+ SAC dendrites depends on the difference between their preferred directions
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lee:2006qa,Munch:2006qy"
+
+\end_inset
+
+.
+ In excitatory cellular hypotheses, SAC biophysics causes excitatory input
+ to SACs to have effects that depend on dendritic location 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "tukker2004direction,Hausselt:2007nx,Oesch:2010aa"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Recently we proposed a novel excitatory circuit hypothesis based on specificity
+ of wiring between bipolar cells (BCs) and SACs.
+ The proposal was based on anatomical evidence that sustained and transient
+ BC types are connected to SACs at locations that are near and far from
+ the SAC soma, respectively 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kim:2014sf"
+
+\end_inset
+
+.
+ Such 
+\begin_inset Quotes eld
+\end_inset
+
+space-time wiring specificity
+\begin_inset Quotes erd
+\end_inset
+
+ could make the BC-SAC circuit function as a correlation-type motion detector
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Borst:2011vn"
+
+\end_inset
+
+, and is consistent with the observed outward preferred direction of SAC
+ dendrites.
+\end_layout
+
+\begin_layout Standard
+Like many other retinal neurons, the SAC comes in both On and Off types.
+ The On SAC resembles a reflection of the Off SAC across a plane through
+ the middle of the inner plexiform layer (IPL) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+b, d).
+ Probably due to this striking symmetry, DS and its mechanisms are often
+ assumed to be similar between On and Off SACs.
+ This remains merely an assumption as published studies of SACs were typically
+ restricted to a single type.
+ Physiological studies of DS were carried out for On SACs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Euler:2002oq,Lee:2006qa,Hausselt:2007nx"
+
+\end_inset
+
+, while our anatomical study of BC-SAC wiring specificity was carried out
+ for Off SACs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kim:2014sf"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Here we find evidence that the On BC-SAC circuit possesses a space-time
+ wiring specificity analogous to that shown previously for the Off BC-SAC
+ circuit.
+ We reconstructed a large set of On BCs and On SACs from e2198, a dataset
+ of mouse retinal images from serial block-face scanning electron microscopy
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Briggman:2011zr"
+
+\end_inset
+
+.
+ Based on the resulting high-resolution information about the anatomy of
+ single cells, we have succeeded in subdividing BC5 into three types that
+ we call BC5t, BC5i, and BC5o.
+ This finding confirms a speculation of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+, who were previously able to distinguish just two BC5 types, but predicted
+ the existence of more.
+ Our definition of a third BC5 type increases the total count of cone BC
+ types to 13.
+ 
+\end_layout
+
+\begin_layout Standard
+Contact analysis is consistent with a wiring diagram in which BC7 prefers
+ to synapse closer to the On SAC soma, and BC5 prefers to synapse farther
+ from the soma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+c).
+ Among the BC5 types, synaptic input from BC5o is likely to be less than
+ from BC5t and BC5i.
+ 
+\end_layout
+
+\begin_layout Standard
+Most of the available evidence suggests that transient BC types generally
+ arborize near the IPL center, and sustained BC types near the IPL edges
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+.
+ (But see 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "Ichinose:2014aa"
+
+\end_inset
+
+ for a divergent view.) Combined with the standard division of the IPL into
+ On and Off sublamina, this yields four sublayers: On-sustained, On-transient,
+ Off-transient, and Off-sustained (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+b).
+ Based on this IPL organization, it is likely that BC7 is sustained and
+ BC5 is transient.
+ If this is the case, then On BC-SAC wiring is analogous to Off BC-SAC wiring.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure1.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Organization of the inner plexiform layer
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:On-Off-shematics"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, The IPL is divided into On and Off (gray shading) sublayers, which support
+ On BC-GC wiring and Off BC-GC wiring specificity.
+ 
+\series bold
+b
+\series default
+, Observations of BC visual responses 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+ suggest a division of the IPL into sustained and transient sublayers beyond
+ the on and off division.
+ The two sustained-transient divisions are located at the depths of On and
+ Off starburst amacrine cells (SACs).
+ 
+\series bold
+c
+\series default
+, Analogous wiring specificity for On and Off BC-SAC circuits.
+ Sustained BCs prefer the proximal zone of SACs and transient BCs prefer
+ the intermediate or distal zones of SACs.
+ 
+\series bold
+d
+\series default
+, When viewed perpendicular to the light axis, On (blue) and Off (red) SACs
+ appear mirror symmetric across the plane separating the On and Off sublayers
+ of the IPL.
+ 
+\series bold
+e
+\series default
+, The same SACs appear similar when viewed along the light axis.
+ Black circles and gray dots respectively indicate reconstructed On and
+ Off SAC cell body locations.
+ On BCs were reconstructed in a patch (dashed rectangle).
+ Scale bar, 
+\begin_inset Formula $50~\mu$
+\end_inset
+
+m.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+BC-SAC contact analysis
+\end_layout
+
+\begin_layout Standard
+We computed contact area between SACs and BCs of each type.
+ The absolute areas were normalized to produce an estimate of the percentage
+ of SAC surface area covered by BCs of each type (Experimental Procedures).
+ This contact analysis suggests that BC5t, BC5i, and BC7 are likely the
+ dominant bipolar cell inputs to the On SAC (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+a, c).
+ Our result is consistent with previous anatomical reconstructions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ and physiological experiments 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Duan:2014rr,Chen:2014xy"
+
+\end_inset
+
+, though these previous studies did not distinguish all three BC5 types.
+ If there is BC5o input, it is likely substantially weaker than BC5t and
+ BC5i input (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+a).
+\end_layout
+
+\begin_layout Standard
+To characterize the spatial relations between contacting cells, we examined
+ the dependence of BC-SAC contact on distance between the BC axon and the
+ SAC soma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+b).
+ The absolute areas were normalized to estimate the percentage of SAC surface
+ area covered by BCs of a given type at a particular distance from the SAC
+ soma (Experimental Procedures).
+ The resulting graphs show that BC7 prefers to contact On SAC dendrites
+ near the SAC soma, whereas BC5t and BC5i prefer to contact at an intermediate
+ distance from the soma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+c).
+\end_layout
+
+\begin_layout Standard
+We only reconstructed BCs in the central area of e2198 (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+e), and even within this area some BCs may have been missed (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+e, f, g).
+ In our previous paper, we described methods of analyzing BC-SAC contact
+ that are robust to both kinds of incompleteness 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kim:2014sf"
+
+\end_inset
+
+.
+ The same methods were applied here, with only minor changes.
+ 
+\end_layout
+
+\begin_layout Standard
+We compute each SAC's total contact area with all BCs of a given type divided
+ by the SAC's surface area contained in the convex hull of the same BCs.
+ This yields an estimate of the fraction of the SAC's surface in contact
+ with BCs of the given type.
+ This fraction is averaged over SACs to yield the estimates shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+A, with standard error based on the number of SACs that intersect the convex
+ hull of the given BC type.
+ 
+\end_layout
+
+\begin_layout Standard
+For each BC type, a coverage factor is computed by dividing the sum of hull
+ areas for cells of the given type by the area of the union of hulls of
+ the cells.
+ The coverage factor represents the extent to which neighboring BCs of the
+ same type overlap one another.
+ 
+\end_layout
+
+\begin_layout Standard
+For each BC-SAC pair, we compute the contact area divided by the surface
+ area of the SAC within the convex hull of the BC.
+ Multiplying by the coverage factor for the BC type yields an estimate of
+ the fraction of the SAC's surface area contacting the BC type at that distance
+ from that SAC's soma.
+ This computation is done for all BC-SAC pairs, except that we discard pairs
+ for which the BC hull contains fewer than 
+\begin_inset Formula $500$
+\end_inset
+
+ SAC surface voxels in order to dampen fluctuations.
+ We bin the remaining BC-SAC pairs by distance and by BC type.
+ For each bin and for each SAC that contributes pairs to that bin, we compute
+ the mean over BC-SAC pairs.
+ Each data point in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+c represents the mean of the SAC-specific means for that bin, and standard
+ error is based on the number of SACs that contribute to that bin.
+\end_layout
+
+\begin_layout Standard
+One might worry that our contact analyses are sensitive to incomplete reconstruc
+tion of BCs (see 
+\begin_inset Quotes eld
+\end_inset
+
+holes
+\begin_inset Quotes erd
+\end_inset
+
+ in the tilings of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+e, f, g).
+ To avoid this problem, the results of our analyses are expressed not as
+ absolute contact areas but instead as fractions of SAC surface area.
+ To demonstrate robustness, we repeated our contact analyses after deleting
+ a random subset of BC5t and BC5i cells (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Robustness-of-Contact"
+
+\end_inset
+
+a, b, c).
+ The estimates of SAC coverage turned out virtually unchanged (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Robustness-of-Contact"
+
+\end_inset
+
+d, e); SAC coverage by BC5o was still much lower than by BC5t and BC5i.
+\end_layout
+
+\begin_layout Standard
+The contact analysis was done with BC types given by hierarchical clustering
+ after a small number of swaps to correct for tiling violations, as explained
+ above.
+ The results of the contact analysis look similar if the tiling swaps are
+ not performed (data not shown).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename supp_figure2.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Robustness of Contact Analysis.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Robustness-of-Contact"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Robustness of contact analysis to missing bipolar cells.
+ Approximately half of BC5i (
+\series bold
+a
+\series default
+) and BC5t (
+\series bold
+c
+\series default
+) cells were randomly deleted, while BC5o was left unchanged (
+\series bold
+b
+\series default
+).
+ The BC5i and BC5t tilings are obviously incomplete, and BC5o now has the
+ most complete coverage.
+ (
+\series bold
+d
+\series default
+, 
+\series bold
+e
+\series default
+) The results of contact analysis (solid lines) are only slightly shifted
+ relative to the original contact analysis of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+
+\series bold
+a
+\series default
+, 
+\series bold
+c
+\series default
+ (dashed lines).
+ BC5o still contributes much less than BC5i and BC5t to SAC coverage, even
+ though BC5o cells are now the most numerous.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+BC-SAC co-stratification analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alignment"
+
+\end_inset
+
+d already showed that proximal SAC dendrites span a wide range of IPL depths,
+ which are different from the depths of the intermediate and distal dendrites.
+ Because of this depth difference, the proximal zone co-stratifies with
+ BC7 but only weakly with BC5, which is consistent with our observed preference
+ of BC7 for contact with the proximal zone.
+ Such reasoning was already used by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Famiglietti:1991fk"
+
+\end_inset
+
+ to infer that proximal dendrites should receive inputs from different BC
+ types compared to distal dendrites.
+\end_layout
+
+\begin_layout Standard
+This suggests that co-stratification could be used to quantitatively predict
+ On BC-SAC contact using the integral over depth of the product of BC and
+ SAC stratification profiles.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+d shows that this prediction works well in some respects, but not in others.
+ On the one hand, predicted contact (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+d) nicely matches actual contact (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+c) for BC5t, BC5i, and BC7, failing only to match the observed decrease
+ in the distal zone.
+ On the other hand, actual contact of BC6 is much lower than expected from
+ predicted contact.
+\end_layout
+
+\begin_layout Standard
+It may seem surprising that BC6 makes little contact with On SACs, given
+ that it stratifies over a broad range of IPL depths that includes all zones
+ of On SAC dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+a).
+ One reason may be that the BC6 stratification profile dips down exactly
+ at the depth of intermediate and distal dendrites (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-of-On"
+
+\end_inset
+
+c), as if BC6 were trying to avoid contacting the On SAC.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figure5.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Wiring specificity of On BC-SAC circuit.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Wiring-specificity-ON"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+a
+\series default
+, Fraction of On SAC surface area contacted by On BC types.
+ 
+\series bold
+b
+\series default
+, Distance is defined for each BC-SAC pair in the tangential plane from
+ the centroid of BC-SAC contact to the point on the SAC soma from which
+ the dendritic trunk emerges.
+ The centroid of emergence points is used if there are multiple trunks.
+ 
+\series bold
+c
+\series default
+, Fraction of On SAC surface contacted by On BC types versus distance from
+ the SAC soma.
+ Standard error is based on the number of pairs for each BC type and distance.
+ 
+\series bold
+d
+\series default
+, Contact predicted from co-stratification analysis.
+ Scale bar, 
+\begin_inset Formula $30~\mu$
+\end_inset
+
+m.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+Our reconstruction of the On BC-SAC circuit suggests that its wiring diagram
+ parallels that of the Off BC-SAC circuit (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+c).
+ We find that sustained BC types prefer to contact SAC dendrites near the
+ SAC soma, and transient BC types prefer an intermediate distance from the
+ SAC soma.
+ We interpret these contact preferences as reflecting synaptic connectivity
+ preferences.
+\end_layout
+
+\begin_layout Standard
+The spatial organization of the IPL has previously been interpreted as supportin
+g rules of wiring specificity.
+ For example, the division of the IPL into On and Off sublayers (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+a) supports On to On and Off to Off rules for wiring of BCs to ganglion
+ cells (GCs) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Famiglietti:1976aa,pang2003light"
+
+\end_inset
+
+.
+ Similarly, the division of the IPL into sustained and transient sublayers
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+b) could support sustained to sustained and transient to transient rules
+ of BC-GC wiring 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Awatramani:2000aa"
+
+\end_inset
+
+.
+ Here the BC-SAC wiring diagram provides an explanation of why On and Off
+ SACs are located at the boundaries between sustained and transient IPL
+ sublayers (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+b).
+ Namely, this positioning is appropriate for receiving convergent input
+ from both sustained and transient BC types (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:On-Off-shematics"
+
+\end_inset
+
+c).
+ 
+\end_layout
+
+\begin_layout Standard
+We also find three differences between the On and Off circuits.
+ First, BC7 and BC5i/t prefer to contact closer to the On SAC soma than
+ their analogs BC2 and BC3a contact to the Off SAC soma (compare 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wiring-specificity-ON"
+
+\end_inset
+
+c with 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:off-SAC-contact"
+
+\end_inset
+
+d).
+ Second, the On SAC is contacted strongly by two transient BC types, while
+ the Off SAC receives strong contact from a single transient BC type.
+ Third, BC contact on distal SAC dendrites is relatively scarcer for the
+ On than the Off circuit (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Off-SAC-(red)"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The current study comes with several caveats.
+ First, while most of the available evidence supports the sustained-transient
+ classification of On BC types adopted in this paper 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baden:2013uq,Borghuis:2013uq"
+
+\end_inset
+
+, the literature contains at least one divergent report about this classificatio
+n 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ichinose:2014aa"
+
+\end_inset
+
+.
+ Second, synaptic connectivity cannot be identified with certainty in e2198,
+ because of an unconventional staining technique that left intracellular
+ organelles invisible.
+ Therefore we rely on contact between cells as an indirect indicator of
+ connectivity.
+ Third, motion computation by SAC dendrites might involve biophysics of
+ SAC dendrites 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gavrikov:2003om,tukker2004direction,Hausselt:2007nx"
+
+\end_inset
+
+, which is not incompatible with our hypothetical mechanism involving space-time
+ wiring specificity.
+ 
+\end_layout
+
+\begin_layout Standard
+We were able to divide BC5 into three types (BC5t, BC5o, and BC5i), based
+ on differences in stratification.
+ Using patterns of contact with two ganglion cell types, we also replicated
+ the prior two-way division by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+ of BC5 into BC5A and BC5R, and found that BC5A corresponds almost perfectly
+ with BC5i.
+ We were able to assign all BC5 cells to either BC5A and BC5R, because our
+ reconstructions of the ganglion cell types are more complete than those
+ of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ In the future, we expect contact or connectivity to replace stratification
+ as the main property used to classify cells into types 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "seung2009reading,seung2012connectome,jonas2015automatic"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wassle2009cone"
+
+\end_inset
+
+ defined BC5 using a 5-HT3R-EGFP transgenic mouse line.
+ They speculated that the line labeled two BC5 types, because of the high
+ density of labeled cells, and because two BC5 types had been molecularly
+ distinguished in rat 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fyk2007differential"
+
+\end_inset
+
+.
+ However, they were unable to find molecular markers distinguishing BC5
+ types in mouse.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Duan:2014rr"
+
+\end_inset
+
+ showed that Kcng4 and Cdh9 Cre lines label the same cells as 5-HT3R-EGFP.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "haverkamp2009expression"
+
+\end_inset
+
+ found that the BC5 cells in the 5-HT3R-EGFP line were all CaBP5-positive.
+ BC5t may be CaBP5-negative (Haruhisa Okawa and Rachel Wong, private communicati
+on).
+ If this is the case, it follows that BC5o and BC5i correspond to the two
+ types in the 5-HT3R-EGFP transgenic line.
+ 
+\end_layout
+
+\begin_layout Standard
+The catalog of mouse BC types is likely complete.
+ Our claim is based on two assumptions: (1) every BC type tiles the retina
+ with little overlap, and (2) there are no large BCs, which would be rare
+ and therefore could have been missed by our reconstructions and those of
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Helmstaedter:2013zr"
+
+\end_inset
+
+.
+ One anomaly is that BC1 and BC2 tilings exhibit more overlap than those
+ of other types (Extended Data Figure 6 of 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "Kim:2014sf"
+
+\end_inset
+
+).
+ The overlap is not enough to allow defining a third type that fully tiles
+ the retina; a hypothetical third type would be sparse in its coverage.
+ Another qualification is that our reconstructions come from a single location
+ in a retina, so we cannot exclude the possibility that cell types vary
+ across the retina.
+ 
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "EyeWire"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

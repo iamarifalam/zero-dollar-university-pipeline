@@ -1,0 +1,139 @@
+# Official Structural and Formatting Matrix: Tier-1 AI Venues
+*Compiled for the Research Operating System (OS). Optimized for automated parsing, formatting validation, and submission compliance.*
+
+---
+
+## 1. NeurIPS (Neural Information Processing Systems)
+
+### System Metadata
+* **Core Focus:** Machine Learning, Deep Learning, Theoretical AI, Neuroscience.
+* **Review Process:** Double-blind peer review.
+* **Page Budget:** 9 pages for the main text (including figures and tables); unlimited pages for references and appendices.
+* **Page Budget Rules:** Any text, including headers, footnotes, or visual captions, appended on page 10 or later automatically triggers a desk rejection.
+
+### Typography & Geometry
+* **Document Engine:** LaTeX Only (Microsoft Word formats are fully deprecated).
+* **Layout Geometry:** Single-column layout on standard **US Letter size paper**.
+* **Body Font Family:** `Times New Roman` or a standardized system `Computer Modern Roman` equivalent.
+* **Body Font Size:** 10pt base line spacing with proportional leading.
+* **Line Numbering:** Explicit **continuous vertical line numbers** must be active during the initial blind review phase.
+
+### Source Code Dependencies
+```latex
+\usepackage{neurips_2026} % Use the explicit 'final' option ONLY for the camera-ready version.
+\usepackage[utf8]{inputenc} % Mandated character encoding structure.
+\usepackage[T1]{fontenc}    % Mandated URL/font font-encoding structure.
+\usepackage{hyperref}       % Hyperlink generation system.
+\usepackage{booktabs}       % High-quality professional tables.
+\usepackage{amsfonts}       % Standard blackboard math font faces.
+```
+
+### Anonymization Rules
+* **Author Block:** Must be completely wrapped or omitted via the blind submission style macro flag.
+* **Self-Citations:** References to your own previous work must be written in the third person (e.g., replace *"In our previous study [2]..."* with *"In a previous study by Smith et al. [2]..."*).
+* **Repository Links:** Do not link to active, identifiable personal GitHub accounts. Code must be stripped of metadata and hosted anonymously via platforms like anonymous.4open.science.
+
+---
+
+## 2. ICML (International Conference on Machine Learning)
+
+### System Metadata
+* **Core Focus:** Computational Statistics, Optimization, Foundational Machine Learning Theories.
+* **Review Process:** Double-blind peer review.
+* **Page Budget:** 9 pages for camera-ready papers (main text, figures, tables); unlimited pages for references.
+* **Page Budget Rules:** Content structural components must not overflow into the reference pages. Appendices must be uploaded as a secondary, detached file during initial tracking.
+
+### Typography & Geometry
+* **Document Engine:** LaTeX (Using the customized class file ecosystem).
+* **Layout Geometry:** Strict **two-column layout** mapped to **US Letter size paper**.
+* **Body Font Family:** System `Times New Roman` configuration engine.
+* **Body Font Size:** 10pt base font architecture with dual-column structural spacing gutters.
+* **Line Numbering:** Active dynamic continuous line numbers spanning the outer margins of both columns.
+
+### Source Code Dependencies
+```latex
+\documentclass{article}
+\usepackage{icml2026} % Pass option [accepted] ONLY for camera-ready versions.
+\usepackage{microtype} % Optimizes font kerning and line breaks to prevent column overflow.
+\usepackage{graphicx}  % Handles multi-column float placements.
+\usepackage{amsmath}   % Core mathematical syntax rendering.
+\usepackage{amssymb}   % Specialized algorithmic symbols.
+```
+
+### Anonymization Rules
+* **Institution Flags:** No university name, email domains, or specific lab names can be visible anywhere in the document body.
+* **Acknowledgments:** Fully disable or strip out any `egin{acknowledgements}` block during the initial submission phase. This includes removing mentions of funding agencies, grant numbers, and infrastructure providers.
+
+---
+
+## 3. CVPR (Conference on Computer Vision and Pattern Recognition)
+
+### System Metadata
+* **Core Focus:** Computer Vision, Multimodal Vision-Language Models, Generative AI Image Architectures.
+* **Review Process:** Double-blind peer review.
+* **Page Budget:** 8 pages for the main text body (including tables and embedded figures); unlimited pages for references.
+* **Page Budget Rules:** Strict boundary limit. Any text overflow onto page 9 before references will cause immediate automated rejection.
+
+### Typography & Geometry
+* **Document Engine:** LaTeX compilation suite via modern engines (pdfLaTeX supported).
+* **Layout Geometry:** Dense **two-column layout** optimized for high visual figure placement density.
+* **Body Font Family:** `Times New Roman` or equivalent system serif.
+* **Body Font Size:** 9pt or 10pt (depending on explicit tracking instructions).
+* **Line Numbering:** Automated per-page or continuous line counters aligned symmetrically.
+
+### Source Code Dependencies
+```latex
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{cvpr} % Use the distinct [review] macro for initial blind evaluation.
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+```
+
+### Anonymization Rules
+* **Visual Data Anonymization:** Ensure faces, vehicle license plates, or identifiable location details in datasets or visual figures are systematically blurred or anonymized.
+* **Metadata Splitting:** Supplementary material containing structural source code or video demos must be uploaded as a separate, distinct ZIP bundle.
+
+---
+
+## 4. ACL (Association for Computational Linguistics)
+
+### System Metadata
+* **Core Focus:** Natural Language Processing, Large Language Models (LLMs), Computational Linguistics.
+* **Review Process:** Centralized **ACL Rolling Review (ARR)** double-blind infrastructure.
+* **Page Budget:** Long Papers (8 pages for main body); Short Papers (4 pages for main body); unlimited pages for references.
+* **Page Budget Rules:** Appendices do not count toward the page limit but must be placed after the references in a single unified PDF file.
+
+### Typography & Geometry
+* **Document Engine:** LaTeX template infrastructure engine.
+* **Layout Geometry:** Structured **two-column layout** on standard A4 or US Letter paper configurations.
+* **Body Font Family:** `Times New Roman` style system infrastructure.
+* **Body Font Size:** 11pt for main body text, 10pt for footnoted text matrices.
+* **Line Numbering:** Multi-column tracking configuration.
+
+### Source Code Dependencies
+```latex
+\documentclass[11pt]{article}
+\usepackage[review]{acl} % Remove 'review' flag for the final camera-ready layout.
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+```
+
+### Anonymization Rules
+* **Prompt Data Anonymization:** Ensure system prompts, training logs, or chat datasets do not expose proprietary API keys, organization IDs, or private internal server URLs.
+* **Limitations Section:** A mandatory, explicit **Limitations section** must be appended before the references. This section is required for review but does not count against the core page budget.
+
+---
+
+## 5. Comparative Structural Compliance Checklist
+
+| Venue Identifier | Target Page Budget | Layout Structure | Primary Paper Size | Required Software Dependencies |
+| :--- | :--- | :--- | :--- | :--- |
+| **NeurIPS** | 9 Pages | Single-Column | US Letter | `neurips_2026.sty` package |
+| **ICML** | 9 Pages | Two-Column | US Letter | `icml2026.sty` template suite |
+| **CVPR** | 8 Pages | Two-Column | US Letter | `cvpr.sty` structural package |
+| **ACL** | 8 / 4 Pages | Two-Column | A4 / US Letter | `acl.sty` style infrastructure |

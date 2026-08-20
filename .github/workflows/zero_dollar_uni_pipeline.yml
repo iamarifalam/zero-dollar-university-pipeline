@@ -1,0 +1,81 @@
+name: 0$ University Daily Pipeline (5 Slots)
+
+on:
+  schedule:
+    # Slot 1:  08:00 AM IST (02:30 AM UTC) - Full CS Degree Free Roadmap
+    - cron: '30 2 * * *'
+    # Slot 2:  11:00 AM IST (05:30 AM UTC) - Stanford & MIT AI/ML Vault
+    - cron: '30 5 * * *'
+    # Slot 3:  02:00 PM IST (08:30 AM UTC) - Free Harvard CS50 Courses
+    - cron: '30 8 * * *'
+    # Slot 4:  05:00 PM IST (11:30 AM UTC) - 10 GitHub Repos Better Than $50K Bootcamp
+    - cron: '30 11 * * *'
+    # Slot 5:  08:30 PM IST (03:00 PM UTC) - FAANG Coding & Interview Vault
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish-zuni-post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          retry() { for i in 1 2 3; do "$@" && return 0; echo "Retry $i/3 failed for: $*"; sleep 15; done; return 1; }
+          retry python -m pip install --upgrade pip
+          retry pip install -r requirements.txt
+
+      - name: Install Playwright Browsers & System Dependencies
+        run: |
+          retry() { for i in 1 2 3; do "$@" && return 0; echo "Retry $i/3 failed for: $*"; sleep 15; done; return 1; }
+          retry playwright install chromium --with-deps
+
+      - name: Execute 0$ University Page Pipeline
+        env:
+          LI_AT: ${{ secrets.LI_AT }}
+          JSESSIONID: ${{ secrets.JSESSIONID }}
+          BCOOKIE: ${{ secrets.BCOOKIE }}
+          BSCOOKIE: ${{ secrets.BSCOOKIE }}
+        run: |
+          mkdir -p artifacts
+          retry() { for i in 1 2; do "$@" && return 0; echo "Retry $i/2 failed for: $*"; sleep 20; done; return 1; }
+          retry bash -c "set -o pipefail; python3 scripts/zero_dollar_uni_runner.py 2>&1 | tee artifacts/zero_dollar_uni_pipeline.log"
+
+      - name: Upload pipeline logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zero-dollar-uni-pipeline-logs-${{ github.run_id }}
+          path: artifacts/zero_dollar_uni_pipeline.log
+          if-no-files-found: ignore
+
+      - name: State Sync (Push zero_dollar_uni_posted_history.json)
+        if: success()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add config/zero_dollar_uni_posted_history.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(history): sync 0$ university history [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
