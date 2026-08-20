@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v2.1 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v2.2 Production)
 ============================================================================
 1. Direct Company Admin Share URL: https://www.linkedin.com/company/86814703/admin/page-posts/published/?share=true
 2. Direct 0$ University Post Composer (100% Personal Profile Isolation).
-3. Attaches authentic Roadmap / Course Vault PDF Carousel from documents/pdf_vault/.
+3. Direct set_input_files for authentic PDF Carousel upload from documents/pdf_vault/.
 4. Injects exact standardized Topmate & WhatsApp links block.
 5. Publishes post live to 0$ University.
 6. Resolves live permalink and runs 8-Actor Cross-Engagement Booster + Pinned 1st Comment.
@@ -259,12 +259,10 @@ def execute_zuni_pipeline(dry_run=False):
                     }""")
                     time.sleep(2)
 
-                    # Click "Choose file" with expect_file_chooser
-                    with page.expect_file_chooser(timeout=20000) as fc_info:
-                        page.locator("button:has-text('Choose file'), button:has-text('Choose a file'), div.share-box-document-upload button").first.click(force=True)
-                    fc_info.value.set_files(pdf_path)
-                    print(f"✅ PDF file attached: {pdf_filename}")
-                    time.sleep(5)
+                    # Set files directly on the input[type="file"] in Share a document modal
+                    page.set_input_files("input[type='file']", pdf_path)
+                    print(f"✅ PDF file attached directly via set_input_files: {pdf_filename}")
+                    time.sleep(4)
 
                     # Fill Title
                     try:
@@ -315,19 +313,26 @@ def execute_zuni_pipeline(dry_run=False):
 
             # Publish live
             print("🚀 Step 4: Publishing live to 0$ University...")
-            page.evaluate("""() => {
-                const btns = Array.from(document.querySelectorAll('button')).filter(b => {
-                    const txt = (b.innerText || '').trim();
-                    const cl = b.className || '';
-                    return txt === 'Post' || cl.includes('share-actions__primary-action');
-                });
-                if (btns.length > 0) {
-                    const postBtn = btns[btns.length - 1];
-                    postBtn.scrollIntoView();
-                    postBtn.click();
-                }
-            }""")
-            print("✅ Clicked Post button! Waiting 15 seconds for publication to register...")
+            post_btn = page.locator("button.share-actions__primary-action, button:has-text('Post')").last
+            if post_btn.is_visible():
+                post_btn.click()
+                print("✅ Clicked primary Post button!")
+            else:
+                page.evaluate("""() => {
+                    const btns = Array.from(document.querySelectorAll('button')).filter(b => {
+                        const txt = (b.innerText || '').trim();
+                        const cl = b.className || '';
+                        return txt === 'Post' || cl.includes('share-actions__primary-action');
+                    });
+                    if (btns.length > 0) {
+                        const btn = btns[btns.length - 1];
+                        btn.scrollIntoView();
+                        btn.click();
+                    }
+                }""")
+                print("✅ Clicked Post button via DOM fallback!")
+
+            print("⏳ Waiting 15 seconds for publication to register...")
             time.sleep(15)
 
             save_zuni_history({
