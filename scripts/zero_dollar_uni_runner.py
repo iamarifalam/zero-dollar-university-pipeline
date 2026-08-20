@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-0$ University - Dedicated LinkedIn Autonomous Growth Engine (v2.0 Production)
+0$ University - Dedicated LinkedIn Autonomous Growth Engine (v2.1 Production)
 ============================================================================
 1. Direct Company Admin Share URL: https://www.linkedin.com/company/86814703/admin/page-posts/published/?share=true
 2. Direct 0$ University Post Composer (100% Personal Profile Isolation).
@@ -48,7 +48,7 @@ ALL_ENGAGEMENT_ACTORS = CONFIG.get("engagement_actors", [
     {"id": "select-data-science-reality", "name": "Data science Reality (Alt)"}
 ])
 
-ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝘃𝐞𝐫𝐬𝗶𝐭𝐲 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
+ZUNI_FIRST_COMMENT = CONFIG.get("permanent_first_comment", """🎓 𝟎$ 𝐔𝐧𝐢𝘃𝐞𝐫𝐬𝗶𝐭𝘆 𝐅𝐫𝐞𝐞 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧 𝐕𝐚𝐮𝐥𝐭
 AI Engineering Library: https://topmate.io/arif_alam/2252479
 📕 400+ 𝗗𝗮𝘁𝗮 𝗦𝗰𝗶𝗲𝗻𝗰𝗲 𝗥𝗲𝘀𝗼𝘂𝗿𝗰𝗲𝘀: https://topmate.io/arif_alam/787013
 
@@ -240,27 +240,33 @@ def execute_zuni_pipeline(dry_run=False):
             if pdf_path and os.path.exists(pdf_path):
                 print(f"📑 Attaching Document Carousel: {pdf_filename}...")
                 try:
-                    with page.expect_file_chooser(timeout=20000) as fc_info:
-                        # Click More button or Document icon
-                        page.evaluate("""() => {
-                            const moreBtn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('More'));
-                            if (moreBtn) moreBtn.click();
-                        }""")
-                        time.sleep(1.5)
+                    # Click More button to reveal document option
+                    page.evaluate("""() => {
+                        const moreBtn = Array.from(document.querySelectorAll('button')).find(b => (b.getAttribute('aria-label') || '').includes('More'));
+                        if (moreBtn) moreBtn.click();
+                    }""")
+                    time.sleep(1.5)
 
-                        page.evaluate("""() => {
-                            const btns = Array.from(document.querySelectorAll('button, div[role="button"]'));
-                            const docBtn = btns.find(b => {
-                                const la = (b.getAttribute('aria-label') || '').toLowerCase();
-                                const txt = (b.innerText || '').toLowerCase();
-                                return la.includes('document') || txt.includes('document');
-                            });
-                            if (docBtn) docBtn.click();
-                        }""")
+                    # Click Document option to open "Share a document" modal
+                    page.evaluate("""() => {
+                        const btns = Array.from(document.querySelectorAll('button, div[role="button"]'));
+                        const docBtn = btns.find(b => {
+                            const la = (b.getAttribute('aria-label') || '').toLowerCase();
+                            const txt = (b.innerText || '').toLowerCase();
+                            return la.includes('document') || txt.includes('document');
+                        });
+                        if (docBtn) docBtn.click();
+                    }""")
+                    time.sleep(2)
+
+                    # Click "Choose file" with expect_file_chooser
+                    with page.expect_file_chooser(timeout=20000) as fc_info:
+                        page.locator("button:has-text('Choose file'), button:has-text('Choose a file'), div.share-box-document-upload button").first.click(force=True)
                     fc_info.value.set_files(pdf_path)
                     print(f"✅ PDF file attached: {pdf_filename}")
                     time.sleep(5)
 
+                    # Fill Title
                     try:
                         title_input = page.locator("input[placeholder*='title' i], input[type='text']").first
                         if title_input.is_visible(timeout=5000):
@@ -269,6 +275,7 @@ def execute_zuni_pipeline(dry_run=False):
                         pass
                     time.sleep(2)
 
+                    # Click Done on Document preview modal
                     page.evaluate("""() => {
                         const btns = Array.from(document.querySelectorAll('button'));
                         const doneBtn = btns.find(b => ['Done', 'Next'].includes((b.innerText || '').trim()) || (b.getAttribute('aria-label') || '').includes('Done'));
