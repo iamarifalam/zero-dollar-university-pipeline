@@ -13,5 +13,13 @@
     "image": "post_002.png",
     "posted_at": "2026-08-20T17:23:17.613805",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_003",
+    "title": "Python & Data Science Production Architecture Workflow",
+    "format": "INFOGRAPHIC_CAROUSEL",
+    "image": "infographic_data_science_python_production_workflow.png",
+    "posted_at": "2026-08-20T17:30:16.632654",
+    "platform": "0$ University"
   }
 ]
