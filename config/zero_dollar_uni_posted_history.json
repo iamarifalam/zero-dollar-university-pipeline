@@ -29,5 +29,13 @@
     "image": "infographic_cnn_architectures_resnet_vgg_stanford.png",
     "posted_at": "2026-08-20T17:40:34.419233",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_005",
+    "title": "PySpark DataFrame Architecture & Distributed Memory Internals",
+    "format": "INFOGRAPHIC",
+    "image": "infographic_pyspark_df_architecture.png",
+    "posted_at": "2026-08-21T03:31:54.107135",
+    "platform": "0$ University"
   }
 ]
