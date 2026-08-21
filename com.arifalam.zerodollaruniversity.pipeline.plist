@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.arifalam.zerodollaruniversity.pipeline</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>/usr/bin/python3 /Users/apple/Desktop/Zero_Dollar_University_Pipeline/scripts/zero_dollar_uni_runner.py >> /Users/apple/Desktop/Zero_Dollar_University_Pipeline/logs/daemon.log 2>&1</string>
+    </array>
+    
+    <key>StartCalendarInterval</key>
+    <array>
+        <!-- Slot 1: 08:00 AM IST -->
+        <dict>
+            <key>Hour</key>
+            <integer>8</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <!-- Slot 2: 11:00 AM IST -->
+        <dict>
+            <key>Hour</key>
+            <integer>11</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <!-- Slot 3: 02:00 PM IST -->
+        <dict>
+            <key>Hour</key>
+            <integer>14</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <!-- Slot 4: 05:00 PM IST -->
+        <dict>
+            <key>Hour</key>
+            <integer>17</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <!-- Slot 5: 08:30 PM IST -->
+        <dict>
+            <key>Hour</key>
+            <integer>20</integer>
+            <key>Minute</key>
+            <integer>30</integer>
+        </dict>
+    </array>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/apple/Desktop/Zero_Dollar_University_Pipeline/logs/launchd_stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/apple/Desktop/Zero_Dollar_University_Pipeline/logs/launchd_stderr.log</string>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/apple/Desktop/Zero_Dollar_University_Pipeline</string>
+    
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
