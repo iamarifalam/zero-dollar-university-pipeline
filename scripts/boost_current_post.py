@@ -28,7 +28,6 @@ post_url = "https://www.linkedin.com/feed/update/urn:li:activity:749640865651559
 
 actors = [
     {"id": "select-startup-founderss", "name": "0$ University"},
-    {"id": "select-self", "name": "Arif Alam (Personal Profile)"},
     {"id": "select-datasciencereality", "name": "Data Science Reality"},
     {"id": "select-100daysofai", "name": "100DaysOfAI"},
     {"id": "select-web3schools", "name": "Web3Schools"},

@@ -40,7 +40,6 @@ else:
 ZUNI_IDENTITY_ID = "select-startup-founderss"
 
 ALL_ENGAGEMENT_ACTORS = CONFIG.get("engagement_actors", [
-    {"id": "select-self", "name": "Arif Alam (Personal Profile)"},
     {"id": "select-datasciencereality", "name": "Data Science Reality"},
     {"id": "select-100daysofai", "name": "100DaysOfAI"},
     {"id": "select-web3schools", "name": "Web3Schools"},
