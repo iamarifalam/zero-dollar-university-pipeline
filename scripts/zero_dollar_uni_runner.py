@@ -381,12 +381,11 @@ def execute_zuni_pipeline(dry_run=False):
             print("⚡ STAGE 2: RESOLVING LIVE PERMALINK & PINNED FIRST COMMENT (0$ UNIVERSITY IDENTITY)")
             print("=" * 80)
 
+            time.sleep(10)
             page.goto("https://www.linkedin.com/company/86814703/admin/page-posts/published/", wait_until="domcontentloaded", timeout=40000)
-            time.sleep(6)
+            time.sleep(8)
 
             permalink_url = page.evaluate("""() => {
-                const links = Array.from(document.querySelectorAll('a[href*="/feed/update/urn:li:activity:"], a[href*="/feed/update/urn:li:share:"]'));
-                if (links.length > 0) return links[0].href;
                 const post = document.querySelector('div.feed-shared-update-v2, div[data-urn*="activity"]');
                 if (post) {
                     const urn = post.getAttribute('data-urn') || post.getAttribute('data-id') || '';
@@ -395,6 +394,8 @@ def execute_zuni_pipeline(dry_run=False):
                         return `https://www.linkedin.com/feed/update/urn:li:activity:${id}/`;
                     }
                 }
+                const links = Array.from(document.querySelectorAll('a[href*="/feed/update/urn:li:activity:"]'));
+                if (links.length > 0) return links[0].href.split('?')[0];
                 return null;
             }""")
 
