@@ -37,5 +37,13 @@
     "image": "infographic_pyspark_df_architecture.png",
     "posted_at": "2026-08-21T03:31:54.107135",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_006",
+    "title": "Dask Parallel Computing: Scaling Python Code Beyond RAM Limits",
+    "format": "INFOGRAPHIC",
+    "image": "infographic_dask_parallel_computing_p1.png",
+    "posted_at": "2026-08-21T05:55:21.453775",
+    "platform": "0$ University"
   }
 ]
