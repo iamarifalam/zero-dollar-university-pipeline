@@ -53,5 +53,13 @@
     "image": "sebastian_real_infographic_1.png",
     "posted_at": "2026-08-21T08:36:56.205142",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_008",
+    "title": "RAG vs CAG (Cache-Augmented Generation) Architecture Breakdown",
+    "format": "INFOGRAPHIC",
+    "image": "post_001.png",
+    "posted_at": "2026-08-21T09:08:38.041075",
+    "platform": "0$ University"
   }
 ]
