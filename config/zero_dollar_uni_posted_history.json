@@ -45,5 +45,13 @@
     "image": "infographic_dask_parallel_computing_p1.png",
     "posted_at": "2026-08-21T05:55:21.453775",
     "platform": "0$ University"
+  },
+  {
+    "id": "zero_uni_007",
+    "title": "LLM Pre-training vs Supervised Fine-Tuning (SFT) Architecture",
+    "format": "INFOGRAPHIC",
+    "image": "sebastian_real_infographic_1.png",
+    "posted_at": "2026-08-21T08:36:56.205142",
+    "platform": "0$ University"
   }
 ]
